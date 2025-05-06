@@ -1,11 +1,21 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "maes/banner",
+	"name": "maes/collage-banner",
 	"version": "0.1.0",
-	"title": "Museum Banner",
+	"title": "Collage Banner",
 	"category": "widgets",
 	"description": "A pile of stuff banner",
+	"attributes": {
+		"imgs": {
+			"type": "array",
+			"default": []
+		},
+		"background": {
+			"type": "array",
+			"default": []
+		}
+	},
 	"example": {},
 	"supports": {
 		"html": false

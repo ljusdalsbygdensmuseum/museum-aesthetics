@@ -24,6 +24,7 @@ class maes
         //enqueue
 
         //RestAPI
+        add_action('rest_api_init', array($this, 'custom_rest'));
 
         //Sub page
 
@@ -37,7 +38,7 @@ class maes
         // Post types
 
         // Blocks
-        register_block_type(__DIR__ . '/build/blocks/maes_banner');
+        register_block_type(__DIR__ . '/build/blocks/maes_collage_banner');
     }
 
     //Metaboxes
@@ -47,6 +48,23 @@ class maes
     //Enqueue
 
     //RestAPI
+    function custom_rest()
+    {
+
+        register_rest_route('maes/v1', 'settings', array(
+            'methods' => WP_REST_Server::READABLE,
+            'callback' => array($this, 'rest_settings')
+        ));
+    }
+    function rest_settings()
+    {
+        return array(
+            'site_title' => esc_html(get_bloginfo('name')),
+            'site_url' => esc_url(get_bloginfo('url')),
+            'slogan' => esc_html(get_bloginfo('description')),
+            'logo' => esc_url(wp_get_attachment_url(get_theme_mod('custom_logo'))),
+        );
+    }
 
     //Sub page
 
