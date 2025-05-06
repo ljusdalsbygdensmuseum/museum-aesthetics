@@ -44,7 +44,6 @@ export default function Edit({
 	attributes,
 	setAttributes,
 }: BlockEditProps<CollageBanner>) {
-	console.log(attributes)
 	return (
 		<>
 			<InspectorControls>
@@ -53,8 +52,6 @@ export default function Edit({
 						__nextHasNoMarginBottom
 						label={__('Background Image', 'maes-domain')}
 					>
-						<MAESImageGrid />
-
 						<MediaPlaceholder
 							onSelect={(el) => {
 								const image: CollageImage = {
@@ -66,13 +63,13 @@ export default function Edit({
 							allowedTypes={['image']}
 							multiple={false}
 							labels={{ title: __('Image', 'maes-domain') }}
+							mediaPreview={<MAESImageGrid images={attributes.background} />}
 						></MediaPlaceholder>
 					</BaseControl>
 					<BaseControl
 						__nextHasNoMarginBottom
 						label={__('Collage images', 'maes-domain')}
 					>
-						<MAESImageGrid />
 						<MediaPlaceholder
 							onSelect={(el) => {
 								const images: CollageImage[] = el.map((single) => {
@@ -86,7 +83,9 @@ export default function Edit({
 							}}
 							allowedTypes={['image']}
 							multiple={true}
+							addToGallery={true}
 							labels={{ title: __('Images', 'maes-domain') }}
+							mediaPreview={<MAESImageGrid images={attributes.imgs} />}
 						></MediaPlaceholder>
 					</BaseControl>
 				</PanelBody>
