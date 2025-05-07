@@ -3,6 +3,14 @@ import z from 'zod'
 export const CollageImageSchema = z.object({
 	id: z.number(),
 	url: z.string().url(),
+	isVertical: z.boolean(),
+})
+
+export const CollageImageTransformSchema = z.object({
+	rotation: z.number(),
+	top: z.number(),
+	left: z.number(),
+	zIndex: z.number(),
 })
 
 export const CollageBannerSchema = z.object({
@@ -11,4 +19,5 @@ export const CollageBannerSchema = z.object({
 })
 
 export type CollageImage = z.infer<typeof CollageImageSchema>
+export type CollageImageTransform = z.infer<typeof CollageImageTransformSchema>
 export type CollageBanner = z.infer<typeof CollageBannerSchema>

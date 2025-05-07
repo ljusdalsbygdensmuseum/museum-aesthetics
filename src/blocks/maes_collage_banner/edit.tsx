@@ -57,6 +57,7 @@ export default function Edit({
 								const image: CollageImage = {
 									id: el.id,
 									url: el.url,
+									isVertical: el.width - el.height > 0 ? false : true,
 								}
 								setAttributes({ background: [image] })
 							}}
@@ -76,6 +77,10 @@ export default function Edit({
 									const image: CollageImage = {
 										id: single.id,
 										url: single.url,
+										isVertical:
+											single.sizes.full.width - single.sizes.full.height > 0
+												? false
+												: true,
 									}
 									return image
 								})
@@ -83,7 +88,6 @@ export default function Edit({
 							}}
 							allowedTypes={['image']}
 							multiple={true}
-							addToGallery={true}
 							labels={{ title: __('Images', 'maes-domain') }}
 							mediaPreview={<MAESImageGrid images={attributes.imgs} />}
 						></MediaPlaceholder>
@@ -91,7 +95,7 @@ export default function Edit({
 				</PanelBody>
 			</InspectorControls>
 			<div {...useBlockProps()}>
-				<MAESCollageBanner />
+				<MAESCollageBanner imgs={attributes.imgs} />
 			</div>
 		</>
 	)

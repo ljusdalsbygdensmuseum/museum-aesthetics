@@ -2,8 +2,15 @@ import { useState, useEffect } from 'react'
 import apiFetch from '@wordpress/api-fetch'
 
 import { Settings, SettingsSchema } from '../types/settings_types'
+import { MAESCollage } from './maes-collage'
 
-export function MAESCollageBanner() {
+import type { CollageImage } from '../types/collage_banner_types'
+
+interface Props {
+	imgs: CollageImage[]
+}
+
+export function MAESCollageBanner({ imgs }: Props) {
 	const defaultData: Settings = {
 		site_title: '',
 		site_url: '',
@@ -32,6 +39,7 @@ export function MAESCollageBanner() {
 				<h2 className='banner-title'>{data.site_title}</h2>
 			)}
 			<p className='slogan'>{data.slogan}</p>
+			<MAESCollage imgs={imgs} />
 		</div>
 	)
 }
