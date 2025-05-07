@@ -4,9 +4,26 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
-@import '../../../node_modules/bootstrap/scss/bootstrap.scss';
+@import '../../../node_modules/bootstrap/scss/bootstrap.scss/';
 
 $border: 3px solid $secondary;
 
 .wp-block-maes-collage-banner {
+	.slogan {
+		font-size: x-large;
+	}
+	// media queries
+	.logo {
+		width: 50%;
+	}
+	@include media-breakpoint-between(sm, xl) {
+		.logo {
+			width: 30%;
+		}
+	}
+	@include media-breakpoint-up(xl) {
+		.logo {
+			width: 20%;
+		}
+	}
 }

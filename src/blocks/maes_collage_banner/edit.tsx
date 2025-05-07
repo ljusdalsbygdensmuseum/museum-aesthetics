@@ -23,7 +23,7 @@ import { MediaPlaceholder } from '@wordpress/block-editor'
 import { BaseControl, PanelBody } from '@wordpress/components'
 
 import { MAESImageGrid } from '../../components/maes-image-grid'
-import { MAESBanner } from '../../components/maes-display-banner'
+import { MAESCollageBanner } from '../../components/maes-collage-banner'
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.
@@ -91,7 +91,7 @@ export default function Edit({
 				</PanelBody>
 			</InspectorControls>
 			<div {...useBlockProps()}>
-				<MAESBanner />
+				<MAESCollageBanner />
 			</div>
 		</>
 	)
