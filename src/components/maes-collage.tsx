@@ -19,15 +19,29 @@ export function MAESCollage({ imgs }: Props) {
 			setPositions((oldPositions) => {
 				const newPositions = oldPositions.concat([])
 
-				const top = Math.random()
-				const left = Math.random() // "rerole if to close to the middle"
+				let top = Math.random()
+				let left = Math.random()
+
+				//reroll position if it is in the middle (top > 0.2 && top < 0.8 && left > 0.2 && left < 0.8)
+				// shuld be random throug log scaling and stuff
+				// temporary for banner only
+				while ((top > 0.1 && top < 0.7 && left < 0.8) || left < 0.4) {
+					top = Math.random()
+					left = Math.random()
+				}
 
 				const rotation = rotationRange
 
 				let rotationByPlace: number = (left * 2 - 1) * (top * 2 - 1) * rotation
 
-				if (!item.isVertical && top >= 0.5) {
+				if (!item.isVertical) {
+					// invert rotation if image is horizontal
 					rotationByPlace = rotationByPlace * -1
+
+					// flip upside down if horizontal image is in the top of area
+					if (top < 0.5) {
+						rotationByPlace = rotationByPlace - 180
+					}
 				}
 
 				newPositions[index] = {
