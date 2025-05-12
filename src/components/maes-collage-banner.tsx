@@ -33,12 +33,15 @@ export function MAESCollageBanner({ imgs }: Props) {
 	}, [])
 	return (
 		<div className='maes-collage-banner'>
-			{data.logo ? (
-				<img className='logo logo-banner' src={data.logo} />
-			) : (
-				<h2 className='banner-title'>{data.site_title}</h2>
-			)}
-			<p className='slogan'>{data.slogan}</p>
+			<div className='maes-collage-banner-content'>
+				{data.logo ? (
+					<img className='logo logo-banner' src={data.logo} />
+				) : (
+					<h2 className='banner-title'>{data.site_title}</h2>
+				)}
+				<p className='slogan'>{data.slogan}</p>
+			</div>
+
 			<MAESCollage imgs={imgs} />
 		</div>
 	)
