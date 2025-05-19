@@ -1,0 +1,18 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.maes-image-grid-container {
+	background-color: rgba($color: #000000, $alpha: 0.1);
+	padding: 2px;
+	border-radius: 2px;
+	border: 1px solid gray;
+	.maes-image-grid-small {
+		width: calc(25% - 4px);
+		margin: 2px;
+		aspect-ratio: 1 / 1;
+		object-fit: cover;
+		border-radius: 2px;
+	}
+}

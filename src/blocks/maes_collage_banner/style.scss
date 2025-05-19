@@ -1,0 +1,58 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+@import '../../../node_modules/bootstrap/scss/bootstrap.scss/';
+
+$border: 3px solid $secondary;
+
+.wp-block-maes-collage-banner {
+	position: relative;
+	min-height: 80vh;
+	.maes-collage-banner-content {
+		z-index: 101;
+		position: absolute;
+		top: 40%;
+		transform: translate(0, -50%);
+	}
+	.slogan {
+		font-size: x-large;
+	}
+	.maes-collage {
+		position: absolute;
+		height: 100%;
+		width: 100vw;
+		top: 0;
+		left: 50%;
+		transform: translate(-50%);
+		overflow-x: clip;
+		img {
+			position: absolute;
+		}
+		.maes-collage-background {
+			position: absolute;
+			height: 110%;
+			width: 110%;
+			top: -5%;
+			left: -5%;
+			background-size: cover;
+			filter: blur(10px);
+		}
+	}
+	// media queries
+	.logo {
+		width: 50%;
+	}
+	@include media-breakpoint-between(sm, xl) {
+		.logo {
+			width: 30%;
+		}
+	}
+	@include media-breakpoint-up(xl) {
+		.logo {
+			width: 20%;
+		}
+	}
+}
