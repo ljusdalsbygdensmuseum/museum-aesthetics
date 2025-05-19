@@ -12,6 +12,7 @@ $border: 3px solid $secondary;
 	position: relative;
 	min-height: 80vh;
 	.maes-collage-banner-content {
+		z-index: 101;
 		position: absolute;
 		top: 40%;
 		transform: translate(0, -50%);
@@ -29,6 +30,15 @@ $border: 3px solid $secondary;
 		overflow-x: clip;
 		img {
 			position: absolute;
+		}
+		.maes-collage-background {
+			position: absolute;
+			height: 110%;
+			width: 110%;
+			top: -5%;
+			left: -5%;
+			background-size: cover;
+			filter: blur(10px);
 		}
 	}
 	// media queries

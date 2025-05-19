@@ -7,10 +7,11 @@ import { MAESCollage } from './maes-collage'
 import type { CollageImage } from '../types/collage_banner_types'
 
 interface Props {
+	background: CollageImage
 	imgs: CollageImage[]
 }
 
-export function MAESCollageBanner({ imgs }: Props) {
+export function MAESCollageBanner({ background, imgs }: Props) {
 	const defaultData: Settings = {
 		site_title: '',
 		site_url: '',
@@ -42,7 +43,7 @@ export function MAESCollageBanner({ imgs }: Props) {
 				<p className='slogan'>{data.slogan}</p>
 			</div>
 
-			<MAESCollage imgs={imgs} />
+			<MAESCollage background={background} imgs={imgs} />
 		</div>
 	)
 }

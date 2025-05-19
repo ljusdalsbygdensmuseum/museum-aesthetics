@@ -95,7 +95,10 @@ export default function Edit({
 				</PanelBody>
 			</InspectorControls>
 			<div {...useBlockProps()}>
-				<MAESCollageBanner imgs={attributes.imgs} />
+				<MAESCollageBanner
+					imgs={attributes.imgs}
+					background={attributes.background[0]}
+				/>
 			</div>
 		</>
 	)

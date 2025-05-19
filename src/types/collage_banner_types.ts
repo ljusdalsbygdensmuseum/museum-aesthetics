@@ -12,6 +12,7 @@ export const CollageImageTransformSchema = z.object({
 	left: z.number(),
 	zIndex: z.number(),
 	blur: z.number(),
+	brightness: z.number(),
 })
 
 export const CollageBannerSchema = z.object({
