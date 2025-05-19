@@ -44,13 +44,19 @@ export function MAESCollage({ imgs }: Props) {
 					}
 				}
 
+				const zIndex = Math.floor(
+					(left * 2 - 1 < 0 ? (left * 2 - 1) * -1 : left * 2 - 1) *
+						(top * 2 - 1 < 0 ? (top * 2 - 1) * -1 : top * 2 - 1) *
+						100
+				)
+
 				newPositions[index] = {
 					rotation: rotationByPlace,
 					top: top * 120 - 10,
 					left: left * 120 - 10,
-					zIndex: 1, // TODO: the closer to the middle the lower it should be
+					zIndex: zIndex,
+					blur: (zIndex * -1 + 60) * 0.03,
 				}
-
 				return newPositions
 			})
 		}
@@ -63,12 +69,12 @@ export function MAESCollage({ imgs }: Props) {
 						? {
 								transform: `
                                     translate(-50%, -50%)
-                                    scale(.1)
                                     rotate(${positions[index].rotation}deg)
                                 `,
 								top: `${positions[index].top}%`,
 								left: `${positions[index].left}%`,
 								zIndex: positions[index].zIndex,
+								filter: `blur(${positions[index].blur}px) drop-shadow(0 0 2rem black)`,
 						  }
 						: {}
 				}
