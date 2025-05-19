@@ -66,6 +66,7 @@ export function MAESCollage({ background, imgs }: Props) {
 		}
 
 		return (
+			//change to div with background insted of img
 			<img
 				src={item.url}
 				style={

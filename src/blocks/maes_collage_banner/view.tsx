@@ -1,12 +1,22 @@
 import domReady from '@wordpress/dom-ready'
 import { createRoot } from '@wordpress/element'
 
-import { MPTABDisplayServices } from '../../display/mptab-display-services'
+import { MAESCollageBanner } from '../../components/maes-collage-banner'
 
 domReady(() => {
-	const elements = document.querySelectorAll('.wp-block-mptab-show-services')
+	const elements = document.querySelectorAll('.wp-block-maes-collage-banner')
 	elements.forEach((element) => {
 		const root = createRoot(element!)
-		root.render(<></>)
+		// needs to fix typesafety
+		let attributes = JSON.parse(element.dataset.attributes)
+
+		root.render(
+			<>
+				<MAESCollageBanner
+					imgs={attributes.imgs}
+					background={attributes.background[0]}
+				/>
+			</>
+		)
 	})
 })
