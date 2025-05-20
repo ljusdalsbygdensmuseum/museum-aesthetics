@@ -43,7 +43,11 @@ export function MAESCollageBanner({ background, imgs }: Props) {
 				<p className='slogan'>{data.slogan}</p>
 			</div>
 
-			<MAESCollage background={background} imgs={imgs} />
+			{background != null || imgs.length ? (
+				<MAESCollage background={background} imgs={imgs} />
+			) : (
+				''
+			)}
 		</div>
 	)
 }
