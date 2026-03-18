@@ -18,6 +18,7 @@ class maes
         add_action('init', array($this, 'on_init'));
 
         //meta boxes
+        add_filter('attachment_fields_to_edit', array($this, 'attachment_fields'), null, 2);
 
         //Save posts
 
@@ -42,6 +43,18 @@ class maes
     }
 
     //Metaboxes
+    function attachment_fields($form_fields, $post)
+    {
+        $field = 'test';
+        $form_fields['maes_side_pref'] = array(
+            'label' => __('Side preference', 'maes-domain'),
+            'input' => 'html',
+            'html' => '<div></div><input type="text" value="' . $field . '" id="attachments-' . $post->ID . '-maes_side_pref" name="attachments[' . $post->ID . '][maes_side_pref]">',
+            'value' => $field,
+            'helps' => ''
+        );
+        return $form_fields;
+    }
 
     //Save posts
 
