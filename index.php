@@ -50,7 +50,7 @@ class maes
         $form_fields['maes_side_pref'] = array(
             'label' => __('Side preference', 'maes-domain'),
             'input' => 'html',
-            'html' => '<div id="attachments-maes-side-pref" data-image=\'{url:"' . wp_get_attachment_image_url($post->ID) . '", height: ' . wp_get_attachment_metadata($post->ID)['height'] . ', width: ' . wp_get_attachment_metadata($post->ID)['width'] . '}\'></div><input type="text" value="' . $field['height'] . '" id="attachments-' . $post->ID . '-maes_side_pref" name="attachments[' . $post->ID . '][maes_side_pref]">',
+            'html' => '<div id="attachments-maes-side-pref" data-image=\'{url:"' . wp_get_attachment_image_url($post->ID) . '", height: ' . wp_get_attachment_metadata($post->ID)['height'] . ', width: ' . wp_get_attachment_metadata($post->ID)['width'] . '}\'></div><input type="text" value="' . $field . '" id="attachments-' . $post->ID . '-maes_side_pref" name="attachments[' . $post->ID . '][maes_side_pref]">',
             'value' => $field,
             'helps' => ''
         );
