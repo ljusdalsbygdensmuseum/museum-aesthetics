@@ -70,7 +70,7 @@ class maes
         $assets = include plugin_dir_path(__FILE__) . 'build/attachment_meta.asset.php';
 
         //Enqueue scripts
-        wp_enqueue_script('maes-attatchments', plugin_dir_url(__FILE__) . 'build/attachment_meta.js', $assets['dependencies'], $assets['version'], true);
+        wp_enqueue_script('maes-attachments', plugin_dir_url(__FILE__) . 'build/attachment_meta.js', $assets['dependencies'], $assets['version'], true);
     }
 
     //RestAPI
