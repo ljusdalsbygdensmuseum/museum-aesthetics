@@ -23,6 +23,7 @@ class maes
         //Save posts
 
         //enqueue
+        add_action('admin_enqueue_scripts', array($this, 'admin_scripts'));
 
         //RestAPI
         add_action('rest_api_init', array($this, 'custom_rest'));
@@ -59,6 +60,18 @@ class maes
     //Save posts
 
     //Enqueue
+    function admin_scripts($hook)
+    {
+        //post editor scripts
+        if ($hook != 'post.php' && $hook != 'post-new.php' && $hook != 'upload.php') {
+            return;
+        }
+        //Grab dependencies
+        $assets = include plugin_dir_path(__FILE__) . 'build/attachment_meta.asset.php';
+
+        //Enqueue scripts
+        wp_enqueue_script('maes-attatchments', plugin_dir_url(__FILE__) . 'build/attachment_meta.js', $assets['dependencies'], $assets['version'], true);
+    }
 
     //RestAPI
     function custom_rest()
