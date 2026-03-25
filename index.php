@@ -50,7 +50,7 @@ class maes
         $form_fields['maes_side_pref'] = array(
             'label' => __('Side preference', 'maes-domain'),
             'input' => 'html',
-            'html' => '<div></div><input type="text" value="' . $field . '" id="attachments-' . $post->ID . '-maes_side_pref" name="attachments[' . $post->ID . '][maes_side_pref]">',
+            'html' => '<div id="attachments-maes-side-pref" data-image=\'{url:"' . wp_get_attachment_image_url($post->ID) . '", height: ' . wp_get_attachment_metadata($post->ID)['height'] . ', width: ' . wp_get_attachment_metadata($post->ID)['width'] . '}\'></div><input type="text" value="' . $field['height'] . '" id="attachments-' . $post->ID . '-maes_side_pref" name="attachments[' . $post->ID . '][maes_side_pref]">',
             'value' => $field,
             'helps' => ''
         );
@@ -62,7 +62,7 @@ class maes
     //Enqueue
     function admin_scripts($hook)
     {
-        //post editor scripts
+        //post editor and attachment scripts
         if ($hook != 'post.php' && $hook != 'post-new.php' && $hook != 'upload.php') {
             return;
         }
