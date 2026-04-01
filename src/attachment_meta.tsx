@@ -1,1 +1,1 @@
-console.log('hello I am enqued')
+import './styles/attachment_meta.scss'

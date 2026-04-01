@@ -1,0 +1,21 @@
+.attachment_maes_side_pref_container {
+	position: relative;
+	max-height: 200px;
+	img {
+		max-width: 100%;
+		max-height: 100%;
+	}
+	button {
+		position: absolute;
+		&.right,
+		&.left {
+			height: calc(100% - 4rem);
+			width: 2rem;
+		}
+		&.top,
+		&.bottom {
+			height: 2rem;
+			width: calc(100% - 4rem);
+		}
+	}
+}

@@ -50,11 +50,60 @@ class maes
         $form_fields['maes_side_pref'] = array(
             'label' => __('Side preference', 'maes-domain'),
             'input' => 'html',
-            'html' => '<div id="attachments-maes-side-pref" data-image=\'{url:"' . wp_get_attachment_image_url($post->ID) . '", height: ' . wp_get_attachment_metadata($post->ID)['height'] . ', width: ' . wp_get_attachment_metadata($post->ID)['width'] . '}\'></div><input type="text" value="' . $field . '" id="attachments-' . $post->ID . '-maes_side_pref" name="attachments[' . $post->ID . '][maes_side_pref]">',
+            'html' => '
+            <div 
+                class="attachment_maes_side_pref_container"
+            >
+            <button 
+                id="attachments_' . $post->ID . '_maes_side_pref_left" 
+                aria-label="image side preference left"
+                class="left"
+            ></button>
+            <button 
+                id="attachments_' . $post->ID . '_maes_side_pref_bottom" 
+                aria-label="image side preference bottom"
+                class="bottom"
+            ></button>
+            <button 
+                id="attachments_' . $post->ID . '_maes_side_pref_right" 
+                aria-label="image side preference right"
+                class="right"
+            ></button>
+            <button 
+                id="attachments_' . $post->ID . '_maes_side_pref_top" 
+                aria-label="image side preference top"
+                class="top"
+            ></button>
+            <img 
+                src="' . wp_get_attachment_image_url($post->ID, 'medium') . '" 
+                onclick="click_on_me(event)"
+            >
+            </div>
+            <input 
+                type="text" 
+                value="' . $field . '" 
+                id="attachments_' . $post->ID . '_maes_side_pref" 
+                name="attachments[' . $post->ID . '][maes_side_pref]"
+            >
+            ' . $this->jsForAttachment(),
             'value' => $field,
             'helps' => ''
         );
         return $form_fields;
+    }
+
+    // how hard should it be to get js into the attachment screen (╯°□°）╯︵ ┻━┻
+    function jsForAttachment()
+    {
+        return '
+            <script>
+                function click_on_me(e){
+                    const dot = document.createElement("span")
+                    dot.style.cssText = "position: absolute; top:"+e.offsetY+"px; left:"+e.offsetX+"px; height: 4px; width: 4px; background-color: blue;"
+                    e.target.after(dot)
+                }
+            </script>
+            ';
     }
 
     //Save posts
@@ -71,6 +120,9 @@ class maes
 
         //Enqueue scripts
         wp_enqueue_script('maes-attachments', plugin_dir_url(__FILE__) . 'build/attachment_meta.js', $assets['dependencies'], $assets['version'], true);
+
+        //Enqueue styles
+        wp_enqueue_style('maes-attachments-style', plugin_dir_url(__FILE__) . 'build/attachment_meta.css');
     }
 
     //RestAPI
