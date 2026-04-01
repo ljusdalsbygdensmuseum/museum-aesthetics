@@ -16,7 +16,7 @@ domReady(() => {
 					imgs={attributes.imgs}
 					background={attributes.background[0]}
 				/>
-			</>
+			</>,
 		)
 	})
 })
