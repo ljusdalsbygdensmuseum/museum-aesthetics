@@ -1,21 +1,45 @@
 .attachment_maes_side_pref_container {
 	position: relative;
+	width: fit-content;
 	max-height: 200px;
 	img {
 		max-width: 100%;
-		max-height: 100%;
+		max-height: 200px;
 	}
 	button {
 		position: absolute;
+		padding: 0;
+		border: none;
+		border-radius: 0;
+		background-color: rgba($color: #c8cdd4, $alpha: 0.9);
+		&:hover {
+			background-color: #a3a8af;
+		}
 		&.right,
 		&.left {
 			height: calc(100% - 4rem);
-			width: 2rem;
+			width: 1.8rem;
+			top: 2rem;
 		}
 		&.top,
 		&.bottom {
-			height: 2rem;
+			height: 1.8rem;
 			width: calc(100% - 4rem);
+			left: 2rem;
+		}
+		&.top {
+			border-radius: 0 0 1rem 1rem;
+		}
+		&.bottom {
+			bottom: 0;
+			border-radius: 1rem 1rem 0 0;
+		}
+		&.left {
+			border-radius: 0 1rem 1rem 0;
+		}
+		&.right {
+			right: 0;
+			border-radius: 1rem 0 0 1rem;
 		}
 	}
 }
