@@ -15,6 +15,16 @@
 		&:hover {
 			background-color: #a3a8af;
 		}
+		&:before {
+			border-style: solid;
+			border-width: 0.25em 0.25em 0 0;
+			content: '';
+			display: inline-block;
+			height: 0.45em;
+			position: relative;
+			transform: rotate(-45deg);
+			width: 0.45em;
+		}
 		&.right,
 		&.left {
 			height: calc(100% - 4rem);
@@ -33,13 +43,22 @@
 		&.bottom {
 			bottom: 0;
 			border-radius: 1rem 1rem 0 0;
+			&:before {
+				transform: rotate(135deg);
+			}
 		}
 		&.left {
 			border-radius: 0 1rem 1rem 0;
+			&:before {
+				transform: rotate(-135deg);
+			}
 		}
 		&.right {
 			right: 0;
 			border-radius: 1rem 0 0 1rem;
+			&:before {
+				transform: rotate(45deg);
+			}
 		}
 	}
 }
