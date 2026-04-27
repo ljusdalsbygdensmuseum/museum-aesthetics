@@ -21,6 +21,7 @@ class maes
         add_filter('attachment_fields_to_edit', array($this, 'attachment_fields'), null, 2);
 
         //Save posts
+        add_filter('attachment_fields_to_save', array($this, 'save_attachment_fields'), 10, 2);
 
         //enqueue
         add_action('admin_enqueue_scripts', array($this, 'admin_scripts'));
@@ -46,7 +47,11 @@ class maes
     //Metaboxes
     function attachment_fields($form_fields, $post)
     {
-        $field = 'test';
+        $top = get_post_meta($post->ID, 'maes_side_pref_top', true) == 1 ? 'checked' : '';
+        $bottom = get_post_meta($post->ID, 'maes_side_pref_bottom', true) == 1 ? 'checked' : '';
+        $left = get_post_meta($post->ID, 'maes_side_pref_left', true) == 1 ? 'checked' : '';
+        $right = get_post_meta($post->ID, 'maes_side_pref_right', true) == 1 ? 'checked' : '';
+
         $form_fields['maes_side_pref'] = array(
             'label' => __('Side preference', 'maes-domain'),
             'input' => 'html',
@@ -55,57 +60,65 @@ class maes
                 class="attachment_maes_side_pref_container"
             >
                 <input type="checkbox" 
-                    id="attachments_' . $post->ID . '_maes_side_pref_top" 
+                    id="attachments[' . $post->ID . '][maes_side_pref_top]" 
+                    name="attachments[' . $post->ID . '][maes_side_pref_top]" 
                     aria-label="image side preference top"
                     class="side-pref-top"
+                    value="1"
+                    ' . $top . '
                 />
                 <input type="checkbox" 
-                    id="attachments_' . $post->ID . '_maes_side_pref_bottom" 
+                    id="attachments[' . $post->ID . '][maes_side_pref_bottom]" 
+                    name="attachments[' . $post->ID . '][maes_side_pref_bottom]"
                     aria-label="image side preference bottom"
                     class="side-pref-bottom"
+                    value="1"
+                    ' . $bottom . '
                 />
                 <input type="checkbox" 
-                    id="attachments_' . $post->ID . '_maes_side_pref_left" 
+                    id="attachments[' . $post->ID . '][maes_side_pref_left]" 
+                    name="attachments[' . $post->ID . '][maes_side_pref_left]"
                     aria-label="image side preference left"
                     class="side-pref-left"
+                    value="1"
+                    ' . $left . '
                 />
                 <input type="checkbox" 
-                    id="attachments_' . $post->ID . '_maes_side_pref_right" 
+                    id="attachments[' . $post->ID . '][maes_side_pref_right]" 
+                    name="attachments[' . $post->ID . '][maes_side_pref_right]" 
                     aria-label="image side preference right"
                     class="side-pref-right"
+                    value="1"
+                    ' . $right . '
                 />
             <img 
                 src="' . wp_get_attachment_image_url($post->ID, 'medium') . '" 
             >
             </div>
-            <input 
-                type="text" 
-                value="' . $field . '" 
-                id="attachments_' . $post->ID . '_maes_side_pref" 
-                name="attachments[' . $post->ID . '][maes_side_pref]"
-            >
-            ' . $this->jsForAttachment(),
-            'value' => $field,
+            ',
             'helps' => ''
         );
         return $form_fields;
     }
 
-    // how hard should it be to get js into the attachment screen (╯°□°）╯︵ ┻━┻
-    function jsForAttachment()
-    {
-        return '
-            <script>
-                function click_on_me(e){
-                    const dot = document.createElement("span")
-                    dot.style.cssText = "position: absolute; top:"+e.offsetY+"px; left:"+e.offsetX+"px; height: 4px; width: 4px; background-color: blue;"
-                    e.target.after(dot)
-                }
-            </script>
-            ';
-    }
-
     //Save posts
+    function save_attachment_fields($post, $attachment)
+    {
+        //should there be current user can in attachment save
+        /*if (! current_user_can('edit_post', $post->ID)) {
+            return;
+        }*/
+        if (!($attachment['maes_side_pref_top']) && !($attachment['maes_side_pref_bottom']) && !($attachment['maes_side_pref_left']) && !($attachment['maes_side_pref_right'])) {
+            return $post;
+        }
+
+        update_post_meta($post['ID'], 'maes_side_pref_top', $attachment['maes_side_pref_top'] ? 1 : 0);
+        update_post_meta($post['ID'], 'maes_side_pref_bottom', $attachment['maes_side_pref_bottom'] ? 1 : 0);
+        update_post_meta($post['ID'], 'maes_side_pref_left', $attachment['maes_side_pref_left'] ? 1 : 0);
+        update_post_meta($post['ID'], 'maes_side_pref_right', $attachment['maes_side_pref_right'] ? 1 : 0);
+
+        return $post;
+    }
 
     //Enqueue
     function admin_scripts($hook)
