@@ -54,29 +54,28 @@ class maes
             <div 
                 class="attachment_maes_side_pref_container"
             >
-            <button 
-                id="attachments_' . $post->ID . '_maes_side_pref_left" 
-                aria-label="image side preference left"
-                class="left"
-            ></button>
-            <button 
-                id="attachments_' . $post->ID . '_maes_side_pref_bottom" 
-                aria-label="image side preference bottom"
-                class="bottom"
-            ></button>
-            <button 
-                id="attachments_' . $post->ID . '_maes_side_pref_right" 
-                aria-label="image side preference right"
-                class="right"
-            ></button>
-            <button 
-                id="attachments_' . $post->ID . '_maes_side_pref_top" 
-                aria-label="image side preference top"
-                class="top"
-            ></button>
+                <input type="checkbox" 
+                    id="attachments_' . $post->ID . '_maes_side_pref_top" 
+                    aria-label="image side preference top"
+                    class="side-pref-top"
+                />
+                <input type="checkbox" 
+                    id="attachments_' . $post->ID . '_maes_side_pref_bottom" 
+                    aria-label="image side preference bottom"
+                    class="side-pref-bottom"
+                />
+                <input type="checkbox" 
+                    id="attachments_' . $post->ID . '_maes_side_pref_left" 
+                    aria-label="image side preference left"
+                    class="side-pref-left"
+                />
+                <input type="checkbox" 
+                    id="attachments_' . $post->ID . '_maes_side_pref_right" 
+                    aria-label="image side preference right"
+                    class="side-pref-right"
+                />
             <img 
                 src="' . wp_get_attachment_image_url($post->ID, 'medium') . '" 
-                onclick="click_on_me(event)"
             >
             </div>
             <input 
