@@ -97,7 +97,6 @@ export default function Edit({
 											console.log(SidePrefRestSchema.safeParse(data))
 										}
 									})
-									console.log(image)
 									return image
 								})
 								setAttributes({ imgs: [...images] })
