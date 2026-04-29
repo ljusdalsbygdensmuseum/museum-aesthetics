@@ -47,10 +47,10 @@ class maes
     //Metaboxes
     function attachment_fields($form_fields, $post)
     {
-        $top = get_post_meta($post->ID, 'maes_side_pref_top', true) == 1 ? 'checked' : '';
-        $bottom = get_post_meta($post->ID, 'maes_side_pref_bottom', true) == 1 ? 'checked' : '';
-        $left = get_post_meta($post->ID, 'maes_side_pref_left', true) == 1 ? 'checked' : '';
-        $right = get_post_meta($post->ID, 'maes_side_pref_right', true) == 1 ? 'checked' : '';
+        $top = get_post_meta($post->ID, 'maes_side_pref_top', true) == true ? 'checked' : '';
+        $bottom = get_post_meta($post->ID, 'maes_side_pref_bottom', true) == true ? 'checked' : '';
+        $left = get_post_meta($post->ID, 'maes_side_pref_left', true) == true ? 'checked' : '';
+        $right = get_post_meta($post->ID, 'maes_side_pref_right', true) == true ? 'checked' : '';
 
         $form_fields['maes_side_pref'] = array(
             'label' => __('Side preference', 'maes-domain'),
@@ -112,10 +112,10 @@ class maes
             return $post;
         }
 
-        update_post_meta($post['ID'], 'maes_side_pref_top', $attachment['maes_side_pref_top'] ? 1 : 0);
-        update_post_meta($post['ID'], 'maes_side_pref_bottom', $attachment['maes_side_pref_bottom'] ? 1 : 0);
-        update_post_meta($post['ID'], 'maes_side_pref_left', $attachment['maes_side_pref_left'] ? 1 : 0);
-        update_post_meta($post['ID'], 'maes_side_pref_right', $attachment['maes_side_pref_right'] ? 1 : 0);
+        update_post_meta($post['ID'], 'maes_side_pref_top', $attachment['maes_side_pref_top'] ? true : false);
+        update_post_meta($post['ID'], 'maes_side_pref_bottom', $attachment['maes_side_pref_bottom'] ? true : false);
+        update_post_meta($post['ID'], 'maes_side_pref_left', $attachment['maes_side_pref_left'] ? true : false);
+        update_post_meta($post['ID'], 'maes_side_pref_right', $attachment['maes_side_pref_right'] ? true : false);
 
         return $post;
     }
