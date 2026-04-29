@@ -96,7 +96,7 @@ class maes
             >
             </div>
             ',
-            'helps' => __('Chose which side(s) that should be shown more prominently in collage banner', 'maes-domain')
+            'helps' => __('Chose which side(s) that should be shown less prominently in collage banner', 'maes-domain')
         );
         return $form_fields;
     }
