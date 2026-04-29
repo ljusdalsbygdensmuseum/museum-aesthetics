@@ -14,13 +14,15 @@ import { __ } from '@wordpress/i18n'
 import { InspectorControls, useBlockProps } from '@wordpress/block-editor'
 import type { BlockEditProps } from '@wordpress/blocks'
 
-import type {
+import {
 	CollageBanner,
 	CollageImage,
+	SidePrefRestSchema,
 } from '../../types/collage_banner_types'
 
 import { MediaPlaceholder } from '@wordpress/block-editor'
 import { BaseControl, PanelBody } from '@wordpress/components'
+import apiFetch from '@wordpress/api-fetch'
 
 import { MAESImageGrid } from '../../components/maes-image-grid'
 import { MAESCollageBanner } from '../../components/maes-collage-banner'
@@ -82,6 +84,19 @@ export default function Edit({
 												? false
 												: true,
 									}
+									apiFetch({
+										path: `maes/v1/media/${single.id}`,
+									}).then((data) => {
+										if (
+											typeof data == 'object' &&
+											data != undefined &&
+											SidePrefRestSchema.safeParse(data).success
+										) {
+											image.sidePref = SidePrefRestSchema.parse(data).side_pref
+										} else {
+											console.log(SidePrefRestSchema.safeParse(data))
+										}
+									})
 									return image
 								})
 								setAttributes({ imgs: [...images] })

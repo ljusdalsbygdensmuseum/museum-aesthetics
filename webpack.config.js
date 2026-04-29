@@ -5,6 +5,7 @@ module.exports = {
 	...defaults,
 	entry: {
 		...defaults.entry(),
+		attachment_meta: path.resolve(process.cwd(), 'src', 'attachment_meta.tsx'),
 	},
 	output: {
 		filename: '[name].js',
