@@ -24,12 +24,16 @@ export function MAESCollage({ background, imgs }: Props) {
 				let left = Math.random()
 
 				//reroll position if it is in the middle (top > 0.2 && top < 0.8 && left > 0.2 && left < 0.8)
+				//side pref only works with bottom top right at the moment should be changed in future
 				// shuld be random throug log scaling and stuff
 				// temporary for banner only
 				while (
 					(top > 0.2 && top < 0.6 && left < 0.8) ||
 					left < 0.4 ||
-					(left < 0.7 && item.isVertical)
+					(left < 0.7 && item.isVertical) ||
+					(top < 0.7 && item.sidePref?.bottom) ||
+					(top > 0.3 && item.sidePref?.top) ||
+					(left < 0.8 && item.sidePref?.right)
 				) {
 					top = Math.random()
 					left = Math.random()
