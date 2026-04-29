@@ -140,10 +140,13 @@ class maes
     //RestAPI
     function custom_rest()
     {
-
         register_rest_route('maes/v1', 'settings', array(
             'methods' => WP_REST_Server::READABLE,
             'callback' => array($this, 'rest_settings')
+        ));
+
+        register_rest_field('attachment', 'maes_side_pref', array(
+            'get_callback' => array($this, 'upload_rest')
         ));
     }
     function rest_settings()
@@ -155,7 +158,15 @@ class maes
             'logo' => esc_url(wp_get_attachment_url(get_theme_mod('custom_logo'))),
         );
     }
-
+    function upload_rest($post)
+    {
+        return array(
+            'top' => (bool) get_post_meta($post['id'], 'maes_side_pref_top', true),
+            'bottom' => (bool) get_post_meta($post['id'], 'maes_side_pref_bottom', true),
+            'left' => (bool) get_post_meta($post['id'], 'maes_side_pref_left', true),
+            'right' => (bool) get_post_meta($post['id'], 'maes_side_pref_right', true),
+        );
+    }
     //Sub page
 
     //Settings
