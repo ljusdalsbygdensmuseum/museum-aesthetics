@@ -11,7 +11,6 @@ interface Props {
 }
 
 export function MAESCollage({ background, imgs }: Props) {
-	const [positions, setPositions] = useState<CollageImageTransform[]>([])
 	const containerRef = useRef(null)
 	const [isWide, setIsWide] = useState(false)
 
@@ -57,7 +56,7 @@ export function MAESCollage({ background, imgs }: Props) {
 			(left * 2 - 1 < 0 ? (left * 2 - 1) * -1 : left * 2 - 1) *
 			(top * 2 - 1 < 0 ? (top * 2 - 1) * -1 : top * 2 - 1)
 
-		const positions = {
+		const position = {
 			rotation: rotationByPlace,
 			top: top * 120 - 10,
 			left: left * 120 - 10,
@@ -65,41 +64,30 @@ export function MAESCollage({ background, imgs }: Props) {
 			blur: (fromCenter * -1 + 0.6) * 4,
 			brightness: fromCenter + 0.6,
 		}
-		return positions
+		return position
 	}
 
 	function theImages() {
 		const theImgs = imgs.map((item, index) => {
-			console.log(index)
-			if (!positions[index]) {
-				setPositions((oldPositions) => {
-					const newPositions = oldPositions.concat([])
-					newPositions[index] = rollPosition(item)
-					return newPositions
-				})
-			}
+			const position = rollPosition(item)
 
 			return (
 				//change to div with background insted of img
 				<img
 					src={item.url}
-					style={
-						positions[index]
-							? {
-									transform: `
-                                    translate(-50%, -50%)
-									scale(.6)
-                                    rotate(${positions[index].rotation}deg)
-                                `,
-									top: `${positions[index].top}%`,
-									left: `${positions[index].left}%`,
-									zIndex: positions[index].zIndex,
-									filter: `blur(${positions[index].blur}px) 
-									drop-shadow(0 0 2rem black) 
-									brightness(${positions[index].brightness})`,
-							  }
-							: {}
-					}
+					style={{
+						transform: `
+                            translate(-50%, -50%)
+							scale(.6)
+                            rotate(${position.rotation}deg)
+                        `,
+						top: `${position.top}%`,
+						left: `${position.left}%`,
+						zIndex: position.zIndex,
+						filter: `blur(${position.blur}px) 
+							drop-shadow(0 0 2rem black) 
+							brightness(${position.brightness})`,
+					}}
 				/>
 			)
 		})
