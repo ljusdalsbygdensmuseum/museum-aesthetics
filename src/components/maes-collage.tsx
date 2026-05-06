@@ -17,61 +17,64 @@ export function MAESCollage({ background, imgs }: Props) {
 
 	const rotationRange = 60
 
-	function theImages() {
-		const theImgs = imgs.map((item, index) => {
-			if (!positions[index]) {
-				setPositions((oldPositions) => {
-					const newPositions = oldPositions.concat([])
+	function rollPosition(item: CollageImage) {
+		let top = Math.random()
+		let left = Math.random()
 
-					let top = Math.random()
-					let left = Math.random()
+		//reroll position if it is in the middle (top > 0.2 && top < 0.8 && left > 0.2 && left < 0.8)
+		//side pref only works with bottom top right at the moment should be changed in future
+		// shuld be random throug log scaling and stuff
+		// temporary for banner only
 
-					//reroll position if it is in the middle (top > 0.2 && top < 0.8 && left > 0.2 && left < 0.8)
-					//side pref only works with bottom top right at the moment should be changed in future
-					// shuld be random throug log scaling and stuff
-					// temporary for banner only
-
-					/* ||
+		/* ||
 					(left < 0.7 && item.isVertical) ||
 					(top < 0.7 && item.sidePref?.bottom) ||
 					(top > 0.3 && item.sidePref?.top) ||
 					(left < 0.8 && item.sidePref?.right) */
 
-					while (
-						(top > 0.2 && top < 0.6 && left < 0.8 && left > 0.2) ||
-						(left < 0.4 && !isWide)
-					) {
-						top = Math.random()
-						left = Math.random()
-					}
+		while (
+			(top > 0.2 && top < 0.6 && left < 0.8 && left > 0.2) ||
+			(left < 0.4 && !isWide)
+		) {
+			top = Math.random()
+			left = Math.random()
+		}
+		const rotation = rotationRange
 
-					const rotation = rotationRange
+		let rotationByPlace: number = (left * 2 - 1) * (top * 2 - 1) * rotation
 
-					let rotationByPlace: number =
-						(left * 2 - 1) * (top * 2 - 1) * rotation
+		if (!item.isVertical) {
+			// invert rotation if image is horizontal
+			rotationByPlace = rotationByPlace * -1
 
-					if (!item.isVertical) {
-						// invert rotation if image is horizontal
-						rotationByPlace = rotationByPlace * -1
+			// flip upside down if horizontal image is in the top of area
+			// if (top < 0.5) {
+			// 	rotationByPlace = rotationByPlace - 180
+			// }
+		}
 
-						// flip upside down if horizontal image is in the top of area
-						// if (top < 0.5) {
-						// 	rotationByPlace = rotationByPlace - 180
-						// }
-					}
+		const fromCenter =
+			(left * 2 - 1 < 0 ? (left * 2 - 1) * -1 : left * 2 - 1) *
+			(top * 2 - 1 < 0 ? (top * 2 - 1) * -1 : top * 2 - 1)
 
-					const fromCenter =
-						(left * 2 - 1 < 0 ? (left * 2 - 1) * -1 : left * 2 - 1) *
-						(top * 2 - 1 < 0 ? (top * 2 - 1) * -1 : top * 2 - 1)
+		const positions = {
+			rotation: rotationByPlace,
+			top: top * 120 - 10,
+			left: left * 120 - 10,
+			zIndex: Math.floor(fromCenter * 100),
+			blur: (fromCenter * -1 + 0.6) * 4,
+			brightness: fromCenter + 0.6,
+		}
+		return positions
+	}
 
-					newPositions[index] = {
-						rotation: rotationByPlace,
-						top: top * 120 - 10,
-						left: left * 120 - 10,
-						zIndex: Math.floor(fromCenter * 100),
-						blur: (fromCenter * -1 + 0.6) * 4,
-						brightness: fromCenter + 0.6,
-					}
+	function theImages() {
+		const theImgs = imgs.map((item, index) => {
+			console.log(index)
+			if (!positions[index]) {
+				setPositions((oldPositions) => {
+					const newPositions = oldPositions.concat([])
+					newPositions[index] = rollPosition(item)
 					return newPositions
 				})
 			}
