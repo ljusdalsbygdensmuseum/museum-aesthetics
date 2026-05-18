@@ -1,0 +1,70 @@
+# Copyright (C) 2026 Ina Eklund
+# This file is distributed under the same license as the Museum aesthetics plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Museum aesthetics 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/museum-aesthetics\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-05-18T09:04:01+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: maes-domain\n"
+
+#. Plugin Name of the plugin
+#: index.php
+msgid "Museum aesthetics"
+msgstr ""
+
+#. Description of the plugin
+#: index.php
+msgid "Want that museum feel? We got it!"
+msgstr ""
+
+#. Author of the plugin
+#: index.php
+msgid "Ina Eklund"
+msgstr ""
+
+#: index.php:56
+msgid "Side preference"
+msgstr ""
+
+#: index.php:99
+msgid "Chose which side(s) that should be shown less prominently in collage banner"
+msgstr ""
+
+#: build/blocks/maes_collage_banner/index.js:74
+#: build/blocks/maes_collage_banner/index.js:37
+msgid "Background Image"
+msgstr ""
+
+#: build/blocks/maes_collage_banner/index.js:89
+#: build/blocks/maes_collage_banner/index.js:44
+msgid "Image"
+msgstr ""
+
+#: build/blocks/maes_collage_banner/index.js:97
+#: build/blocks/maes_collage_banner/index.js:44
+msgid "Collage images"
+msgstr ""
+
+#: build/blocks/maes_collage_banner/index.js:124
+#: build/blocks/maes_collage_banner/index.js:68
+msgid "Images"
+msgstr ""
+
+#: build/blocks/maes_collage_banner/block.json
+#: src/blocks/maes_collage_banner/block.json
+msgctxt "block title"
+msgid "Collage Banner"
+msgstr ""
+
+#: build/blocks/maes_collage_banner/block.json
+#: src/blocks/maes_collage_banner/block.json
+msgctxt "block description"
+msgid "A pile of stuff banner"
+msgstr ""
