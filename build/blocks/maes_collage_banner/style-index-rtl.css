@@ -1,0 +1,62 @@
+/*!******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/blocks/maes_collage_banner/style.scss ***!
+  \******************************************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-maes-collage-banner {
+  position: relative;
+  min-height: 80vh;
+}
+.wp-block-maes-collage-banner .maes-collage-banner-content {
+  z-index: 101;
+  position: absolute;
+  top: 40%;
+  transform: translate(0, -50%);
+}
+.wp-block-maes-collage-banner .slogan {
+  font-size: x-large;
+}
+.wp-block-maes-collage-banner .maes-collage {
+  z-index: -1;
+  position: absolute;
+  height: 110%;
+  width: 100vw;
+  top: 0;
+  right: 50%;
+  transform: translate(50%);
+  overflow-x: clip;
+  -webkit-mask: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0) 8%, rgb(0, 0, 0) 60%, rgba(0, 0, 0, 0));
+          mask: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0) 8%, rgb(0, 0, 0) 60%, rgba(0, 0, 0, 0));
+}
+.wp-block-maes-collage-banner .maes-collage img {
+  position: absolute;
+  max-width: 75%;
+  max-height: 75%;
+}
+.wp-block-maes-collage-banner .maes-collage .maes-collage-background {
+  position: absolute;
+  height: 110%;
+  width: 110%;
+  top: -5%;
+  right: -5%;
+  background-size: cover;
+  filter: blur(10px);
+}
+.wp-block-maes-collage-banner .logo {
+  width: 70%;
+  margin-bottom: 1.5rem;
+}
+@media screen and (min-width: 576px) {
+  .wp-block-maes-collage-banner .logo {
+    width: 60%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .wp-block-maes-collage-banner .logo {
+    width: 50%;
+  }
+}

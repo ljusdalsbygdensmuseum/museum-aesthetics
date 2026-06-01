@@ -1,0 +1,22 @@
+/*!*******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/blocks/maes_collage_banner/editor.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.maes-image-grid-container {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 2px;
+  border-radius: 2px;
+  border: 1px solid gray;
+}
+.maes-image-grid-container .maes-image-grid-small {
+  width: calc(25% - 4px);
+  margin: 2px;
+  aspect-ratio: 1/1;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 2px;
+}

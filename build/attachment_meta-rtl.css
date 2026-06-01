@@ -1,0 +1,88 @@
+/*!********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./src/styles/attachment_meta.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************************/
+.attachment_maes_side_pref_container {
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-height: 200px;
+}
+.attachment_maes_side_pref_container img {
+  max-width: 100%;
+  max-height: 200px;
+}
+.attachment_maes_side_pref_container input[type=checkbox] {
+  position: absolute;
+  display: flex;
+  padding: 0;
+  margin: 0 !important;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(200, 205, 212, 0.9);
+  border: none;
+  box-shadow: none;
+}
+.attachment_maes_side_pref_container input[type=checkbox]:before {
+  content: "";
+  position: relative;
+  display: inline-block;
+  float: none;
+  height: 0.45em;
+  width: 0.45em;
+  margin: 0;
+  border-style: solid;
+  border-width: 0.25em 0 0 0.25em;
+  border-color: #a3a8af;
+  transform: rotate(45deg);
+}
+.attachment_maes_side_pref_container input[type=checkbox].side-pref-top, .attachment_maes_side_pref_container input[type=checkbox].side-pref-bottom {
+  height: 1.8rem;
+  width: calc(100% - 4rem);
+  right: 2rem;
+}
+.attachment_maes_side_pref_container input[type=checkbox].side-pref-left, .attachment_maes_side_pref_container input[type=checkbox].side-pref-right {
+  height: calc(100% - 4rem);
+  width: 1.8rem;
+  top: 2rem;
+}
+.attachment_maes_side_pref_container input[type=checkbox].side-pref-top {
+  border-radius: 0 0 1rem 1rem;
+}
+.attachment_maes_side_pref_container input[type=checkbox].side-pref-bottom {
+  bottom: 0;
+  border-radius: 1rem 1rem 0 0;
+}
+.attachment_maes_side_pref_container input[type=checkbox].side-pref-bottom:before {
+  transform: rotate(-135deg);
+}
+.attachment_maes_side_pref_container input[type=checkbox].side-pref-left {
+  border-radius: 1rem 0 0 1rem;
+}
+.attachment_maes_side_pref_container input[type=checkbox].side-pref-left:before {
+  transform: rotate(135deg);
+}
+.attachment_maes_side_pref_container input[type=checkbox].side-pref-right {
+  left: 0;
+  border-radius: 0 1rem 1rem 0;
+}
+.attachment_maes_side_pref_container input[type=checkbox].side-pref-right:before {
+  transform: rotate(-45deg);
+}
+.attachment_maes_side_pref_container input[type=checkbox]:checked {
+  background-color: var(--wp-admin-theme-color);
+}
+.attachment_maes_side_pref_container input[type=checkbox]:checked:before {
+  border-color: white;
+}
+.attachment_maes_side_pref_container input[type=checkbox]:hover {
+  background-color: #a3a8af;
+}
+.attachment_maes_side_pref_container input[type=checkbox]:hover:before {
+  border-color: #5f6266;
+}
+.attachment_maes_side_pref_container input[type=checkbox]:hover:checked {
+  background-color: var(--wp-admin-theme-color-darker-20);
+}
+.attachment_maes_side_pref_container input[type=checkbox]:hover:checked:before {
+  border-color: white;
+}
