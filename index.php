@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name:       Museum aesthetics
- * Description:       Want that museum feel? We got it!
+ * Description:       Want that museum feel? We got it!!
  * Version:           1.0.0
  * Author:            Ina Eklund
  * Text Domain:       maes-domain
