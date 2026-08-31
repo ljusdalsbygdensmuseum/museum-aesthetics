@@ -14,7 +14,15 @@
 	"author": "",
 	"license": "ISC",
 	"description": "",
-	"overrides": {},
+	"overrides": {
+		"@opentelemetry/core": "^2.10.0",
+		"extract-zip": "^2.0.1",
+		"linkify-it": "^6.1.0",
+		"markdown-it": "15.0.1",
+		"minimatch": "^10.2.6",
+		"serialize-javascript": "^7.1.1",
+		"uuid": "14.0.2"
+	},
 	"devDependencies": {
 		"@types/wordpress__block-editor": "^15.0.6",
 		"@types/wordpress__blocks": "^15.17.0",
