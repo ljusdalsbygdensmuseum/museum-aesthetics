@@ -29,8 +29,7 @@
   left: 50%;
   transform: translate(-50%);
   overflow-x: clip;
-  -webkit-mask: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0) 8%, rgb(0, 0, 0) 60%, rgba(0, 0, 0, 0));
-          mask: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0) 8%, rgb(0, 0, 0) 60%, rgba(0, 0, 0, 0));
+  mask: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0) 8%, rgb(0, 0, 0) 60%, rgba(0, 0, 0, 0));
 }
 .wp-block-maes-collage-banner .maes-collage img {
   position: absolute;
