@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
-import { motion } from 'motion/react'
+import { motion, stagger } from 'motion/react'
 
 import type {
 	CollageImage,
@@ -18,6 +18,23 @@ export function MAESCollage({ background, imgs }: Props) {
 	const [displayImgs, setDisplayImgs] = useState<
 		CollageImageTransform[] | null
 	>(null)
+
+	// motion variants
+	const motionCollage = {
+		hidden: { opacity: 1 },
+		show: {
+			opacity: 1,
+			transition: {
+				duration: 0.05,
+				delayChildren: stagger(0.03),
+			},
+		},
+	}
+
+	const motionImage = {
+		hidden: { opacity: 0, scale: 0.95, y: 20 },
+		show: { opacity: 1, scale: 1, y: 0 },
+	}
 
 	const rotationRange = 60
 
@@ -75,9 +92,7 @@ export function MAESCollage({ background, imgs }: Props) {
 			return (
 				// change to div with background insted of img
 				<motion.div
-					initial={{ opacity: 0, scale: 0.9, y: 100 }}
-					animate={{ opacity: 1, scale: 1, y: 0 }}
-					transition={{ duration: 0.25 }}
+					variants={motionImage}
 					className='maes-collage__image'
 					style={{
 						zIndex: item.zIndex,
@@ -157,7 +172,14 @@ export function MAESCollage({ background, imgs }: Props) {
 						url(${background.url})`,
 				}}
 			></div>
-			{displayImgs && theImages(displayImgs)}
+			<motion.div
+				className='maes-collage__images'
+				variants={motionCollage}
+				initial='hidden'
+				animate='show'
+			>
+				{displayImgs && theImages(displayImgs)}
+			</motion.div>
 		</div>
 	)
 }
