@@ -335,7 +335,7 @@ function MAESCollage({
         (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(motion_react__WEBPACK_IMPORTED_MODULE_2__.motion.div, {
           initial: {
             opacity: 0,
-            scale: 0.8,
+            scale: 0.9,
             y: 100
           },
           animate: {
@@ -344,13 +344,15 @@ function MAESCollage({
             y: 0
           },
           transition: {
-            duration: 0.5
+            duration: 0.25
           },
           className: 'maes-collage__image',
           style: {
             zIndex: item.zIndex,
             top: `${item.top}%`,
-            left: `${item.left}%`
+            left: `${item.left}%`,
+            originX: 0,
+            originY: 0
           },
           children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
             src: item.image.url,

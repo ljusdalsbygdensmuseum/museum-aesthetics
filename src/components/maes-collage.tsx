@@ -75,14 +75,16 @@ export function MAESCollage({ background, imgs }: Props) {
 			return (
 				// change to div with background insted of img
 				<motion.div
-					initial={{ opacity: 0, scale: 0.8, y: 100 }}
+					initial={{ opacity: 0, scale: 0.9, y: 100 }}
 					animate={{ opacity: 1, scale: 1, y: 0 }}
-					transition={{ duration: 0.5 }}
+					transition={{ duration: 0.25 }}
 					className='maes-collage__image'
 					style={{
 						zIndex: item.zIndex,
 						top: `${item.top}%`,
 						left: `${item.left}%`,
+						originX: 0,
+						originY: 0,
 					}}
 				>
 					<img
