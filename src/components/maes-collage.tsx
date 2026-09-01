@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
+import { motion } from 'motion/react'
 
 import type {
 	CollageImage,
@@ -68,25 +69,35 @@ export function MAESCollage({ background, imgs }: Props) {
 	function theImages() {
 		const theImgs = imgs.map((item, index) => {
 			const position = rollPosition(item)
-
+			console.log(position)
 			return (
 				// change to div with background insted of img
-				<img
-					src={item.url}
+				<motion.div
+					initial={{ opacity: 0, scale: 0.8, y: 100 }}
+					animate={{ opacity: 1, scale: 1, y: 0 }}
+					transition={{ duration: 0.5 }}
+					className='maes-collage__image'
 					style={{
-						transform: `
+						zIndex: position.zIndex,
+						top: `${position.top}%`,
+						left: `${position.left}%`,
+					}}
+				>
+					<img
+						src={item.url}
+						style={{
+							transform: `
                             translate(-50%, -50%)
 							scale(.6)
                             rotate(${position.rotation}deg)
                         `,
-						top: `${position.top}%`,
-						left: `${position.left}%`,
-						zIndex: position.zIndex,
-						filter: `blur(${position.blur}px) 
+
+							filter: `blur(${position.blur}px) 
 							drop-shadow(0 0 2rem black) 
 							brightness(${position.brightness})`,
-					}}
-				/>
+						}}
+					/>
+				</motion.div>
 			)
 		})
 		return theImgs
