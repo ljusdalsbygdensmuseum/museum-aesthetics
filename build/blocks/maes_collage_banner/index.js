@@ -293,6 +293,7 @@ function MAESCollage({
 }) {
   const containerRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
   const [isWide, setIsWide] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+  const [displayImgs, setDisplayImgs] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null);
   const rotationRange = 60;
   function rollPosition(item) {
     var _a, _b, _c;
@@ -327,10 +328,8 @@ function MAESCollage({
     };
     return position;
   }
-  function theImages() {
-    const theImgs = imgs.map((item, index) => {
-      const position = rollPosition(item);
-      console.log(position);
+  function theImages(images) {
+    const theImgs = images.map((item, index) => {
       return (
         // change to div with background insted of img
         (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(motion_react__WEBPACK_IMPORTED_MODULE_2__.motion.div, {
@@ -349,21 +348,21 @@ function MAESCollage({
           },
           className: 'maes-collage__image',
           style: {
-            zIndex: position.zIndex,
-            top: `${position.top}%`,
-            left: `${position.left}%`
+            zIndex: item.zIndex,
+            top: `${item.top}%`,
+            left: `${item.left}%`
           },
           children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-            src: item.url,
+            src: item.image.url,
             style: {
               transform: `
                             translate(-50%, -50%)
 							scale(.6)
-                            rotate(${position.rotation}deg)
+                            rotate(${item.rotation}deg)
                         `,
-              filter: `blur(${position.blur}px) 
+              filter: `blur(${item.blur}px) 
 							drop-shadow(0 0 2rem black) 
-							brightness(${position.brightness})`
+							brightness(${item.brightness})`
             }
           })
         })
@@ -388,7 +387,28 @@ function MAESCollage({
       };
     }
   }, []);
-  const displayImgs = theImages();
+  // rerolls position when change is wide threshold
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+    setDisplayImgs(() => {
+      return imgs.map(item => {
+        const position = rollPosition(item);
+        return Object.assign({
+          image: item
+        }, position);
+      });
+    });
+  }, [isWide]);
+  // rolls position if not yet stated
+  if (!displayImgs) {
+    setDisplayImgs(() => {
+      return imgs.map(item => {
+        const position = rollPosition(item);
+        return Object.assign({
+          image: item
+        }, position);
+      });
+    });
+  }
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: 'maes-collage',
     ref: containerRef,
@@ -399,7 +419,7 @@ function MAESCollage({
 						radial-gradient(transparent 75%, #2E0F08), 
 						url(${background.url})`
       }
-    }), displayImgs]
+    }), displayImgs && theImages(displayImgs)]
   });
 }
 
@@ -469,6 +489,7 @@ const CollageImageSchema = zod__WEBPACK_IMPORTED_MODULE_0__.object({
   sidePref: SidePrefSchema.nullish()
 });
 const CollageImageTransformSchema = zod__WEBPACK_IMPORTED_MODULE_0__.object({
+  image: CollageImageSchema,
   rotation: zod__WEBPACK_IMPORTED_MODULE_0__.number(),
   top: zod__WEBPACK_IMPORTED_MODULE_0__.number(),
   left: zod__WEBPACK_IMPORTED_MODULE_0__.number(),

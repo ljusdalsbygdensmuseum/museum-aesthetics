@@ -15,6 +15,10 @@ export function MAESCollage({ background, imgs }: Props) {
 	const containerRef = useRef(null)
 	const [isWide, setIsWide] = useState(false)
 
+	const [displayImgs, setDisplayImgs] = useState<
+		CollageImageTransform[] | null
+	>(null)
+
 	const rotationRange = 60
 
 	function rollPosition(item: CollageImage) {
@@ -66,10 +70,8 @@ export function MAESCollage({ background, imgs }: Props) {
 		return position
 	}
 
-	function theImages() {
-		const theImgs = imgs.map((item, index) => {
-			const position = rollPosition(item)
-			console.log(position)
+	function theImages(images: CollageImageTransform[]) {
+		const theImgs = images.map((item, index) => {
 			return (
 				// change to div with background insted of img
 				<motion.div
@@ -78,23 +80,23 @@ export function MAESCollage({ background, imgs }: Props) {
 					transition={{ duration: 0.5 }}
 					className='maes-collage__image'
 					style={{
-						zIndex: position.zIndex,
-						top: `${position.top}%`,
-						left: `${position.left}%`,
+						zIndex: item.zIndex,
+						top: `${item.top}%`,
+						left: `${item.left}%`,
 					}}
 				>
 					<img
-						src={item.url}
+						src={item.image.url}
 						style={{
 							transform: `
                             translate(-50%, -50%)
 							scale(.6)
-                            rotate(${position.rotation}deg)
+                            rotate(${item.rotation}deg)
                         `,
 
-							filter: `blur(${position.blur}px) 
+							filter: `blur(${item.blur}px) 
 							drop-shadow(0 0 2rem black) 
-							brightness(${position.brightness})`,
+							brightness(${item.brightness})`,
 						}}
 					/>
 				</motion.div>
@@ -123,7 +125,25 @@ export function MAESCollage({ background, imgs }: Props) {
 		}
 	}, [])
 
-	const displayImgs = theImages()
+	// rerolls position when change is wide threshold
+	useEffect(() => {
+		setDisplayImgs(() => {
+			return imgs.map((item) => {
+				const position = rollPosition(item)
+				return { image: item, ...position }
+			})
+		})
+	}, [isWide])
+
+	// rolls position if not yet stated
+	if (!displayImgs) {
+		setDisplayImgs(() => {
+			return imgs.map((item) => {
+				const position = rollPosition(item)
+				return { image: item, ...position }
+			})
+		})
+	}
 
 	return (
 		<div className='maes-collage' ref={containerRef}>
@@ -135,7 +155,7 @@ export function MAESCollage({ background, imgs }: Props) {
 						url(${background.url})`,
 				}}
 			></div>
-			{displayImgs}
+			{displayImgs && theImages(displayImgs)}
 		</div>
 	)
 }
