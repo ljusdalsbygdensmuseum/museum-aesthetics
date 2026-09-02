@@ -284,7 +284,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var motion_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! motion/react */ "./node_modules/motion/dist/es/react.mjs");
-/* harmony import */ var motion_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! motion/react */ "./node_modules/motion/node_modules/motion-dom/dist/es/utils/stagger.mjs");
+/* harmony import */ var motion_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! motion/react */ "./node_modules/motion/node_modules/framer-motion/dist/es/utils/use-motion-value-event.mjs");
+/* harmony import */ var motion_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! motion/react */ "./node_modules/motion/node_modules/framer-motion/dist/es/value/use-scroll.mjs");
+/* harmony import */ var motion_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! motion/react */ "./node_modules/motion/node_modules/motion-dom/dist/es/utils/stagger.mjs");
 
 
 
@@ -295,6 +297,13 @@ function MAESCollage({
   const containerRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
   const [isWide, setIsWide] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
   const [displayImgs, setDisplayImgs] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null);
+  const {
+    scrollYProgress
+  } = (0,motion_react__WEBPACK_IMPORTED_MODULE_4__.useScroll)({
+    target: containerRef,
+    offset: ['start start', 'end start']
+  });
+  const [scrollY, setScrollY] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(scrollYProgress.get());
   // motion variants
   const motionCollage = {
     hidden: {
@@ -304,7 +313,7 @@ function MAESCollage({
       opacity: 1,
       transition: {
         duration: 0.05,
-        delayChildren: (0,motion_react__WEBPACK_IMPORTED_MODULE_3__.stagger)(0.03)
+        delayChildren: (0,motion_react__WEBPACK_IMPORTED_MODULE_5__.stagger)(0.03)
       }
     }
   };
@@ -356,6 +365,8 @@ function MAESCollage({
   }
   function theImages(images) {
     const theImgs = images.map((item, index) => {
+      const paralaxValue = item.zIndex / 100;
+      const top = item.top + scrollY * 30 * paralaxValue;
       return (
         // change to div with background insted of img
         (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(motion_react__WEBPACK_IMPORTED_MODULE_2__.motion.div, {
@@ -363,7 +374,7 @@ function MAESCollage({
           className: 'maes-collage__image',
           style: {
             zIndex: item.zIndex,
-            top: `${item.top}%`,
+            top: `${top}%`,
             left: `${item.left}%`,
             originX: 0,
             originY: 0
@@ -414,6 +425,9 @@ function MAESCollage({
       });
     });
   }, [isWide]);
+  (0,motion_react__WEBPACK_IMPORTED_MODULE_3__.useMotionValueEvent)(scrollYProgress, 'change', latest => {
+    setScrollY(latest);
+  });
   // rolls position if not yet stated
   if (!displayImgs) {
     setDisplayImgs(() => {

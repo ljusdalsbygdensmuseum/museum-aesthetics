@@ -1,5 +1,11 @@
 import { useRef, useState, useEffect } from 'react'
-import { motion, stagger } from 'motion/react'
+import {
+	motion,
+	stagger,
+	useMotionValue,
+	useMotionValueEvent,
+	useScroll,
+} from 'motion/react'
 
 import type {
 	CollageImage,
@@ -14,10 +20,16 @@ interface Props {
 export function MAESCollage({ background, imgs }: Props) {
 	const containerRef = useRef(null)
 	const [isWide, setIsWide] = useState(false)
-
 	const [displayImgs, setDisplayImgs] = useState<
 		CollageImageTransform[] | null
 	>(null)
+
+	const { scrollYProgress } = useScroll({
+		target: containerRef,
+		offset: ['start start', 'end start'],
+	})
+
+	const [scrollY, setScrollY] = useState(scrollYProgress.get())
 
 	// motion variants
 	const motionCollage = {
@@ -89,6 +101,9 @@ export function MAESCollage({ background, imgs }: Props) {
 
 	function theImages(images: CollageImageTransform[]) {
 		const theImgs = images.map((item, index) => {
+			const paralaxValue = item.zIndex / 100
+
+			const top = item.top + scrollY * 30 * paralaxValue
 			return (
 				// change to div with background insted of img
 				<motion.div
@@ -96,7 +111,7 @@ export function MAESCollage({ background, imgs }: Props) {
 					className='maes-collage__image'
 					style={{
 						zIndex: item.zIndex,
-						top: `${item.top}%`,
+						top: `${top}%`,
 						left: `${item.left}%`,
 						originX: 0,
 						originY: 0,
@@ -151,6 +166,10 @@ export function MAESCollage({ background, imgs }: Props) {
 			})
 		})
 	}, [isWide])
+
+	useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+		setScrollY(latest)
+	})
 
 	// rolls position if not yet stated
 	if (!displayImgs) {
