@@ -66,7 +66,7 @@ export function MAESCollage({ background, imgs }: Props) {
 			opacity: 1,
 			transition: {
 				duration: 0.05,
-				delayChildren: stagger(0.03),
+				staggerChildren: 0.02,
 			},
 		},
 	}

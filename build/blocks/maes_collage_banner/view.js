@@ -90,7 +90,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var motion_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! motion/react */ "./node_modules/motion/dist/es/react.mjs");
 /* harmony import */ var motion_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! motion/react */ "./node_modules/motion/node_modules/framer-motion/dist/es/utils/use-motion-value-event.mjs");
 /* harmony import */ var motion_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! motion/react */ "./node_modules/motion/node_modules/framer-motion/dist/es/value/use-scroll.mjs");
-/* harmony import */ var motion_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! motion/react */ "./node_modules/motion/node_modules/motion-dom/dist/es/utils/stagger.mjs");
 
 
 
@@ -148,7 +147,7 @@ function MAESCollage({
       opacity: 1,
       transition: {
         duration: 0.05,
-        delayChildren: (0,motion_react__WEBPACK_IMPORTED_MODULE_5__.stagger)(0.03)
+        staggerChildren: 0.02
       }
     }
   };
