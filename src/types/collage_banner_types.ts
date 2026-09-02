@@ -19,6 +19,7 @@ export const CollageImageSchema = z.object({
 })
 
 export const CollageImageTransformSchema = z.object({
+	image: CollageImageSchema,
 	rotation: z.number(),
 	top: z.number(),
 	left: z.number(),

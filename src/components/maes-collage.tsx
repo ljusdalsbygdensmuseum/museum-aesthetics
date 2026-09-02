@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
+import { motion, stagger, useMotionValueEvent, useScroll } from 'motion/react'
 
 import type {
 	CollageImage,
@@ -13,6 +14,67 @@ interface Props {
 export function MAESCollage({ background, imgs }: Props) {
 	const containerRef = useRef(null)
 	const [isWide, setIsWide] = useState(false)
+	const [displayImgs, setDisplayImgs] = useState<
+		CollageImageTransform[] | null
+	>(null)
+
+	const { scrollYProgress } = useScroll({
+		target: containerRef,
+		offset: ['start start', 'end start'],
+	})
+
+	const [scrollY, setScrollY] = useState(scrollYProgress.get())
+
+	useEffect(() => {
+		if (containerRef.current) {
+			const observer = new ResizeObserver((entries) => {
+				for (let entry of entries) {
+					if (entry.contentRect.width > 2560) {
+						setIsWide(true)
+					} else {
+						setIsWide(false)
+					}
+				}
+			})
+
+			observer.observe(containerRef.current)
+
+			return () => {
+				observer.disconnect()
+			}
+		}
+	}, [])
+
+	// rerolls position when change is wide threshold
+	useEffect(() => {
+		setDisplayImgs(() => {
+			return imgs.map((item) => {
+				const position = rollPosition(item)
+				return { image: item, ...position }
+			})
+		})
+	}, [isWide])
+
+	useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+		setScrollY(latest)
+	})
+
+	// motion variants
+	const motionCollage = {
+		hidden: { opacity: 1 },
+		show: {
+			opacity: 1,
+			transition: {
+				duration: 0.05,
+				staggerChildren: 0.02,
+			},
+		},
+	}
+
+	const motionImage = {
+		hidden: { opacity: 0, scale: 0.95, y: 20 },
+		show: { opacity: 1, scale: 1, y: 0 },
+	}
 
 	const rotationRange = 60
 
@@ -65,54 +127,53 @@ export function MAESCollage({ background, imgs }: Props) {
 		return position
 	}
 
-	function theImages() {
-		const theImgs = imgs.map((item, index) => {
-			const position = rollPosition(item)
+	function theImages(images: CollageImageTransform[]) {
+		const theImgs = images.map((item, index) => {
+			const paralaxValue = item.zIndex / 100
 
+			const top = item.top + scrollY * 30 * paralaxValue
 			return (
 				// change to div with background insted of img
-				<img
-					src={item.url}
+				<motion.div
+					variants={motionImage}
+					className='maes-collage__image'
 					style={{
-						transform: `
+						zIndex: item.zIndex,
+						top: `${top}%`,
+						left: `${item.left}%`,
+						originX: 0,
+						originY: 0,
+					}}
+				>
+					<img
+						src={item.image.url}
+						style={{
+							transform: `
                             translate(-50%, -50%)
 							scale(.6)
-                            rotate(${position.rotation}deg)
+                            rotate(${item.rotation}deg)
                         `,
-						top: `${position.top}%`,
-						left: `${position.left}%`,
-						zIndex: position.zIndex,
-						filter: `blur(${position.blur}px) 
+
+							filter: `blur(${item.blur}px) 
 							drop-shadow(0 0 2rem black) 
-							brightness(${position.brightness})`,
-					}}
-				/>
+							brightness(${item.brightness})`,
+						}}
+					/>
+				</motion.div>
 			)
 		})
 		return theImgs
 	}
 
-	useEffect(() => {
-		if (containerRef.current) {
-			const observer = new ResizeObserver((entries) => {
-				for (let entry of entries) {
-					if (entry.contentRect.width > 2560) {
-						setIsWide(true)
-					} else {
-						setIsWide(false)
-					}
-				}
+	// rolls position if not yet stated
+	if (!displayImgs) {
+		setDisplayImgs(() => {
+			return imgs.map((item) => {
+				const position = rollPosition(item)
+				return { image: item, ...position }
 			})
-
-			observer.observe(containerRef.current)
-
-			return () => {
-				observer.disconnect()
-			}
-		}
-	}, [])
-
-	const displayImgs = theImages()
+		})
+	}
 
 	return (
 		<div className='maes-collage' ref={containerRef}>
@@ -124,7 +185,14 @@ export function MAESCollage({ background, imgs }: Props) {
 						url(${background.url})`,
 				}}
 			></div>
-			{displayImgs}
+			<motion.div
+				className='maes-collage__images'
+				variants={motionCollage}
+				initial='hidden'
+				animate='show'
+			>
+				{displayImgs && theImages(displayImgs)}
+			</motion.div>
 		</div>
 	)
 }

@@ -29,13 +29,16 @@
   left: 50%;
   transform: translate(-50%);
   overflow-x: clip;
-  -webkit-mask: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0) 8%, rgb(0, 0, 0) 60%, rgba(0, 0, 0, 0));
-          mask: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0) 8%, rgb(0, 0, 0) 60%, rgba(0, 0, 0, 0));
+  mask: linear-gradient(rgba(0, 0, 0, 0), rgb(0, 0, 0) 8%, rgb(0, 0, 0) 60%, rgba(0, 0, 0, 0));
 }
 .wp-block-maes-collage-banner .maes-collage img {
-  position: absolute;
   max-width: 75%;
   max-height: 75%;
+}
+.wp-block-maes-collage-banner .maes-collage .maes-collage__image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 .wp-block-maes-collage-banner .maes-collage .maes-collage-background {
   position: absolute;
