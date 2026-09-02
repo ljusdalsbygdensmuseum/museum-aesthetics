@@ -304,6 +304,37 @@ function MAESCollage({
     offset: ['start start', 'end start']
   });
   const [scrollY, setScrollY] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(scrollYProgress.get());
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+    if (containerRef.current) {
+      const observer = new ResizeObserver(entries => {
+        for (let entry of entries) {
+          if (entry.contentRect.width > 2560) {
+            setIsWide(true);
+          } else {
+            setIsWide(false);
+          }
+        }
+      });
+      observer.observe(containerRef.current);
+      return () => {
+        observer.disconnect();
+      };
+    }
+  }, []);
+  // rerolls position when change is wide threshold
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+    setDisplayImgs(() => {
+      return imgs.map(item => {
+        const position = rollPosition(item);
+        return Object.assign({
+          image: item
+        }, position);
+      });
+    });
+  }, [isWide]);
+  (0,motion_react__WEBPACK_IMPORTED_MODULE_3__.useMotionValueEvent)(scrollYProgress, 'change', latest => {
+    setScrollY(latest);
+  });
   // motion variants
   const motionCollage = {
     hidden: {
@@ -397,37 +428,6 @@ function MAESCollage({
     });
     return theImgs;
   }
-  ;(0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
-    if (containerRef.current) {
-      const observer = new ResizeObserver(entries => {
-        for (let entry of entries) {
-          if (entry.contentRect.width > 2560) {
-            setIsWide(true);
-          } else {
-            setIsWide(false);
-          }
-        }
-      });
-      observer.observe(containerRef.current);
-      return () => {
-        observer.disconnect();
-      };
-    }
-  }, []);
-  // rerolls position when change is wide threshold
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
-    setDisplayImgs(() => {
-      return imgs.map(item => {
-        const position = rollPosition(item);
-        return Object.assign({
-          image: item
-        }, position);
-      });
-    });
-  }, [isWide]);
-  (0,motion_react__WEBPACK_IMPORTED_MODULE_3__.useMotionValueEvent)(scrollYProgress, 'change', latest => {
-    setScrollY(latest);
-  });
   // rolls position if not yet stated
   if (!displayImgs) {
     setDisplayImgs(() => {

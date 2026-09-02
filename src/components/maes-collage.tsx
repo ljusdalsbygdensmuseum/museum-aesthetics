@@ -1,11 +1,5 @@
 import { useRef, useState, useEffect } from 'react'
-import {
-	motion,
-	stagger,
-	useMotionValue,
-	useMotionValueEvent,
-	useScroll,
-} from 'motion/react'
+import { motion, stagger, useMotionValueEvent, useScroll } from 'motion/react'
 
 import type {
 	CollageImage,
@@ -30,6 +24,40 @@ export function MAESCollage({ background, imgs }: Props) {
 	})
 
 	const [scrollY, setScrollY] = useState(scrollYProgress.get())
+
+	useEffect(() => {
+		if (containerRef.current) {
+			const observer = new ResizeObserver((entries) => {
+				for (let entry of entries) {
+					if (entry.contentRect.width > 2560) {
+						setIsWide(true)
+					} else {
+						setIsWide(false)
+					}
+				}
+			})
+
+			observer.observe(containerRef.current)
+
+			return () => {
+				observer.disconnect()
+			}
+		}
+	}, [])
+
+	// rerolls position when change is wide threshold
+	useEffect(() => {
+		setDisplayImgs(() => {
+			return imgs.map((item) => {
+				const position = rollPosition(item)
+				return { image: item, ...position }
+			})
+		})
+	}, [isWide])
+
+	useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+		setScrollY(latest)
+	})
 
 	// motion variants
 	const motionCollage = {
@@ -136,40 +164,6 @@ export function MAESCollage({ background, imgs }: Props) {
 		})
 		return theImgs
 	}
-
-	useEffect(() => {
-		if (containerRef.current) {
-			const observer = new ResizeObserver((entries) => {
-				for (let entry of entries) {
-					if (entry.contentRect.width > 2560) {
-						setIsWide(true)
-					} else {
-						setIsWide(false)
-					}
-				}
-			})
-
-			observer.observe(containerRef.current)
-
-			return () => {
-				observer.disconnect()
-			}
-		}
-	}, [])
-
-	// rerolls position when change is wide threshold
-	useEffect(() => {
-		setDisplayImgs(() => {
-			return imgs.map((item) => {
-				const position = rollPosition(item)
-				return { image: item, ...position }
-			})
-		})
-	}, [isWide])
-
-	useMotionValueEvent(scrollYProgress, 'change', (latest) => {
-		setScrollY(latest)
-	})
 
 	// rolls position if not yet stated
 	if (!displayImgs) {
