@@ -38016,8 +38016,10 @@ _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(() => {
       children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_maes_collage_banner__WEBPACK_IMPORTED_MODULE_3__.MAESCollageBanner, {
         imgs: attributes.imgs,
         background: attributes.background[0],
-        children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", {
-          children: "hello"
+        children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          dangerouslySetInnerHTML: {
+            __html: element.innerHTML
+          }
         })
       })
     }));

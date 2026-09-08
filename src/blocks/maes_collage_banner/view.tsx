@@ -16,7 +16,7 @@ domReady(() => {
 					imgs={attributes.imgs}
 					background={attributes.background[0]}
 				>
-					<h1>hello</h1>
+					<div dangerouslySetInnerHTML={{ __html: element.innerHTML }}></div>
 				</MAESCollageBanner>
 			</>,
 		)
