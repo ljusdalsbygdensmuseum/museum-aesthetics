@@ -15,7 +15,9 @@ domReady(() => {
 				<MAESCollageBanner
 					imgs={attributes.imgs}
 					background={attributes.background[0]}
-				/>
+				>
+					<h1>hello</h1>
+				</MAESCollageBanner>
 			</>,
 		)
 	})

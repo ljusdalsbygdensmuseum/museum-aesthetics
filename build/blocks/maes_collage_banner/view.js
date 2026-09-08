@@ -27,7 +27,8 @@ __webpack_require__.r(__webpack_exports__);
 
 function MAESCollageBanner({
   background,
-  imgs
+  imgs,
+  children
 }) {
   const defaultData = {
     site_title: '',
@@ -52,18 +53,11 @@ function MAESCollageBanner({
   }, []);
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: 'maes-collage-banner',
-    children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: 'maes-collage-banner-content',
-      children: [data.logo ? (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-        className: 'logo logo-banner',
-        src: data.logo
-      }) : (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h2", {
-        className: 'banner-title',
-        children: data.site_title
-      }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
-        className: 'slogan',
-        children: data.slogan
-      })]
+      children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+        children: children
+      })
     }), background != null || imgs.length ? (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_maes_collage__WEBPACK_IMPORTED_MODULE_4__.MAESCollage, {
       background: background,
       imgs: imgs
@@ -38021,7 +38015,10 @@ _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(() => {
     root.render((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_maes_collage_banner__WEBPACK_IMPORTED_MODULE_3__.MAESCollageBanner, {
         imgs: attributes.imgs,
-        background: attributes.background[0]
+        background: attributes.background[0],
+        children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", {
+          children: "hello"
+        })
       })
     }));
   });
