@@ -396,7 +396,7 @@ function MAESCollage({
   function theImages(images) {
     const theImgs = images.map((item, index) => {
       const paralaxValue = item.zIndex / 100;
-      const top = item.top + scrollY * 30 * paralaxValue;
+      const top = item.top + -scrollY * 30 * paralaxValue;
       return (
         // change to div with background insted of img
         (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(motion_react__WEBPACK_IMPORTED_MODULE_2__.motion.div, {
