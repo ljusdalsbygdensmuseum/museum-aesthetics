@@ -118,7 +118,6 @@ export default function Edit({
 					imgs={attributes.imgs}
 					background={attributes.background[0]}
 				>
-					<h1>hello</h1>
 					<InnerBlocks />
 				</MAESCollageBanner>
 			</div>
