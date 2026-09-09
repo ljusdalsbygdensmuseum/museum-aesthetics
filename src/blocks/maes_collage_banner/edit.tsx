@@ -11,7 +11,11 @@ import { __ } from '@wordpress/i18n'
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { InspectorControls, useBlockProps } from '@wordpress/block-editor'
+import {
+	InnerBlocks,
+	InspectorControls,
+	useBlockProps,
+} from '@wordpress/block-editor'
 import type { BlockEditProps } from '@wordpress/blocks'
 
 import {
@@ -113,7 +117,9 @@ export default function Edit({
 				<MAESCollageBanner
 					imgs={attributes.imgs}
 					background={attributes.background[0]}
-				/>
+				>
+					<InnerBlocks />
+				</MAESCollageBanner>
 			</div>
 		</>
 	)
