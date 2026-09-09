@@ -131,7 +131,7 @@ export function MAESCollage({ background, imgs }: Props) {
 		const theImgs = images.map((item, index) => {
 			const paralaxValue = item.zIndex / 100
 
-			const top = item.top + scrollY * 30 * paralaxValue
+			const top = item.top + -scrollY * 30 * paralaxValue
 			return (
 				// change to div with background insted of img
 				<motion.div
