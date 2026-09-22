@@ -42,6 +42,7 @@ class maes
 
         // Blocks
         register_block_type(__DIR__ . '/build/blocks/maes_collage_banner');
+        register_block_type(__DIR__ . '/build/blocks/maes_container');
     }
 
     //Metaboxes
