@@ -24,6 +24,8 @@ import {
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss'
+import { PanelBody, ToggleControl } from '@wordpress/components'
+import { Field, Tabs } from '@wordpress/ui'
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -36,7 +38,28 @@ import './editor.scss'
 export default function Edit() {
 	return (
 		<>
-			<InspectorControls>hello</InspectorControls>
+			<InspectorControls>
+				<PanelBody title={__('Style', 'maes-domain')}>
+					<Field.Root>
+						<ToggleControl
+							label={__('Top border')}
+							onChange={(value) => console.log(value)}
+						/>
+						<ToggleControl
+							label={__('Bottom border')}
+							onChange={(value) => console.log(value)}
+						/>
+						<ToggleControl
+							label={__('Left border')}
+							onChange={(value) => console.log(value)}
+						/>
+						<ToggleControl
+							label={__('Right border')}
+							onChange={(value) => console.log(value)}
+						/>
+					</Field.Root>
+				</PanelBody>
+			</InspectorControls>
 			<div {...useBlockProps()}>
 				<InnerBlocks />
 			</div>
