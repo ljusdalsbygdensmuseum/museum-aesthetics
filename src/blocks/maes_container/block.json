@@ -7,6 +7,127 @@
 	"category": "design",
 	"icon": "tablet",
 	"description": "A styled and animated container",
+	"attributes": {
+		"border": {
+			"type": "object",
+			"properties": {
+				"top": {
+					"type": "object",
+					"properties": {
+						"toggled": {
+							"type": "boolean",
+							"default": false
+						},
+						"width": {
+							"type": "number"
+						},
+						"offset": {
+							"type": "number"
+						},
+						"color": {
+							"type": "string"
+						},
+						"opacity": {
+							"type": "number"
+						}
+					}
+				},
+				"bottom": {
+					"type": "object",
+					"properties": {
+						"toggled": {
+							"type": "boolean",
+							"default": false
+						},
+						"width": {
+							"type": "number"
+						},
+						"offset": {
+							"type": "number"
+						},
+						"color": {
+							"type": "string"
+						},
+						"opacity": {
+							"type": "number"
+						}
+					}
+				},
+				"left": {
+					"type": "object",
+					"properties": {
+						"toggled": {
+							"type": "boolean",
+							"default": false
+						},
+						"width": {
+							"type": "number"
+						},
+						"offset": {
+							"type": "number"
+						},
+						"color": {
+							"type": "string"
+						},
+						"opacity": {
+							"type": "number"
+						}
+					}
+				},
+				"right": {
+					"type": "object",
+					"properties": {
+						"toggled": {
+							"type": "boolean",
+							"default": false
+						},
+						"width": {
+							"type": "number"
+						},
+						"offset": {
+							"type": "number"
+						},
+						"color": {
+							"type": "string"
+						},
+						"opacity": {
+							"type": "number"
+						}
+					}
+				}
+			},
+			"default": {
+				"top": {
+					"toggled": false,
+					"width": 2,
+					"offset": 0,
+					"color": "#fff",
+					"opacity": 1
+				},
+				"bottom": {
+					"toggled": false,
+					"width": 2,
+					"offset": 0,
+					"color": "#fff",
+					"opacity": 1
+				},
+				"left": {
+					"toggled": false,
+					"width": 2,
+					"offset": 0,
+					"color": "#fff",
+					"opacity": 1
+				},
+				"right": {
+					"toggled": false,
+					"width": 2,
+					"offset": 0,
+					"color": "#fff",
+					"opacity": 1
+				}
+			}
+		}
+	},
 	"example": {},
 	"supports": {
 		"html": false

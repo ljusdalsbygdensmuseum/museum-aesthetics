@@ -53,7 +53,10 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @return {Element} Element to render.
  */
-function Edit() {
+function Edit({
+  attributes,
+  setAttributes
+}) {
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
       children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
@@ -61,16 +64,44 @@ function Edit() {
         children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_5__.Root, {
           children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
             label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Top border'),
-            onChange: value => console.log(value)
+            checked: attributes.border.top.toggled ? attributes.border.top.toggled : false,
+            onChange: value => setAttributes({
+              border: Object.assign(Object.assign({}, attributes.border), {
+                top: Object.assign(Object.assign({}, attributes.border.top), {
+                  toggled: value
+                })
+              })
+            })
           }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
             label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Bottom border'),
-            onChange: value => console.log(value)
+            checked: attributes.border.bottom.toggled ? attributes.border.bottom.toggled : false,
+            onChange: value => setAttributes({
+              border: Object.assign(Object.assign({}, attributes.border), {
+                bottom: Object.assign(Object.assign({}, attributes.border.bottom), {
+                  toggled: value
+                })
+              })
+            })
           }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
             label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Left border'),
-            onChange: value => console.log(value)
+            checked: attributes.border.left.toggled ? attributes.border.left.toggled : false,
+            onChange: value => setAttributes({
+              border: Object.assign(Object.assign({}, attributes.border), {
+                left: Object.assign(Object.assign({}, attributes.border.left), {
+                  toggled: value
+                })
+              })
+            })
           }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
             label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Right border'),
-            onChange: value => console.log(value)
+            checked: attributes.border.right.toggled ? attributes.border.right.toggled : false,
+            onChange: value => setAttributes({
+              border: Object.assign(Object.assign({}, attributes.border), {
+                right: Object.assign(Object.assign({}, attributes.border.right), {
+                  toggled: value
+                })
+              })
+            })
           })]
         })
       })
@@ -2601,7 +2632,7 @@ function r(e){var t,f,n="";if("string"==typeof e||"number"==typeof e)n+=e;else i
   \**********************************************/
 (module) {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"maes/container","version":"0.1.0","title":"Styled container","category":"design","icon":"tablet","description":"A styled and animated container","example":{},"supports":{"html":false},"textdomain":"maes-domain","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"maes/container","version":"0.1.0","title":"Styled container","category":"design","icon":"tablet","description":"A styled and animated container","attributes":{"border":{"type":"object","properties":{"top":{"type":"object","properties":{"toggled":{"type":"boolean","default":false},"width":{"type":"number"},"offset":{"type":"number"},"color":{"type":"string"},"opacity":{"type":"number"}}},"bottom":{"type":"object","properties":{"toggled":{"type":"boolean","default":false},"width":{"type":"number"},"offset":{"type":"number"},"color":{"type":"string"},"opacity":{"type":"number"}}},"left":{"type":"object","properties":{"toggled":{"type":"boolean","default":false},"width":{"type":"number"},"offset":{"type":"number"},"color":{"type":"string"},"opacity":{"type":"number"}}},"right":{"type":"object","properties":{"toggled":{"type":"boolean","default":false},"width":{"type":"number"},"offset":{"type":"number"},"color":{"type":"string"},"opacity":{"type":"number"}}}},"default":{"top":{"toggled":false,"width":2,"offset":0,"color":"#fff","opacity":1},"bottom":{"toggled":false,"width":2,"offset":0,"color":"#fff","opacity":1},"left":{"toggled":false,"width":2,"offset":0,"color":"#fff","opacity":1},"right":{"toggled":false,"width":2,"offset":0,"color":"#fff","opacity":1}}}},"example":{},"supports":{"html":false},"textdomain":"maes-domain","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
 
 /***/ }
 

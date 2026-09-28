@@ -26,6 +26,8 @@ import {
 import './editor.scss'
 import { PanelBody, ToggleControl } from '@wordpress/components'
 import { Field, Tabs } from '@wordpress/ui'
+import { BlockEditProps } from '@wordpress/blocks'
+import { ContainerAttributes } from '../../types/container_types'
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -35,7 +37,10 @@ import { Field, Tabs } from '@wordpress/ui'
  *
  * @return {Element} Element to render.
  */
-export default function Edit() {
+export default function Edit({
+	attributes,
+	setAttributes,
+}: BlockEditProps<ContainerAttributes>) {
 	return (
 		<>
 			<InspectorControls>
@@ -43,19 +48,67 @@ export default function Edit() {
 					<Field.Root>
 						<ToggleControl
 							label={__('Top border')}
-							onChange={(value) => console.log(value)}
+							checked={
+								attributes.border.top.toggled
+									? attributes.border.top.toggled
+									: false
+							}
+							onChange={(value) =>
+								setAttributes({
+									border: {
+										...attributes.border,
+										top: { ...attributes.border.top, toggled: value },
+									},
+								})
+							}
 						/>
 						<ToggleControl
 							label={__('Bottom border')}
-							onChange={(value) => console.log(value)}
+							checked={
+								attributes.border.bottom.toggled
+									? attributes.border.bottom.toggled
+									: false
+							}
+							onChange={(value) =>
+								setAttributes({
+									border: {
+										...attributes.border,
+										bottom: { ...attributes.border.bottom, toggled: value },
+									},
+								})
+							}
 						/>
 						<ToggleControl
 							label={__('Left border')}
-							onChange={(value) => console.log(value)}
+							checked={
+								attributes.border.left.toggled
+									? attributes.border.left.toggled
+									: false
+							}
+							onChange={(value) =>
+								setAttributes({
+									border: {
+										...attributes.border,
+										left: { ...attributes.border.left, toggled: value },
+									},
+								})
+							}
 						/>
 						<ToggleControl
 							label={__('Right border')}
-							onChange={(value) => console.log(value)}
+							checked={
+								attributes.border.right.toggled
+									? attributes.border.right.toggled
+									: false
+							}
+							onChange={(value) =>
+								setAttributes({
+									border: {
+										...attributes.border,
+										right: { ...attributes.border.right, toggled: value },
+									},
+								})
+							}
 						/>
 					</Field.Root>
 				</PanelBody>
