@@ -24,10 +24,11 @@ import {
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss'
-import { PanelBody, ToggleControl } from '@wordpress/components'
-import { Field, Tabs } from '@wordpress/ui'
+import { PanelBody } from '@wordpress/components'
+import { Field } from '@wordpress/ui'
 import { BlockEditProps } from '@wordpress/blocks'
 import { ContainerAttributes } from '../../types/container_types'
+import BorderStyle from '../../components/sidebar/maes-border-style'
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -46,69 +47,25 @@ export default function Edit({
 			<InspectorControls>
 				<PanelBody title={__('Style', 'maes-domain')}>
 					<Field.Root>
-						<ToggleControl
-							label={__('Top border')}
-							checked={
-								attributes.border.top.toggled
-									? attributes.border.top.toggled
-									: false
-							}
-							onChange={(value) =>
-								setAttributes({
-									border: {
-										...attributes.border,
-										top: { ...attributes.border.top, toggled: value },
-									},
-								})
-							}
+						<BorderStyle
+							attributes={attributes}
+							setAttributes={setAttributes}
+							direction='top'
 						/>
-						<ToggleControl
-							label={__('Bottom border')}
-							checked={
-								attributes.border.bottom.toggled
-									? attributes.border.bottom.toggled
-									: false
-							}
-							onChange={(value) =>
-								setAttributes({
-									border: {
-										...attributes.border,
-										bottom: { ...attributes.border.bottom, toggled: value },
-									},
-								})
-							}
+						<BorderStyle
+							attributes={attributes}
+							setAttributes={setAttributes}
+							direction='bottom'
 						/>
-						<ToggleControl
-							label={__('Left border')}
-							checked={
-								attributes.border.left.toggled
-									? attributes.border.left.toggled
-									: false
-							}
-							onChange={(value) =>
-								setAttributes({
-									border: {
-										...attributes.border,
-										left: { ...attributes.border.left, toggled: value },
-									},
-								})
-							}
+						<BorderStyle
+							attributes={attributes}
+							setAttributes={setAttributes}
+							direction='left'
 						/>
-						<ToggleControl
-							label={__('Right border')}
-							checked={
-								attributes.border.right.toggled
-									? attributes.border.right.toggled
-									: false
-							}
-							onChange={(value) =>
-								setAttributes({
-									border: {
-										...attributes.border,
-										right: { ...attributes.border.right, toggled: value },
-									},
-								})
-							}
+						<BorderStyle
+							attributes={attributes}
+							setAttributes={setAttributes}
+							direction='right'
 						/>
 					</Field.Root>
 				</PanelBody>

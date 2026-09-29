@@ -22,6 +22,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _wordpress_ui__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/ui */ "./node_modules/@wordpress/ui/build-module/form/primitives/field/root.mjs");
+/* harmony import */ var _components_sidebar_maes_border_style__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/sidebar/maes-border-style */ "./src/components/sidebar/maes-border-style.tsx");
 
 /**
  * Retrieves the translation of text.
@@ -45,6 +46,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -62,46 +64,22 @@ function Edit({
       children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Style', 'maes-domain'),
         children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_5__.Root, {
-          children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Top border'),
-            checked: attributes.border.top.toggled ? attributes.border.top.toggled : false,
-            onChange: value => setAttributes({
-              border: Object.assign(Object.assign({}, attributes.border), {
-                top: Object.assign(Object.assign({}, attributes.border.top), {
-                  toggled: value
-                })
-              })
-            })
-          }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Bottom border'),
-            checked: attributes.border.bottom.toggled ? attributes.border.bottom.toggled : false,
-            onChange: value => setAttributes({
-              border: Object.assign(Object.assign({}, attributes.border), {
-                bottom: Object.assign(Object.assign({}, attributes.border.bottom), {
-                  toggled: value
-                })
-              })
-            })
-          }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Left border'),
-            checked: attributes.border.left.toggled ? attributes.border.left.toggled : false,
-            onChange: value => setAttributes({
-              border: Object.assign(Object.assign({}, attributes.border), {
-                left: Object.assign(Object.assign({}, attributes.border.left), {
-                  toggled: value
-                })
-              })
-            })
-          }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Right border'),
-            checked: attributes.border.right.toggled ? attributes.border.right.toggled : false,
-            onChange: value => setAttributes({
-              border: Object.assign(Object.assign({}, attributes.border), {
-                right: Object.assign(Object.assign({}, attributes.border.right), {
-                  toggled: value
-                })
-              })
-            })
+          children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style__WEBPACK_IMPORTED_MODULE_6__["default"], {
+            attributes: attributes,
+            setAttributes: setAttributes,
+            direction: 'top'
+          }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style__WEBPACK_IMPORTED_MODULE_6__["default"], {
+            attributes: attributes,
+            setAttributes: setAttributes,
+            direction: 'bottom'
+          }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style__WEBPACK_IMPORTED_MODULE_6__["default"], {
+            attributes: attributes,
+            setAttributes: setAttributes,
+            direction: 'left'
+          }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style__WEBPACK_IMPORTED_MODULE_6__["default"], {
+            attributes: attributes,
+            setAttributes: setAttributes,
+            direction: 'right'
           })]
         })
       })
@@ -180,6 +158,63 @@ __webpack_require__.r(__webpack_exports__);
 function save() {
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, {});
 }
+
+/***/ },
+
+/***/ "./src/components/sidebar/maes-border-style.tsx"
+/*!******************************************************!*\
+  !*** ./src/components/sidebar/maes-border-style.tsx ***!
+  \******************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+function BorderStyle({
+  attributes,
+  setAttributes,
+  direction
+}) {
+  const attribute = attributes.border[direction];
+  const labels = {
+    top: {
+      toggle: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Top border', 'maes-domain')
+    },
+    bottom: {
+      toggle: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Bottom border', 'maes-domain')
+    },
+    left: {
+      toggle: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Left border', 'maes-domain')
+    },
+    right: {
+      toggle: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Right border', 'maes-domain')
+    }
+  };
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+    children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+      label: labels[direction].toggle,
+      checked: attribute.toggled ? attribute.toggled : false,
+      onChange: value => setAttributes({
+        border: Object.assign(Object.assign({}, attributes.border), {
+          [direction]: Object.assign(Object.assign({}, attribute), {
+            toggled: value
+          })
+        })
+      })
+    })
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BorderStyle);
 
 /***/ },
 
