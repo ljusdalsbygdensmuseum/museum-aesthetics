@@ -32,7 +32,6 @@ function MAESContainer({ attributes, children }: Props) {
 	const renderdHeight = height - offset.top - offset.bottom
 	const renderdWidth = width - offset.left - offset.right
 
-	console.log(renderdHeight)
 	return (
 		<div className='maes-container__container' ref={containerRef}>
 			{children}

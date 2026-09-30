@@ -205,7 +205,6 @@ function MAESContainer({
   };
   const renderdHeight = height - offset.top - offset.bottom;
   const renderdWidth = width - offset.left - offset.right;
-  console.log(renderdHeight);
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: 'maes-container__container',
     ref: containerRef,
