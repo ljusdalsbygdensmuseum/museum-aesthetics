@@ -1,5 +1,6 @@
 import {
 	BorderControl,
+	PanelRow,
 	__experimentalUnitControl as UnitControl,
 } from '@wordpress/components'
 import { ContainerAttributes } from '../../types/container_types'
@@ -31,7 +32,7 @@ function BorderStyle({ attributes, setAttributes, direction }: Props) {
 	}
 
 	return (
-		<div>
+		<PanelRow>
 			<BorderControl
 				label={labels[direction].border}
 				value={attribute.border}
@@ -45,6 +46,9 @@ function BorderStyle({ attributes, setAttributes, direction }: Props) {
 						},
 					})
 				}
+				style={{
+					marginRight: '3px',
+				}}
 			/>
 			<UnitControl
 				label={__('Offset', 'maes-domain')}
@@ -58,7 +62,7 @@ function BorderStyle({ attributes, setAttributes, direction }: Props) {
 					})
 				}
 			/>
-		</div>
+		</PanelRow>
 	)
 }
 

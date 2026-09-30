@@ -200,7 +200,7 @@ function BorderStyle({
       border: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Right border', 'maes-domain')
     }
   };
-  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
     children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.BorderControl, {
       label: labels[direction].border,
       value: attribute.border,
@@ -212,7 +212,10 @@ function BorderStyle({
             border: value
           })
         })
-      })
+      }),
+      style: {
+        marginRight: '3px'
+      }
     }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Offset', 'maes-domain'),
       value: attribute.offset,
