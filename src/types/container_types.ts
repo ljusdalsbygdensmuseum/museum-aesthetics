@@ -1,19 +1,26 @@
 import z from 'zod'
 
-export const BorderSchema = z.object({
-	toggled: z.boolean(),
-	color: z.string(),
-	opacity: z.number(),
-	width: z.string(),
-	offset: z.string(),
+// from wp components border
+export const BorderSchema = z.union([
+	z.object({
+		color: z.union([z.string(), z.undefined()]),
+		width: z.union([z.string(), z.undefined()]),
+		style: z.union([z.string(), z.undefined()]),
+	}),
+	z.undefined(),
+])
+
+export const BorderAttributeSchema = z.object({
+	border: BorderSchema,
+	offset: z.string().nullish(),
 })
 
 export const ContainerAttributesSchema = z.object({
 	border: z.object({
-		top: BorderSchema,
-		bottom: BorderSchema,
-		left: BorderSchema,
-		right: BorderSchema,
+		top: BorderAttributeSchema,
+		bottom: BorderAttributeSchema,
+		left: BorderAttributeSchema,
+		right: BorderAttributeSchema,
 	}),
 })
 

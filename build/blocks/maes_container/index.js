@@ -201,13 +201,15 @@ function BorderStyle({
     }
   };
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-    children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+    children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.BorderControl, {
       label: labels[direction].toggle,
-      checked: attribute.toggled ? attribute.toggled : false,
+      value: attribute.border,
+      enableAlpha: true,
+      enableStyle: true,
       onChange: value => setAttributes({
         border: Object.assign(Object.assign({}, attributes.border), {
           [direction]: Object.assign(Object.assign({}, attribute), {
-            toggled: value
+            border: value
           })
         })
       })
@@ -2667,7 +2669,7 @@ function r(e){var t,f,n="";if("string"==typeof e||"number"==typeof e)n+=e;else i
   \**********************************************/
 (module) {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"maes/container","version":"0.1.0","title":"Styled container","category":"design","icon":"tablet","description":"A styled and animated container","attributes":{"border":{"type":"object","properties":{"top":{"type":"object","properties":{"toggled":{"type":"boolean","default":false},"width":{"type":"number"},"offset":{"type":"number"},"color":{"type":"string"},"opacity":{"type":"number"}}},"bottom":{"type":"object","properties":{"toggled":{"type":"boolean","default":false},"width":{"type":"number"},"offset":{"type":"number"},"color":{"type":"string"},"opacity":{"type":"number"}}},"left":{"type":"object","properties":{"toggled":{"type":"boolean","default":false},"width":{"type":"number"},"offset":{"type":"number"},"color":{"type":"string"},"opacity":{"type":"number"}}},"right":{"type":"object","properties":{"toggled":{"type":"boolean","default":false},"width":{"type":"number"},"offset":{"type":"number"},"color":{"type":"string"},"opacity":{"type":"number"}}}},"default":{"top":{"toggled":false,"width":2,"offset":0,"color":"#fff","opacity":1},"bottom":{"toggled":false,"width":2,"offset":0,"color":"#fff","opacity":1},"left":{"toggled":false,"width":2,"offset":0,"color":"#fff","opacity":1},"right":{"toggled":false,"width":2,"offset":0,"color":"#fff","opacity":1}}}},"example":{},"supports":{"html":false},"textdomain":"maes-domain","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"maes/container","version":"0.1.0","title":"Styled container","category":"design","icon":"tablet","description":"A styled and animated container","attributes":{"border":{"type":"object","properties":{"top":{"type":"object","properties":{"border":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}},"offset":{"type":"string"}}},"bottom":{"type":"object","properties":{"border":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}},"offset":{"type":"string"}}},"left":{"type":"object","properties":{"border":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}},"offset":{"type":"string"}}},"right":{"type":"object","properties":{"border":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}},"offset":{"type":"string"}}}},"default":{"top":{"border":{"width":null,"color":null,"style":null},"offset":null},"bottom":{"border":{"width":null,"color":null,"style":null},"offset":null},"left":{"border":{"width":null,"color":null,"style":null},"offset":null},"right":{"border":{"width":null,"color":null,"style":null},"offset":null}}}},"example":{},"supports":{"html":false},"textdomain":"maes-domain","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
 
 /***/ }
 

@@ -1,4 +1,4 @@
-import { ToggleControl } from '@wordpress/components'
+import { BorderControl, ToggleControl } from '@wordpress/components'
 import { ContainerAttributes } from '../../types/container_types'
 import { __ } from '@wordpress/i18n'
 
@@ -29,14 +29,16 @@ function BorderStyle({ attributes, setAttributes, direction }: Props) {
 
 	return (
 		<div>
-			<ToggleControl
+			<BorderControl
 				label={labels[direction].toggle}
-				checked={attribute.toggled ? attribute.toggled : false}
+				value={attribute.border}
+				enableAlpha
+				enableStyle
 				onChange={(value) =>
 					setAttributes({
 						border: {
 							...attributes.border,
-							[direction]: { ...attribute, toggled: value },
+							[direction]: { ...attribute, border: value },
 						},
 					})
 				}
