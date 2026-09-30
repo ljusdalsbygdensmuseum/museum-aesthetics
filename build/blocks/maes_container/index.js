@@ -189,9 +189,11 @@ function MAESContainer({
   var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
   const containerRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
   const [height, setHeight] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
+  const [width, setWidth] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
     if (containerRef.current) {
       setHeight(containerRef.current.getBoundingClientRect().height);
+      setWidth(containerRef.current.getBoundingClientRect().width);
     }
   }, []);
   const border = attributes.border;
@@ -201,7 +203,8 @@ function MAESContainer({
     left: border.left.offset ? parseFloat(border.left.offset.toString()) : 0,
     right: border.right.offset ? parseFloat(border.right.offset.toString()) : 0
   };
-  const renderdHeight = `${height - offset.top + offset.bottom}`;
+  const renderdHeight = height - offset.top - offset.bottom;
+  const renderdWidth = width - offset.left - offset.right;
   console.log(renderdHeight);
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: 'maes-container__container',
@@ -211,6 +214,10 @@ function MAESContainer({
       style: {
         height: renderdHeight + 'px',
         top: offset.top + 'px',
+        bottom: offset.bottom + 'px',
+        width: renderdWidth + 'px',
+        left: offset.left + 'px',
+        right: offset.right + 'px',
         borderTopWidth: (_a = border.top.border) === null || _a === void 0 ? void 0 : _a.width,
         borderTopColor: (_b = border.top.border) === null || _b === void 0 ? void 0 : _b.color,
         borderTopStyle: (_c = border.top.border) === null || _c === void 0 ? void 0 : _c.style,

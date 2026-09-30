@@ -9,10 +9,12 @@ interface Props {
 function MAESContainer({ attributes, children }: Props) {
 	const containerRef = useRef<HTMLDivElement>(null)
 	const [height, setHeight] = useState(0)
+	const [width, setWidth] = useState(0)
 
 	useEffect(() => {
 		if (containerRef.current) {
 			setHeight(containerRef.current.getBoundingClientRect().height)
+			setWidth(containerRef.current.getBoundingClientRect().width)
 		}
 	}, [])
 
@@ -27,7 +29,8 @@ function MAESContainer({ attributes, children }: Props) {
 		right: border.right.offset ? parseFloat(border.right.offset.toString()) : 0,
 	}
 
-	const renderdHeight = `${height - offset.top + offset.bottom}`
+	const renderdHeight = height - offset.top - offset.bottom
+	const renderdWidth = width - offset.left - offset.right
 
 	console.log(renderdHeight)
 	return (
@@ -38,6 +41,11 @@ function MAESContainer({ attributes, children }: Props) {
 				style={{
 					height: renderdHeight + 'px',
 					top: offset.top + 'px',
+					bottom: offset.bottom + 'px',
+
+					width: renderdWidth + 'px',
+					left: offset.left + 'px',
+					right: offset.right + 'px',
 
 					borderTopWidth: border.top.border?.width,
 					borderTopColor: border.top.border?.color,
