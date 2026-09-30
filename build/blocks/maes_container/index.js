@@ -23,6 +23,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _wordpress_ui__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/ui */ "./node_modules/@wordpress/ui/build-module/form/primitives/field/root.mjs");
 /* harmony import */ var _components_sidebar_maes_border_style__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/sidebar/maes-border-style */ "./src/components/sidebar/maes-border-style.tsx");
+/* harmony import */ var _components_maes_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/maes-container */ "./src/components/maes-container.tsx");
 
 /**
  * Retrieves the translation of text.
@@ -43,6 +44,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
+
 
 
 
@@ -84,7 +86,10 @@ function Edit({
         })
       })
     }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", Object.assign({}, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), {
-      children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks, {})
+      children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_maes_container__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        attributes: attributes,
+        children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks, {})
+      })
     }))]
   });
 }
@@ -158,6 +163,46 @@ __webpack_require__.r(__webpack_exports__);
 function save() {
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, {});
 }
+
+/***/ },
+
+/***/ "./src/components/maes-container.tsx"
+/*!*******************************************!*\
+  !*** ./src/components/maes-container.tsx ***!
+  \*******************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+
+function MAESContainer({
+  attributes,
+  children
+}) {
+  var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+    style: {
+      borderTopWidth: (_a = attributes.border.top.border) === null || _a === void 0 ? void 0 : _a.width,
+      borderTopColor: (_b = attributes.border.top.border) === null || _b === void 0 ? void 0 : _b.color,
+      borderTopStyle: (_c = attributes.border.top.border) === null || _c === void 0 ? void 0 : _c.style,
+      borderBottomWidth: (_d = attributes.border.bottom.border) === null || _d === void 0 ? void 0 : _d.width,
+      borderBottomColor: (_e = attributes.border.bottom.border) === null || _e === void 0 ? void 0 : _e.color,
+      borderBottomStyle: (_f = attributes.border.bottom.border) === null || _f === void 0 ? void 0 : _f.style,
+      borderLeftWidth: (_g = attributes.border.left.border) === null || _g === void 0 ? void 0 : _g.width,
+      borderLeftColor: (_h = attributes.border.left.border) === null || _h === void 0 ? void 0 : _h.color,
+      borderLeftStyle: (_j = attributes.border.left.border) === null || _j === void 0 ? void 0 : _j.style,
+      borderRightWidth: (_k = attributes.border.right.border) === null || _k === void 0 ? void 0 : _k.width,
+      borderRightColor: (_l = attributes.border.right.border) === null || _l === void 0 ? void 0 : _l.color,
+      borderRightStyle: (_m = attributes.border.right.border) === null || _m === void 0 ? void 0 : _m.style
+    },
+    children: children
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MAESContainer);
 
 /***/ },
 

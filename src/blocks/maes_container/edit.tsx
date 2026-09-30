@@ -29,6 +29,7 @@ import { Field } from '@wordpress/ui'
 import { BlockEditProps } from '@wordpress/blocks'
 import { ContainerAttributes } from '../../types/container_types'
 import BorderStyle from '../../components/sidebar/maes-border-style'
+import MAESContainer from '../../components/maes-container'
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -71,7 +72,9 @@ export default function Edit({
 				</PanelBody>
 			</InspectorControls>
 			<div {...useBlockProps()}>
-				<InnerBlocks />
+				<MAESContainer attributes={attributes}>
+					<InnerBlocks />
+				</MAESContainer>
 			</div>
 		</>
 	)
