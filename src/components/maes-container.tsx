@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { ContainerAttributes } from '../types/container_types'
 
 interface Props {
@@ -6,27 +7,55 @@ interface Props {
 }
 
 function MAESContainer({ attributes, children }: Props) {
+	const containerRef = useRef<HTMLDivElement>(null)
+	const [height, setHeight] = useState(0)
+
+	useEffect(() => {
+		if (containerRef.current) {
+			setHeight(containerRef.current.getBoundingClientRect().height)
+		}
+	}, [])
+
+	const border = attributes.border
+
+	const offset = {
+		top: border.top.offset ? parseFloat(border.top.offset.toString()) : 0,
+		bottom: border.bottom.offset
+			? parseFloat(border.bottom.offset.toString())
+			: 0,
+		left: border.left.offset ? parseFloat(border.left.offset.toString()) : 0,
+		right: border.right.offset ? parseFloat(border.right.offset.toString()) : 0,
+	}
+
+	const renderdHeight = `${height - offset.top + offset.bottom}`
+
+	console.log(renderdHeight)
 	return (
-		<div
-			style={{
-				borderTopWidth: attributes.border.top.border?.width,
-				borderTopColor: attributes.border.top.border?.color,
-				borderTopStyle: attributes.border.top.border?.style,
-
-				borderBottomWidth: attributes.border.bottom.border?.width,
-				borderBottomColor: attributes.border.bottom.border?.color,
-				borderBottomStyle: attributes.border.bottom.border?.style,
-
-				borderLeftWidth: attributes.border.left.border?.width,
-				borderLeftColor: attributes.border.left.border?.color,
-				borderLeftStyle: attributes.border.left.border?.style,
-
-				borderRightWidth: attributes.border.right.border?.width,
-				borderRightColor: attributes.border.right.border?.color,
-				borderRightStyle: attributes.border.right.border?.style,
-			}}
-		>
+		<div className='maes-container__container' ref={containerRef}>
 			{children}
+			<div
+				className='maes-container__background'
+				style={{
+					height: renderdHeight + 'px',
+					top: offset.top + 'px',
+
+					borderTopWidth: border.top.border?.width,
+					borderTopColor: border.top.border?.color,
+					borderTopStyle: border.top.border?.style,
+
+					borderBottomWidth: border.bottom.border?.width,
+					borderBottomColor: border.bottom.border?.color,
+					borderBottomStyle: border.bottom.border?.style,
+
+					borderLeftWidth: border.left.border?.width,
+					borderLeftColor: border.left.border?.color,
+					borderLeftStyle: border.left.border?.style,
+
+					borderRightWidth: border.right.border?.width,
+					borderRightColor: border.right.border?.color,
+					borderRightStyle: border.right.border?.style,
+				}}
+			></div>
 		</div>
 	)
 }

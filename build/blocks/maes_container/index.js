@@ -178,28 +178,53 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
 
 function MAESContainer({
   attributes,
   children
 }) {
   var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
-  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-    style: {
-      borderTopWidth: (_a = attributes.border.top.border) === null || _a === void 0 ? void 0 : _a.width,
-      borderTopColor: (_b = attributes.border.top.border) === null || _b === void 0 ? void 0 : _b.color,
-      borderTopStyle: (_c = attributes.border.top.border) === null || _c === void 0 ? void 0 : _c.style,
-      borderBottomWidth: (_d = attributes.border.bottom.border) === null || _d === void 0 ? void 0 : _d.width,
-      borderBottomColor: (_e = attributes.border.bottom.border) === null || _e === void 0 ? void 0 : _e.color,
-      borderBottomStyle: (_f = attributes.border.bottom.border) === null || _f === void 0 ? void 0 : _f.style,
-      borderLeftWidth: (_g = attributes.border.left.border) === null || _g === void 0 ? void 0 : _g.width,
-      borderLeftColor: (_h = attributes.border.left.border) === null || _h === void 0 ? void 0 : _h.color,
-      borderLeftStyle: (_j = attributes.border.left.border) === null || _j === void 0 ? void 0 : _j.style,
-      borderRightWidth: (_k = attributes.border.right.border) === null || _k === void 0 ? void 0 : _k.width,
-      borderRightColor: (_l = attributes.border.right.border) === null || _l === void 0 ? void 0 : _l.color,
-      borderRightStyle: (_m = attributes.border.right.border) === null || _m === void 0 ? void 0 : _m.style
-    },
-    children: children
+  const containerRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+  const [height, setHeight] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+    if (containerRef.current) {
+      setHeight(containerRef.current.getBoundingClientRect().height);
+    }
+  }, []);
+  const border = attributes.border;
+  const offset = {
+    top: border.top.offset ? parseFloat(border.top.offset.toString()) : 0,
+    bottom: border.bottom.offset ? parseFloat(border.bottom.offset.toString()) : 0,
+    left: border.left.offset ? parseFloat(border.left.offset.toString()) : 0,
+    right: border.right.offset ? parseFloat(border.right.offset.toString()) : 0
+  };
+  const renderdHeight = `${height - offset.top + offset.bottom}`;
+  console.log(renderdHeight);
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    className: 'maes-container__container',
+    ref: containerRef,
+    children: [children, (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: 'maes-container__background',
+      style: {
+        height: renderdHeight + 'px',
+        top: offset.top + 'px',
+        borderTopWidth: (_a = border.top.border) === null || _a === void 0 ? void 0 : _a.width,
+        borderTopColor: (_b = border.top.border) === null || _b === void 0 ? void 0 : _b.color,
+        borderTopStyle: (_c = border.top.border) === null || _c === void 0 ? void 0 : _c.style,
+        borderBottomWidth: (_d = border.bottom.border) === null || _d === void 0 ? void 0 : _d.width,
+        borderBottomColor: (_e = border.bottom.border) === null || _e === void 0 ? void 0 : _e.color,
+        borderBottomStyle: (_f = border.bottom.border) === null || _f === void 0 ? void 0 : _f.style,
+        borderLeftWidth: (_g = border.left.border) === null || _g === void 0 ? void 0 : _g.width,
+        borderLeftColor: (_h = border.left.border) === null || _h === void 0 ? void 0 : _h.color,
+        borderLeftStyle: (_j = border.left.border) === null || _j === void 0 ? void 0 : _j.style,
+        borderRightWidth: (_k = border.right.border) === null || _k === void 0 ? void 0 : _k.width,
+        borderRightColor: (_l = border.right.border) === null || _l === void 0 ? void 0 : _l.color,
+        borderRightStyle: (_m = border.right.border) === null || _m === void 0 ? void 0 : _m.style
+      }
+    })]
   });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MAESContainer);
