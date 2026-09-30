@@ -188,21 +188,21 @@ function BorderStyle({
   const attribute = attributes.border[direction];
   const labels = {
     top: {
-      toggle: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Top border', 'maes-domain')
+      border: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Top border', 'maes-domain')
     },
     bottom: {
-      toggle: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Bottom border', 'maes-domain')
+      border: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Bottom border', 'maes-domain')
     },
     left: {
-      toggle: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Left border', 'maes-domain')
+      border: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Left border', 'maes-domain')
     },
     right: {
-      toggle: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Right border', 'maes-domain')
+      border: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Right border', 'maes-domain')
     }
   };
-  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-    children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.BorderControl, {
-      label: labels[direction].toggle,
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.BorderControl, {
+      label: labels[direction].border,
       value: attribute.border,
       enableAlpha: true,
       enableStyle: true,
@@ -213,7 +213,17 @@ function BorderStyle({
           })
         })
       })
-    })
+    }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Offset', 'maes-domain'),
+      value: attribute.offset,
+      onChange: value => setAttributes({
+        border: Object.assign(Object.assign({}, attributes.border), {
+          [direction]: Object.assign(Object.assign({}, attribute), {
+            offset: value
+          })
+        })
+      })
+    })]
   });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BorderStyle);

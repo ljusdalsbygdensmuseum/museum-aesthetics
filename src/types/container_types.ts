@@ -12,7 +12,7 @@ export const BorderSchema = z.union([
 
 export const BorderAttributeSchema = z.object({
 	border: BorderSchema,
-	offset: z.string().nullish(),
+	offset: z.union([z.string(), z.number(), z.undefined()]),
 })
 
 export const ContainerAttributesSchema = z.object({

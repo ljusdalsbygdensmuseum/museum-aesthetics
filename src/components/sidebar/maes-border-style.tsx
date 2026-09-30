@@ -1,4 +1,7 @@
-import { BorderControl, ToggleControl } from '@wordpress/components'
+import {
+	BorderControl,
+	__experimentalUnitControl as UnitControl,
+} from '@wordpress/components'
 import { ContainerAttributes } from '../../types/container_types'
 import { __ } from '@wordpress/i18n'
 
@@ -14,23 +17,23 @@ function BorderStyle({ attributes, setAttributes, direction }: Props) {
 
 	const labels = {
 		top: {
-			toggle: __('Top border', 'maes-domain'),
+			border: __('Top border', 'maes-domain'),
 		},
 		bottom: {
-			toggle: __('Bottom border', 'maes-domain'),
+			border: __('Bottom border', 'maes-domain'),
 		},
 		left: {
-			toggle: __('Left border', 'maes-domain'),
+			border: __('Left border', 'maes-domain'),
 		},
 		right: {
-			toggle: __('Right border', 'maes-domain'),
+			border: __('Right border', 'maes-domain'),
 		},
 	}
 
 	return (
 		<div>
 			<BorderControl
-				label={labels[direction].toggle}
+				label={labels[direction].border}
 				value={attribute.border}
 				enableAlpha
 				enableStyle
@@ -39,6 +42,18 @@ function BorderStyle({ attributes, setAttributes, direction }: Props) {
 						border: {
 							...attributes.border,
 							[direction]: { ...attribute, border: value },
+						},
+					})
+				}
+			/>
+			<UnitControl
+				label={__('Offset', 'maes-domain')}
+				value={attribute.offset}
+				onChange={(value) =>
+					setAttributes({
+						border: {
+							...attributes.border,
+							[direction]: { ...attribute, offset: value },
 						},
 					})
 				}
