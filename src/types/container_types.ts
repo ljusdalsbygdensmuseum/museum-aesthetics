@@ -22,6 +22,7 @@ export const ContainerAttributesSchema = z.object({
 		left: BorderAttributeSchema,
 		right: BorderAttributeSchema,
 	}),
+	fullWidth: z.boolean(),
 })
 
 export type ContainerAttributes = z.infer<typeof ContainerAttributesSchema>

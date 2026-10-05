@@ -24,7 +24,7 @@ import {
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss'
-import { PanelBody } from '@wordpress/components'
+import { PanelBody, ToggleControl } from '@wordpress/components'
 import { Field } from '@wordpress/ui'
 import { BlockEditProps } from '@wordpress/blocks'
 import { ContainerAttributes } from '../../types/container_types'
@@ -48,6 +48,14 @@ export default function Edit({
 			<InspectorControls>
 				<PanelBody title={__('Style', 'maes-domain')}>
 					<Field.Root>
+						<ToggleControl
+							label={__('Full width', 'maes-domain')}
+							checked={attributes.fullWidth}
+							onChange={(value) => {
+								console.log(value)
+								setAttributes({ fullWidth: value })
+							}}
+						/>
 						<BorderStyle
 							attributes={attributes}
 							setAttributes={setAttributes}
