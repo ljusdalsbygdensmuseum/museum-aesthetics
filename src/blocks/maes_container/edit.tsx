@@ -30,6 +30,7 @@ import { BlockEditProps } from '@wordpress/blocks'
 import { ContainerAttributes } from '../../types/container_types'
 import BorderStyle from '../../components/sidebar/maes-border-style'
 import MAESContainer from '../../components/maes-container'
+import FadeControl from '../../components/sidebar/maes-fade-control'
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -55,21 +56,17 @@ export default function Edit({
 								setAttributes({ fullWidth: value })
 							}}
 						/>
-						<ToggleControl
-							label={__('Fade horizontal', 'maes-domain')}
-							checked={attributes.fadeHorizontal}
-							onChange={(value) => {
-								setAttributes({ fadeHorizontal: value })
-							}}
+						<FadeControl
+							attributes={attributes}
+							setAttributes={setAttributes}
+							direction='horizontal'
 						/>
-						<ToggleControl
-							className={attributes.fullWidth ? 'maes-disabled' : ''}
-							label={__('Fade vertical', 'maes-domain')}
-							checked={attributes.fadeVertical}
-							onChange={(value) => {
-								setAttributes({ fadeVertical: value })
-							}}
+						<FadeControl
+							attributes={attributes}
+							setAttributes={setAttributes}
+							direction='vertical'
 						/>
+
 						<BorderStyle
 							attributes={attributes}
 							setAttributes={setAttributes}
