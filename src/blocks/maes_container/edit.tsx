@@ -52,8 +52,22 @@ export default function Edit({
 							label={__('Full width', 'maes-domain')}
 							checked={attributes.fullWidth}
 							onChange={(value) => {
-								console.log(value)
 								setAttributes({ fullWidth: value })
+							}}
+						/>
+						<ToggleControl
+							label={__('Fade horizontal', 'maes-domain')}
+							checked={attributes.fadeHorizontal}
+							onChange={(value) => {
+								setAttributes({ fadeHorizontal: value })
+							}}
+						/>
+						<ToggleControl
+							className={attributes.fullWidth ? 'maes-disabled' : ''}
+							label={__('Fade vertical', 'maes-domain')}
+							checked={attributes.fadeVertical}
+							onChange={(value) => {
+								setAttributes({ fadeVertical: value })
 							}}
 						/>
 						<BorderStyle

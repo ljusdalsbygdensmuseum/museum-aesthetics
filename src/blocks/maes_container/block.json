@@ -138,6 +138,14 @@
 		"fullWidth": {
 			"type": "boolean",
 			"default": false
+		},
+		"fadeHorizontal": {
+			"type": "boolean",
+			"default": false
+		},
+		"fadeVertical": {
+			"type": "boolean",
+			"default": false
 		}
 	},
 	"example": {},

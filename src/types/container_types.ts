@@ -23,6 +23,8 @@ export const ContainerAttributesSchema = z.object({
 		right: BorderAttributeSchema,
 	}),
 	fullWidth: z.boolean(),
+	fadeHorizontal: z.boolean(),
+	fadeVertical: z.boolean(),
 })
 
 export type ContainerAttributes = z.infer<typeof ContainerAttributesSchema>
