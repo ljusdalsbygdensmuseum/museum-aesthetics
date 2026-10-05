@@ -214,31 +214,33 @@ function MAESContainer({
   };
   const renderdHeight = height - offset.top - offset.bottom;
   const renderdWidth = width - offset.left - offset.right;
+  const widthStyle = attributes.fullWidth ? null : {
+    width: renderdWidth + 'px',
+    left: offset.left + 'px',
+    right: offset.right + 'px',
+    borderLeftWidth: (_a = border.left.border) === null || _a === void 0 ? void 0 : _a.width,
+    borderLeftColor: (_b = border.left.border) === null || _b === void 0 ? void 0 : _b.color,
+    borderLeftStyle: (_c = border.left.border) === null || _c === void 0 ? void 0 : _c.style,
+    borderRightWidth: (_d = border.right.border) === null || _d === void 0 ? void 0 : _d.width,
+    borderRightColor: (_e = border.right.border) === null || _e === void 0 ? void 0 : _e.color,
+    borderRightStyle: (_f = border.right.border) === null || _f === void 0 ? void 0 : _f.style
+  };
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: 'maes-container__container',
     ref: containerRef,
     children: [children, (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-      className: 'maes-container__background',
-      style: {
+      className: `maes-container__background ${attributes.fullWidth && `maes-container__fullwidth`}`,
+      style: Object.assign({
         height: renderdHeight + 'px',
         top: offset.top + 'px',
         bottom: offset.bottom + 'px',
-        width: renderdWidth + 'px',
-        left: offset.left + 'px',
-        right: offset.right + 'px',
-        borderTopWidth: (_a = border.top.border) === null || _a === void 0 ? void 0 : _a.width,
-        borderTopColor: (_b = border.top.border) === null || _b === void 0 ? void 0 : _b.color,
-        borderTopStyle: (_c = border.top.border) === null || _c === void 0 ? void 0 : _c.style,
-        borderBottomWidth: (_d = border.bottom.border) === null || _d === void 0 ? void 0 : _d.width,
-        borderBottomColor: (_e = border.bottom.border) === null || _e === void 0 ? void 0 : _e.color,
-        borderBottomStyle: (_f = border.bottom.border) === null || _f === void 0 ? void 0 : _f.style,
-        borderLeftWidth: (_g = border.left.border) === null || _g === void 0 ? void 0 : _g.width,
-        borderLeftColor: (_h = border.left.border) === null || _h === void 0 ? void 0 : _h.color,
-        borderLeftStyle: (_j = border.left.border) === null || _j === void 0 ? void 0 : _j.style,
-        borderRightWidth: (_k = border.right.border) === null || _k === void 0 ? void 0 : _k.width,
-        borderRightColor: (_l = border.right.border) === null || _l === void 0 ? void 0 : _l.color,
-        borderRightStyle: (_m = border.right.border) === null || _m === void 0 ? void 0 : _m.style
-      }
+        borderTopWidth: (_g = border.top.border) === null || _g === void 0 ? void 0 : _g.width,
+        borderTopColor: (_h = border.top.border) === null || _h === void 0 ? void 0 : _h.color,
+        borderTopStyle: (_j = border.top.border) === null || _j === void 0 ? void 0 : _j.style,
+        borderBottomWidth: (_k = border.bottom.border) === null || _k === void 0 ? void 0 : _k.width,
+        borderBottomColor: (_l = border.bottom.border) === null || _l === void 0 ? void 0 : _l.color,
+        borderBottomStyle: (_m = border.bottom.border) === null || _m === void 0 ? void 0 : _m.style
+      }, widthStyle)
     })]
   });
 }
@@ -286,6 +288,7 @@ function BorderStyle({
     }
   };
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
+    className: attributes.fullWidth && (direction === 'left' || direction === 'right') ? 'maes-disabled' : '',
     children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.BorderControl, {
       label: labels[direction].border,
       value: attribute.border,

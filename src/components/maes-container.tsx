@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { ContainerAttributes } from '../types/container_types'
+import { transform } from 'zod/index.cjs'
 
 interface Props {
 	attributes: ContainerAttributes
@@ -32,19 +33,33 @@ function MAESContainer({ attributes, children }: Props) {
 	const renderdHeight = height - offset.top - offset.bottom
 	const renderdWidth = width - offset.left - offset.right
 
+	const widthStyle = attributes.fullWidth
+		? null
+		: {
+				width: renderdWidth + 'px',
+				left: offset.left + 'px',
+				right: offset.right + 'px',
+
+				borderLeftWidth: border.left.border?.width,
+				borderLeftColor: border.left.border?.color,
+				borderLeftStyle: border.left.border?.style,
+
+				borderRightWidth: border.right.border?.width,
+				borderRightColor: border.right.border?.color,
+				borderRightStyle: border.right.border?.style,
+		  }
+
 	return (
 		<div className='maes-container__container' ref={containerRef}>
 			{children}
 			<div
-				className='maes-container__background'
+				className={`maes-container__background ${
+					attributes.fullWidth && `maes-container__fullwidth`
+				}`}
 				style={{
 					height: renderdHeight + 'px',
 					top: offset.top + 'px',
 					bottom: offset.bottom + 'px',
-
-					width: renderdWidth + 'px',
-					left: offset.left + 'px',
-					right: offset.right + 'px',
 
 					borderTopWidth: border.top.border?.width,
 					borderTopColor: border.top.border?.color,
@@ -54,13 +69,7 @@ function MAESContainer({ attributes, children }: Props) {
 					borderBottomColor: border.bottom.border?.color,
 					borderBottomStyle: border.bottom.border?.style,
 
-					borderLeftWidth: border.left.border?.width,
-					borderLeftColor: border.left.border?.color,
-					borderLeftStyle: border.left.border?.style,
-
-					borderRightWidth: border.right.border?.width,
-					borderRightColor: border.right.border?.color,
-					borderRightStyle: border.right.border?.style,
+					...widthStyle,
 				}}
 			></div>
 		</div>

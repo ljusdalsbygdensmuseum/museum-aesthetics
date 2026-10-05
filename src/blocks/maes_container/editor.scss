@@ -3,3 +3,7 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+.maes-disabled {
+	opacity: 0.5;
+	pointer-events: none;
+}

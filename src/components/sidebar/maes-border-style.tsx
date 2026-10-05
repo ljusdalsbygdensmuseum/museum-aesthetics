@@ -32,7 +32,13 @@ function BorderStyle({ attributes, setAttributes, direction }: Props) {
 	}
 
 	return (
-		<PanelRow>
+		<PanelRow
+			className={
+				attributes.fullWidth && (direction === 'left' || direction === 'right')
+					? 'maes-disabled'
+					: ''
+			}
+		>
 			<BorderControl
 				label={labels[direction].border}
 				value={attribute.border}
