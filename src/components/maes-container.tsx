@@ -39,6 +39,8 @@ function MAESContainer({ attributes, children }: Props) {
 					attributes.fullWidth && `maes-container__fullwidth`
 				}`}
 				style={{
+					background: attributes.background,
+
 					top: offset.top,
 					bottom: offset.bottom,
 

@@ -177,6 +177,14 @@
     "fullWidth": {
       "type": "boolean",
       "default": false
+    },
+    "gradientBackground": {
+      "type": "boolean",
+      "default": false
+    },
+    "background": {
+      "type": "string",
+      "default": ""
     }
   },
   "example": {},

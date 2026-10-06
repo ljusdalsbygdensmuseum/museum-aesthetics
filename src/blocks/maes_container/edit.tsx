@@ -25,7 +25,7 @@ import {
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss'
-import { PanelBody, ToggleControl } from '@wordpress/components'
+import { ColorPalette, PanelBody, ToggleControl } from '@wordpress/components'
 import { Field } from '@wordpress/ui'
 import { BlockEditProps } from '@wordpress/blocks'
 import { ContainerAttributes } from '../../types/container_types'
@@ -59,6 +59,23 @@ export default function Edit({
 							checked={attributes.fullWidth}
 							onChange={(value) => {
 								setAttributes({ fullWidth: value })
+							}}
+						/>
+						<Field.VisualLabel>
+							{__('Background', 'maes-domain')}
+						</Field.VisualLabel>
+						<ToggleControl
+							label={__('Gradient background')}
+							checked={attributes.gradientBackground}
+							onChange={(value) => {
+								setAttributes({ gradientBackground: value })
+							}}
+						/>
+						<ColorPalette
+							colors={colorPalette}
+							value={attributes.background}
+							onChange={(value) => {
+								setAttributes({ background: value })
 							}}
 						/>
 						<FadeControl

@@ -32,6 +32,8 @@ export const ContainerAttributesSchema = z.object({
 		vertical: FadeAttributeSchema,
 	}),
 	fullWidth: z.boolean(),
+	gradientBackground: z.boolean(),
+	background: z.string(),
 })
 
 export type ContainerAttributes = z.infer<typeof ContainerAttributesSchema>
