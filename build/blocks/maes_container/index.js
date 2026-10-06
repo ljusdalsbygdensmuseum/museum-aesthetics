@@ -63,6 +63,8 @@ function Edit({
   attributes,
   setAttributes
 }) {
+  // could be refactored to work with multiple palettes
+  const colorPalette = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useSettings)('color.palette.theme')[0];
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
       children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
@@ -87,19 +89,23 @@ function Edit({
           }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style__WEBPACK_IMPORTED_MODULE_6__["default"], {
             attributes: attributes,
             setAttributes: setAttributes,
-            direction: 'top'
+            direction: 'top',
+            colors: colorPalette
           }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style__WEBPACK_IMPORTED_MODULE_6__["default"], {
             attributes: attributes,
             setAttributes: setAttributes,
-            direction: 'bottom'
+            direction: 'bottom',
+            colors: colorPalette
           }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style__WEBPACK_IMPORTED_MODULE_6__["default"], {
             attributes: attributes,
             setAttributes: setAttributes,
-            direction: 'left'
+            direction: 'left',
+            colors: colorPalette
           }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style__WEBPACK_IMPORTED_MODULE_6__["default"], {
             attributes: attributes,
             setAttributes: setAttributes,
-            direction: 'right'
+            direction: 'right',
+            colors: colorPalette
           })]
         })
       })
@@ -277,7 +283,8 @@ __webpack_require__.r(__webpack_exports__);
 function BorderStyle({
   attributes,
   setAttributes,
-  direction
+  direction,
+  colors
 }) {
   const attribute = attributes.border[direction];
   const labels = {
@@ -310,7 +317,8 @@ function BorderStyle({
       }),
       style: {
         marginRight: '3px'
-      }
+      },
+      colors: colors
     }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Offset', 'maes-domain'),
       value: attribute.offset,

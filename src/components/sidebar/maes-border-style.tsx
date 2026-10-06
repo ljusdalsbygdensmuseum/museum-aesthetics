@@ -5,15 +5,17 @@ import {
 } from '@wordpress/components'
 import { ContainerAttributes } from '../../types/container_types'
 import { __ } from '@wordpress/i18n'
+import { Color } from '@wordpress/components/build-types/palette-edit/types'
 
 //set attributes being any is not right but I can't find a better way
 interface Props {
 	attributes: ContainerAttributes
 	setAttributes: any
 	direction: 'top' | 'bottom' | 'left' | 'right'
+	colors: Color[]
 }
 
-function BorderStyle({ attributes, setAttributes, direction }: Props) {
+function BorderStyle({ attributes, setAttributes, direction, colors }: Props) {
 	const attribute = attributes.border[direction]
 
 	const labels = {
@@ -55,6 +57,7 @@ function BorderStyle({ attributes, setAttributes, direction }: Props) {
 				style={{
 					marginRight: '3px',
 				}}
+				colors={colors}
 			/>
 			<UnitControl
 				label={__('Offset', 'maes-domain')}

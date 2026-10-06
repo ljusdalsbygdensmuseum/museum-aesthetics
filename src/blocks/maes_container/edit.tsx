@@ -15,6 +15,7 @@ import {
 	InnerBlocks,
 	InspectorControls,
 	useBlockProps,
+	useSettings,
 } from '@wordpress/block-editor'
 
 /**
@@ -31,6 +32,7 @@ import { ContainerAttributes } from '../../types/container_types'
 import BorderStyle from '../../components/sidebar/maes-border-style'
 import MAESContainer from '../../components/maes-container'
 import FadeControl from '../../components/sidebar/maes-fade-control'
+import { Color } from '@wordpress/components/build-types/palette-edit/types'
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -44,6 +46,9 @@ export default function Edit({
 	attributes,
 	setAttributes,
 }: BlockEditProps<ContainerAttributes>) {
+	// could be refactored to work with multiple palettes
+	const colorPalette: Color[] = useSettings('color.palette.theme')[0]
+
 	return (
 		<>
 			<InspectorControls>
@@ -71,21 +76,25 @@ export default function Edit({
 							attributes={attributes}
 							setAttributes={setAttributes}
 							direction='top'
+							colors={colorPalette}
 						/>
 						<BorderStyle
 							attributes={attributes}
 							setAttributes={setAttributes}
 							direction='bottom'
+							colors={colorPalette}
 						/>
 						<BorderStyle
 							attributes={attributes}
 							setAttributes={setAttributes}
 							direction='left'
+							colors={colorPalette}
 						/>
 						<BorderStyle
 							attributes={attributes}
 							setAttributes={setAttributes}
 							direction='right'
+							colors={colorPalette}
 						/>
 					</Field.Root>
 				</PanelBody>
