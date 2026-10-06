@@ -22,11 +22,6 @@ function FadeControl({ attributes, setAttributes, direction }: Props) {
 	return (
 		<>
 			<ToggleControl
-				className={
-					attributes.fullWidth && direction === 'vertical'
-						? 'maes-disabled'
-						: ''
-				}
 				label={title}
 				checked={attribute.toggle ? attribute.toggle : false}
 				onChange={(value) => {

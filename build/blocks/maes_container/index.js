@@ -341,7 +341,6 @@ function FadeControl({
   const title = direction === 'horizontal' ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Fade horizontal', 'maes-domain') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Fade vertical', 'maes-domain');
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
-      className: attributes.fullWidth && direction === 'vertical' ? 'maes-disabled' : '',
       label: title,
       checked: attribute.toggle ? attribute.toggle : false,
       onChange: value => {
