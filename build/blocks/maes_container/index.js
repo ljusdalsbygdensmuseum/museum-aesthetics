@@ -339,19 +339,34 @@ function FadeControl({
 }) {
   const attribute = direction === 'horizontal' ? attributes.fade.horizontal : attributes.fade.vertical;
   const title = direction === 'horizontal' ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Fade horizontal', 'maes-domain') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Fade vertical', 'maes-domain');
-  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
-    className: attributes.fullWidth && direction === 'vertical' ? 'maes-disabled' : '',
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Fade vertical', 'maes-domain'),
-    checked: attribute.toggle ? attribute.toggle : false,
-    onChange: value => {
-      setAttributes({
-        fade: Object.assign(Object.assign({}, attributes.fade), {
-          [direction]: Object.assign(Object.assign({}, attribute), {
-            toggle: value
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+      className: attributes.fullWidth && direction === 'vertical' ? 'maes-disabled' : '',
+      label: title,
+      checked: attribute.toggle ? attribute.toggle : false,
+      onChange: value => {
+        setAttributes({
+          fade: Object.assign(Object.assign({}, attributes.fade), {
+            [direction]: Object.assign(Object.assign({}, attribute), {
+              toggle: value
+            })
           })
-        })
-      });
-    }
+        });
+      }
+    }), attribute.toggle && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Fade amount', 'maes-domain'),
+      withInputField: false,
+      value: attribute.width,
+      onChange: value => {
+        setAttributes({
+          fade: Object.assign(Object.assign({}, attributes.fade), {
+            [direction]: Object.assign(Object.assign({}, attribute), {
+              width: value
+            })
+          })
+        });
+      }
+    })]
   });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FadeControl);

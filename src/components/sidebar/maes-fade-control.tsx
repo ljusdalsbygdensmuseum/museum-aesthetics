@@ -1,4 +1,4 @@
-import { ToggleControl } from '@wordpress/components'
+import { RangeControl, ToggleControl } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 import { ContainerAttributes } from '../../types/container_types'
 
@@ -20,21 +20,40 @@ function FadeControl({ attributes, setAttributes, direction }: Props) {
 			: __('Fade vertical', 'maes-domain')
 
 	return (
-		<ToggleControl
-			className={
-				attributes.fullWidth && direction === 'vertical' ? 'maes-disabled' : ''
-			}
-			label={__('Fade vertical', 'maes-domain')}
-			checked={attribute.toggle ? attribute.toggle : false}
-			onChange={(value) => {
-				setAttributes({
-					fade: {
-						...attributes.fade,
-						[direction]: { ...attribute, toggle: value },
-					},
-				})
-			}}
-		/>
+		<>
+			<ToggleControl
+				className={
+					attributes.fullWidth && direction === 'vertical'
+						? 'maes-disabled'
+						: ''
+				}
+				label={title}
+				checked={attribute.toggle ? attribute.toggle : false}
+				onChange={(value) => {
+					setAttributes({
+						fade: {
+							...attributes.fade,
+							[direction]: { ...attribute, toggle: value },
+						},
+					})
+				}}
+			/>
+			{attribute.toggle && (
+				<RangeControl
+					label={__('Fade amount', 'maes-domain')}
+					withInputField={false}
+					value={attribute.width}
+					onChange={(value) => {
+						setAttributes({
+							fade: {
+								...attributes.fade,
+								[direction]: { ...attribute, width: value },
+							},
+						})
+					}}
+				/>
+			)}
+		</>
 	)
 }
 
