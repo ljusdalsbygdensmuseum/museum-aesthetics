@@ -7,6 +7,7 @@ interface Props {
 
 function MAESContainer({ attributes, children }: Props) {
 	const border = attributes.border
+	const fade = attributes.fade
 
 	const offset = {
 		top: border.top.offset ? border.top.offset : 0,
@@ -50,6 +51,28 @@ function MAESContainer({ attributes, children }: Props) {
 					borderBottomStyle: border.bottom.border?.style,
 
 					...widthStyle,
+
+					maskImage: `${
+						fade.horizontal.toggle
+							? `linear-gradient(
+								90deg,
+								rgba(0, 0, 0, 0) 0%,
+								rgba(0, 0, 0, 1) ${fade.horizontal.width / 2}%,
+								rgba(0, 0, 0, 1) ${100 - fade.horizontal.width / 2}%,
+								rgba(0, 0, 0, 0) 100%
+							)`
+							: ``
+					}${fade.horizontal.toggle && fade.vertical.toggle ? ',' : ''} ${
+						fade.vertical.toggle
+							? `linear-gradient(
+								rgba(0, 0, 0, 0) 0%,
+								rgba(0, 0, 0, 1) ${fade.vertical.width / 2}%,
+								rgba(0, 0, 0, 1) ${100 - fade.vertical.width / 2}%,
+								rgba(0, 0, 0, 0) 100%
+							)`
+							: ``
+					}`,
+					maskComposite: 'intersect',
 				}}
 			></div>
 		</div>

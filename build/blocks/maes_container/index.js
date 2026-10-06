@@ -203,6 +203,7 @@ function MAESContainer({
 }) {
   var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
   const border = attributes.border;
+  const fade = attributes.fade;
   const offset = {
     top: border.top.offset ? border.top.offset : 0,
     bottom: border.bottom.offset ? border.bottom.offset : 0,
@@ -223,7 +224,7 @@ function MAESContainer({
     className: 'maes-container__container',
     children: [children, (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: `maes-container__background ${attributes.fullWidth && `maes-container__fullwidth`}`,
-      style: Object.assign({
+      style: Object.assign(Object.assign({
         top: offset.top,
         bottom: offset.bottom,
         borderTopWidth: (_g = border.top.border) === null || _g === void 0 ? void 0 : _g.width,
@@ -232,7 +233,21 @@ function MAESContainer({
         borderBottomWidth: (_k = border.bottom.border) === null || _k === void 0 ? void 0 : _k.width,
         borderBottomColor: (_l = border.bottom.border) === null || _l === void 0 ? void 0 : _l.color,
         borderBottomStyle: (_m = border.bottom.border) === null || _m === void 0 ? void 0 : _m.style
-      }, widthStyle)
+      }, widthStyle), {
+        maskImage: `${fade.horizontal.toggle ? `linear-gradient(
+								90deg,
+								rgba(0, 0, 0, 0) 0%,
+								rgba(0, 0, 0, 1) ${fade.horizontal.width / 2}%,
+								rgba(0, 0, 0, 1) ${100 - fade.horizontal.width / 2}%,
+								rgba(0, 0, 0, 0) 100%
+							)` : ``}${fade.horizontal.toggle && fade.vertical.toggle ? ',' : ''} ${fade.vertical.toggle ? `linear-gradient(
+								rgba(0, 0, 0, 0) 0%,
+								rgba(0, 0, 0, 1) ${fade.vertical.width / 2}%,
+								rgba(0, 0, 0, 1) ${100 - fade.vertical.width / 2}%,
+								rgba(0, 0, 0, 0) 100%
+							)` : ``}`,
+        maskComposite: 'intersect'
+      })
     })]
   });
 }
