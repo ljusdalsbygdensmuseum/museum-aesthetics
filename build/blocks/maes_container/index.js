@@ -196,37 +196,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-
 
 function MAESContainer({
   attributes,
   children
 }) {
   var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
-  const containerRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
-  const [height, setHeight] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
-  const [width, setWidth] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
-    if (containerRef.current) {
-      setHeight(containerRef.current.getBoundingClientRect().height);
-      setWidth(containerRef.current.getBoundingClientRect().width);
-    }
-  }, []);
   const border = attributes.border;
   const offset = {
-    top: border.top.offset ? parseFloat(border.top.offset.toString()) : 0,
-    bottom: border.bottom.offset ? parseFloat(border.bottom.offset.toString()) : 0,
-    left: border.left.offset ? parseFloat(border.left.offset.toString()) : 0,
-    right: border.right.offset ? parseFloat(border.right.offset.toString()) : 0
+    top: border.top.offset ? border.top.offset : 0,
+    bottom: border.bottom.offset ? border.bottom.offset : 0,
+    left: border.left.offset ? border.left.offset : 0,
+    right: border.right.offset ? border.right.offset : 0
   };
-  const renderdHeight = height - offset.top - offset.bottom;
-  const renderdWidth = width - offset.left - offset.right;
   const widthStyle = attributes.fullWidth ? null : {
-    width: renderdWidth + 'px',
-    left: offset.left + 'px',
-    right: offset.right + 'px',
+    left: offset.left,
+    right: offset.right,
     borderLeftWidth: (_a = border.left.border) === null || _a === void 0 ? void 0 : _a.width,
     borderLeftColor: (_b = border.left.border) === null || _b === void 0 ? void 0 : _b.color,
     borderLeftStyle: (_c = border.left.border) === null || _c === void 0 ? void 0 : _c.style,
@@ -236,13 +221,11 @@ function MAESContainer({
   };
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: 'maes-container__container',
-    ref: containerRef,
     children: [children, (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: `maes-container__background ${attributes.fullWidth && `maes-container__fullwidth`}`,
       style: Object.assign({
-        height: renderdHeight + 'px',
-        top: offset.top + 'px',
-        bottom: offset.bottom + 'px',
+        top: offset.top,
+        bottom: offset.bottom,
         borderTopWidth: (_g = border.top.border) === null || _g === void 0 ? void 0 : _g.width,
         borderTopColor: (_h = border.top.border) === null || _h === void 0 ? void 0 : _h.color,
         borderTopStyle: (_j = border.top.border) === null || _j === void 0 ? void 0 : _j.style,

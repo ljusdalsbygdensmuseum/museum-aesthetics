@@ -1,6 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
 import { ContainerAttributes } from '../types/container_types'
-import { transform } from 'zod/index.cjs'
 
 interface Props {
 	attributes: ContainerAttributes
@@ -8,37 +6,20 @@ interface Props {
 }
 
 function MAESContainer({ attributes, children }: Props) {
-	const containerRef = useRef<HTMLDivElement>(null)
-	const [height, setHeight] = useState(0)
-	const [width, setWidth] = useState(0)
-
-	useEffect(() => {
-		if (containerRef.current) {
-			setHeight(containerRef.current.getBoundingClientRect().height)
-			setWidth(containerRef.current.getBoundingClientRect().width)
-		}
-	}, [])
-
 	const border = attributes.border
 
 	const offset = {
-		top: border.top.offset ? parseFloat(border.top.offset.toString()) : 0,
-		bottom: border.bottom.offset
-			? parseFloat(border.bottom.offset.toString())
-			: 0,
-		left: border.left.offset ? parseFloat(border.left.offset.toString()) : 0,
-		right: border.right.offset ? parseFloat(border.right.offset.toString()) : 0,
+		top: border.top.offset ? border.top.offset : 0,
+		bottom: border.bottom.offset ? border.bottom.offset : 0,
+		left: border.left.offset ? border.left.offset : 0,
+		right: border.right.offset ? border.right.offset : 0,
 	}
-
-	const renderdHeight = height - offset.top - offset.bottom
-	const renderdWidth = width - offset.left - offset.right
 
 	const widthStyle = attributes.fullWidth
 		? null
 		: {
-				width: renderdWidth + 'px',
-				left: offset.left + 'px',
-				right: offset.right + 'px',
+				left: offset.left,
+				right: offset.right,
 
 				borderLeftWidth: border.left.border?.width,
 				borderLeftColor: border.left.border?.color,
@@ -50,16 +31,15 @@ function MAESContainer({ attributes, children }: Props) {
 		  }
 
 	return (
-		<div className='maes-container__container' ref={containerRef}>
+		<div className='maes-container__container'>
 			{children}
 			<div
 				className={`maes-container__background ${
 					attributes.fullWidth && `maes-container__fullwidth`
 				}`}
 				style={{
-					height: renderdHeight + 'px',
-					top: offset.top + 'px',
-					bottom: offset.bottom + 'px',
+					top: offset.top,
+					bottom: offset.bottom,
 
 					borderTopWidth: border.top.border?.width,
 					borderTopColor: border.top.border?.color,
