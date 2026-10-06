@@ -32,6 +32,7 @@ export const ContainerAttributesSchema = z.object({
 		vertical: FadeAttributeSchema,
 	}),
 	fullWidth: z.boolean(),
+	opacity: z.number(),
 	gradientBackground: z.boolean(),
 	background: z.string(),
 })

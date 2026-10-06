@@ -40,6 +40,7 @@ function MAESContainer({ attributes, children }: Props) {
 				}`}
 				style={{
 					background: attributes.background,
+					opacity: attributes.opacity / 100,
 
 					top: offset.top,
 					bottom: offset.bottom,

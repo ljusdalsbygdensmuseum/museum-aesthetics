@@ -44,6 +44,7 @@ function MAESContainer({
       className: `maes-container__background ${attributes.fullWidth && `maes-container__fullwidth`}`,
       style: Object.assign(Object.assign({
         background: attributes.background,
+        opacity: attributes.opacity / 100,
         top: offset.top,
         bottom: offset.bottom,
         borderTopWidth: (_g = border.top.border) === null || _g === void 0 ? void 0 : _g.width,

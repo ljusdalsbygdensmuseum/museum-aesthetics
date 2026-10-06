@@ -29,6 +29,7 @@ import {
 	ColorPalette,
 	GradientPicker,
 	PanelBody,
+	RangeControl,
 	ToggleControl,
 } from '@wordpress/components'
 import { Field } from '@wordpress/ui'
@@ -65,6 +66,14 @@ export default function Edit({
 							onChange={(value) => {
 								setAttributes({ fullWidth: value })
 							}}
+						/>
+						<RangeControl
+							label={__('Opacity', 'maes-domain')}
+							value={attributes.opacity}
+							onChange={(value) => {
+								setAttributes({ opacity: value })
+							}}
+							initialPosition={100}
 						/>
 						<Field.VisualLabel>
 							{__('Background', 'maes-domain')}

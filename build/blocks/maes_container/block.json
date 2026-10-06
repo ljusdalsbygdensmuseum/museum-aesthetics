@@ -178,6 +178,10 @@
       "type": "boolean",
       "default": false
     },
+    "opacity": {
+      "type": "number",
+      "default": 100
+    },
     "gradientBackground": {
       "type": "boolean",
       "default": false
