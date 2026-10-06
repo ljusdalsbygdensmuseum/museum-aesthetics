@@ -55,6 +55,14 @@ export default function Edit({
 	// could be refactored to work with multiple palettes
 	const colorPalette: Color[] = useSettings('color.palette.theme')[0]
 
+	const gradientPalette = colorPalette.map((color) => {
+		return {
+			name: color.name,
+			slug: color.slug + '-gradient',
+			gradient: `linear-gradient(0deg, ${color.color} 0%, transparent 100%)`,
+		}
+	})
+
 	return (
 		<>
 			<InspectorControls>
@@ -100,6 +108,7 @@ export default function Edit({
 								onChange={(value) => {
 									setAttributes({ background: value })
 								}}
+								gradients={gradientPalette}
 							/>
 						)}
 						<FadeControl

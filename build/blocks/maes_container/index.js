@@ -66,6 +66,13 @@ function Edit({
 }) {
   // could be refactored to work with multiple palettes
   const colorPalette = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useSettings)('color.palette.theme')[0];
+  const gradientPalette = colorPalette.map(color => {
+    return {
+      name: color.name,
+      slug: color.slug + '-gradient',
+      gradient: `linear-gradient(0deg, ${color.color} 0%, transparent 100%)`
+    };
+  });
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
       children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
@@ -112,7 +119,8 @@ function Edit({
               setAttributes({
                 background: value
               });
-            }
+            },
+            gradients: gradientPalette
           }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_fade_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
             attributes: attributes,
             setAttributes: setAttributes,
