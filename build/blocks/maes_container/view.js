@@ -2,6 +2,78 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/components/maes-container.tsx"
+/*!*******************************************!*\
+  !*** ./src/components/maes-container.tsx ***!
+  \*******************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+
+function MAESContainer({
+  attributes,
+  children
+}) {
+  var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
+  const border = attributes.border;
+  const fade = attributes.fade;
+  const offset = {
+    top: border.top.offset ? border.top.offset : 0,
+    bottom: border.bottom.offset ? border.bottom.offset : 0,
+    left: border.left.offset ? border.left.offset : 0,
+    right: border.right.offset ? border.right.offset : 0
+  };
+  const widthStyle = attributes.fullWidth ? null : {
+    left: offset.left,
+    right: offset.right,
+    borderLeftWidth: (_a = border.left.border) === null || _a === void 0 ? void 0 : _a.width,
+    borderLeftColor: (_b = border.left.border) === null || _b === void 0 ? void 0 : _b.color,
+    borderLeftStyle: (_c = border.left.border) === null || _c === void 0 ? void 0 : _c.style,
+    borderRightWidth: (_d = border.right.border) === null || _d === void 0 ? void 0 : _d.width,
+    borderRightColor: (_e = border.right.border) === null || _e === void 0 ? void 0 : _e.color,
+    borderRightStyle: (_f = border.right.border) === null || _f === void 0 ? void 0 : _f.style
+  };
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    className: 'maes-container__container',
+    children: [children, (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: `maes-container__background ${attributes.fullWidth && `maes-container__fullwidth`}`,
+      style: Object.assign(Object.assign({
+        background: attributes.background,
+        top: offset.top,
+        bottom: offset.bottom,
+        borderTopWidth: (_g = border.top.border) === null || _g === void 0 ? void 0 : _g.width,
+        borderTopColor: (_h = border.top.border) === null || _h === void 0 ? void 0 : _h.color,
+        borderTopStyle: (_j = border.top.border) === null || _j === void 0 ? void 0 : _j.style,
+        borderBottomWidth: (_k = border.bottom.border) === null || _k === void 0 ? void 0 : _k.width,
+        borderBottomColor: (_l = border.bottom.border) === null || _l === void 0 ? void 0 : _l.color,
+        borderBottomStyle: (_m = border.bottom.border) === null || _m === void 0 ? void 0 : _m.style
+      }, widthStyle), {
+        maskImage: `${fade.horizontal.toggle ? `linear-gradient(
+								90deg,
+								rgba(0, 0, 0, 0) 0%,
+								rgba(0, 0, 0, 1) ${fade.horizontal.width / 2}%,
+								rgba(0, 0, 0, 1) ${100 - fade.horizontal.width / 2}%,
+								rgba(0, 0, 0, 0) 100%
+							)` : ``}${fade.horizontal.toggle && fade.vertical.toggle ? ',' : ''} ${fade.vertical.toggle ? `linear-gradient(
+								rgba(0, 0, 0, 0) 0%,
+								rgba(0, 0, 0, 1) ${fade.vertical.width / 2}%,
+								rgba(0, 0, 0, 1) ${100 - fade.vertical.width / 2}%,
+								rgba(0, 0, 0, 0) 100%
+							)` : ``}`,
+        maskComposite: 'intersect'
+      })
+    })]
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MAESContainer);
+
+/***/ },
+
 /***/ "react/jsx-runtime"
 /*!**********************************!*\
   !*** external "ReactJSXRuntime" ***!
@@ -2846,21 +2918,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var dompurify__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! dompurify */ "./node_modules/dompurify/dist/purify.es.mjs");
+/* harmony import */ var _components_maes_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/maes-container */ "./src/components/maes-container.tsx");
+
 
 
 
 
 _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(() => {
-  const elements = document.querySelectorAll('.wp-block-maes-collage-banner');
+  const elements = document.querySelectorAll('.wp-block-maes-container');
   elements.forEach(element => {
     const root = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.createRoot)(element);
     // needs to fix typesafety
+    let attributes = JSON.parse(element.dataset.attributes);
     const nested = dompurify__WEBPACK_IMPORTED_MODULE_3__["default"].sanitize(element.innerHTML);
     root.render((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-      children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        dangerouslySetInnerHTML: {
-          __html: nested
-        }
+      children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_maes_container__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        attributes: attributes,
+        children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          dangerouslySetInnerHTML: {
+            __html: nested
+          }
+        })
       })
     }));
   });
