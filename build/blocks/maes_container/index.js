@@ -89,8 +89,15 @@ function Edit({
                 gradientBackground: value
               });
             }
-          }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ColorPalette, {
+          }), !attributes.gradientBackground && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ColorPalette, {
             colors: colorPalette,
+            value: attributes.background,
+            onChange: value => {
+              setAttributes({
+                background: value
+              });
+            }
+          }), attributes.gradientBackground && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.GradientPicker, {
             value: attributes.background,
             onChange: value => {
               setAttributes({

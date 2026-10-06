@@ -25,7 +25,12 @@ import {
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss'
-import { ColorPalette, PanelBody, ToggleControl } from '@wordpress/components'
+import {
+	ColorPalette,
+	GradientPicker,
+	PanelBody,
+	ToggleControl,
+} from '@wordpress/components'
 import { Field } from '@wordpress/ui'
 import { BlockEditProps } from '@wordpress/blocks'
 import { ContainerAttributes } from '../../types/container_types'
@@ -71,13 +76,23 @@ export default function Edit({
 								setAttributes({ gradientBackground: value })
 							}}
 						/>
-						<ColorPalette
-							colors={colorPalette}
-							value={attributes.background}
-							onChange={(value) => {
-								setAttributes({ background: value })
-							}}
-						/>
+						{!attributes.gradientBackground && (
+							<ColorPalette
+								colors={colorPalette}
+								value={attributes.background}
+								onChange={(value) => {
+									setAttributes({ background: value })
+								}}
+							/>
+						)}
+						{attributes.gradientBackground && (
+							<GradientPicker
+								value={attributes.background}
+								onChange={(value) => {
+									setAttributes({ background: value })
+								}}
+							/>
+						)}
 						<FadeControl
 							attributes={attributes}
 							setAttributes={setAttributes}
