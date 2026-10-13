@@ -259,6 +259,7 @@ function MAESContainer({
   var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
   const border = attributes.border;
   const fade = attributes.fade;
+  const shadow = attributes.shadow;
   const offset = {
     top: border.top.offset ? border.top.offset : 0,
     bottom: border.bottom.offset ? border.bottom.offset : 0,
@@ -280,7 +281,7 @@ function MAESContainer({
     children: [children, (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: 'maes-container__background-wrap',
       style: {
-        filter: 'drop-shadow(0px 6px 10px #fff)'
+        filter: `drop-shadow(${shadow.horizontal} ${shadow.vertical} ${shadow.size} ${shadow.color})`
       },
       children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
         className: `maes-container__background ${attributes.fullWidth && `maes-container__fullwidth`}`,

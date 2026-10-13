@@ -8,6 +8,7 @@ interface Props {
 function MAESContainer({ attributes, children }: Props) {
 	const border = attributes.border
 	const fade = attributes.fade
+	const shadow = attributes.shadow
 
 	const offset = {
 		top: border.top.offset ? border.top.offset : 0,
@@ -36,7 +37,9 @@ function MAESContainer({ attributes, children }: Props) {
 			{children}
 			<div
 				className='maes-container__background-wrap'
-				style={{ filter: 'drop-shadow(0px 6px 10px #fff)' }}
+				style={{
+					filter: `drop-shadow(${shadow.horizontal} ${shadow.vertical} ${shadow.size} ${shadow.color})`,
+				}}
 			>
 				<div
 					className={`maes-container__background ${
