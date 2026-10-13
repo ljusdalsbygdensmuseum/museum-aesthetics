@@ -427,7 +427,7 @@ function DropShadowControl({
     children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_3__.FieldsetLegend, {
       children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Drop Shadow', 'maes-domain')
     }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Use drop shadow'),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Use drop shadow', 'maes-domain'),
       checked: shadow.toggle,
       onChange: value => setAttributes({
         shadow: Object.assign(Object.assign({}, shadow), {
@@ -439,9 +439,9 @@ function DropShadowControl({
         children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
           children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
             label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Horizontal', 'maes-domain'),
-            value: attributes.shadow.horizontal,
+            value: shadow.horizontal,
             onChange: value => setAttributes({
-              shadow: Object.assign(Object.assign({}, attributes.shadow), {
+              shadow: Object.assign(Object.assign({}, shadow), {
                 horizontal: value
               })
             }),
@@ -451,26 +451,26 @@ function DropShadowControl({
           })
         }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
           label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Vertical', 'maes-domain'),
-          value: attributes.shadow.vertical,
+          value: shadow.vertical,
           onChange: value => setAttributes({
-            shadow: Object.assign(Object.assign({}, attributes.shadow), {
+            shadow: Object.assign(Object.assign({}, shadow), {
               vertical: value
             })
           })
         })]
       }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
         label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Blur', 'maes-domain'),
-        value: attributes.shadow.size,
+        value: shadow.size,
         onChange: value => setAttributes({
-          shadow: Object.assign(Object.assign({}, attributes.shadow), {
+          shadow: Object.assign(Object.assign({}, shadow), {
             size: value
           })
         })
       }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ColorPalette, {
         colors: colors,
-        value: attributes.shadow.color,
+        value: shadow.color,
         onChange: value => setAttributes({
-          shadow: Object.assign(Object.assign({}, attributes.shadow), {
+          shadow: Object.assign(Object.assign({}, shadow), {
             color: value
           })
         })

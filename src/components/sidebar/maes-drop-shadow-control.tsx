@@ -25,7 +25,7 @@ function DropShadowControl({ attributes, setAttributes, colors }: Props) {
 		<Fieldset.Root>
 			<Fieldset.Legend>{__('Drop Shadow', 'maes-domain')}</Fieldset.Legend>
 			<ToggleControl
-				label={__('Use drop shadow')}
+				label={__('Use drop shadow', 'maes-domain')}
 				checked={shadow.toggle}
 				onChange={(value) =>
 					setAttributes({
@@ -42,11 +42,11 @@ function DropShadowControl({ attributes, setAttributes, colors }: Props) {
 						<div>
 							<UnitControl
 								label={__('Horizontal', 'maes-domain')}
-								value={attributes.shadow.horizontal}
+								value={shadow.horizontal}
 								onChange={(value) =>
 									setAttributes({
 										shadow: {
-											...attributes.shadow,
+											...shadow,
 											horizontal: value,
 										},
 									})
@@ -58,11 +58,11 @@ function DropShadowControl({ attributes, setAttributes, colors }: Props) {
 						</div>
 						<UnitControl
 							label={__('Vertical', 'maes-domain')}
-							value={attributes.shadow.vertical}
+							value={shadow.vertical}
 							onChange={(value) =>
 								setAttributes({
 									shadow: {
-										...attributes.shadow,
+										...shadow,
 										vertical: value,
 									},
 								})
@@ -72,11 +72,11 @@ function DropShadowControl({ attributes, setAttributes, colors }: Props) {
 
 					<UnitControl
 						label={__('Blur', 'maes-domain')}
-						value={attributes.shadow.size}
+						value={shadow.size}
 						onChange={(value) =>
 							setAttributes({
 								shadow: {
-									...attributes.shadow,
+									...shadow,
 									size: value,
 								},
 							})
@@ -84,11 +84,11 @@ function DropShadowControl({ attributes, setAttributes, colors }: Props) {
 					/>
 					<ColorPalette
 						colors={colors}
-						value={attributes.shadow.color}
+						value={shadow.color}
 						onChange={(value) =>
 							setAttributes({
 								shadow: {
-									...attributes.shadow,
+									...shadow,
 									color: value,
 								},
 							})
