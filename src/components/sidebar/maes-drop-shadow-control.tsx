@@ -1,7 +1,9 @@
 import {
 	ColorPalette,
+	PanelRow,
 	__experimentalUnitControl as UnitControl,
 } from '@wordpress/components'
+import { Fieldset } from '@wordpress/ui'
 import { __ } from '@wordpress/i18n'
 
 import { Color } from '@wordpress/components/build-types/palette-edit/types'
@@ -15,34 +17,44 @@ interface Props {
 }
 
 function DropShadowControl({ attributes, setAttributes, colors }: Props) {
+	// first unit control inside a div to remove programicaly added margin bottom, bit of a hack but works
 	return (
-		<div>
+		<Fieldset.Root>
+			<Fieldset.Legend>{__('Drop Shadow', 'maes-domain')}</Fieldset.Legend>
+			<PanelRow>
+				<div>
+					<UnitControl
+						label={__('Horizontal', 'maes-domain')}
+						value={attributes.shadow.horizontal}
+						onChange={(value) =>
+							setAttributes({
+								shadow: {
+									...attributes.shadow,
+									horizontal: value,
+								},
+							})
+						}
+						style={{
+							marginRight: '3px',
+						}}
+					/>
+				</div>
+				<UnitControl
+					label={__('Vertical', 'maes-domain')}
+					value={attributes.shadow.vertical}
+					onChange={(value) =>
+						setAttributes({
+							shadow: {
+								...attributes.shadow,
+								vertical: value,
+							},
+						})
+					}
+				/>
+			</PanelRow>
+
 			<UnitControl
-				label={__('Horizontal', 'maes-domain')}
-				value={attributes.shadow.horizontal}
-				onChange={(value) =>
-					setAttributes({
-						shadow: {
-							...attributes.shadow,
-							horizontal: value,
-						},
-					})
-				}
-			/>
-			<UnitControl
-				label={__('Vertical', 'maes-domain')}
-				value={attributes.shadow.vertical}
-				onChange={(value) =>
-					setAttributes({
-						shadow: {
-							...attributes.shadow,
-							vertical: value,
-						},
-					})
-				}
-			/>
-			<UnitControl
-				label={__('Size', 'maes-domain')}
+				label={__('Blur', 'maes-domain')}
 				value={attributes.shadow.size}
 				onChange={(value) =>
 					setAttributes({
@@ -65,7 +77,7 @@ function DropShadowControl({ attributes, setAttributes, colors }: Props) {
 					})
 				}
 			/>
-		</div>
+		</Fieldset.Root>
 	)
 }
 
