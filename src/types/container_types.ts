@@ -31,6 +31,12 @@ export const ContainerAttributesSchema = z.object({
 		horizontal: FadeAttributeSchema,
 		vertical: FadeAttributeSchema,
 	}),
+	shadow: z.object({
+		horizontal: z.union([z.string(), z.undefined()]),
+		vertical: z.union([z.string(), z.undefined()]),
+		size: z.union([z.string(), z.undefined()]),
+		color: z.union([z.string(), z.undefined()]),
+	}),
 	fullWidth: z.boolean(),
 	opacity: z.number(),
 	gradientBackground: z.boolean(),
