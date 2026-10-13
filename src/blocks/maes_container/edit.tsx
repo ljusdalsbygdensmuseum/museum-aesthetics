@@ -39,6 +39,7 @@ import BorderStyle from '../../components/sidebar/maes-border-style'
 import MAESContainer from '../../components/maes-container'
 import FadeControl from '../../components/sidebar/maes-fade-control'
 import { Color } from '@wordpress/components/build-types/palette-edit/types'
+import DropShadowControl from '../../components/sidebar/maes-drop-shadow-control'
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -144,6 +145,11 @@ export default function Edit({
 							attributes={attributes}
 							setAttributes={setAttributes}
 							direction='right'
+							colors={colorPalette}
+						/>
+						<DropShadowControl
+							attributes={attributes}
+							setAttributes={setAttributes}
 							colors={colorPalette}
 						/>
 					</Field.Root>

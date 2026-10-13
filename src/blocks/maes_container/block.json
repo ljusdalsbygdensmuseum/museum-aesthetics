@@ -174,6 +174,29 @@
 				}
 			}
 		},
+		"shadow": {
+			"type": "object",
+			"properties": {
+				"horizontal": {
+					"type": "string"
+				},
+				"vertical": {
+					"type": "string"
+				},
+				"size": {
+					"type": "string"
+				},
+				"color": {
+					"type": "string"
+				}
+			},
+			"default": {
+				"horizontal": "0px",
+				"vertical": "0px",
+				"size": "0px",
+				"color": "#000"
+			}
+		},
 		"fullWidth": {
 			"type": "boolean",
 			"default": false
