@@ -177,6 +177,9 @@
     "shadow": {
       "type": "object",
       "properties": {
+        "toggle": {
+          "type": "boolean"
+        },
         "horizontal": {
           "type": "string"
         },
@@ -191,6 +194,7 @@
         }
       },
       "default": {
+        "toggle": false,
         "horizontal": "0px",
         "vertical": "0px",
         "size": "0px",

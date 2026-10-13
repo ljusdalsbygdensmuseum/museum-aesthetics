@@ -280,9 +280,9 @@ function MAESContainer({
     className: 'maes-container__container',
     children: [children, (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: 'maes-container__background-wrap',
-      style: {
+      style: shadow.toggle ? {
         filter: `drop-shadow(${shadow.horizontal} ${shadow.vertical} ${shadow.size} ${shadow.color})`
-      },
+      } : {},
       children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
         className: `maes-container__background ${attributes.fullWidth && `maes-container__fullwidth`}`,
         style: Object.assign(Object.assign({
@@ -421,49 +421,60 @@ function DropShadowControl({
   setAttributes,
   colors
 }) {
+  const shadow = attributes.shadow;
   // first unit control inside a div to remove programicaly added margin bottom, bit of a hack but works
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_2__.FieldsetRoot, {
     children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_3__.FieldsetLegend, {
       children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Drop Shadow', 'maes-domain')
-    }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
-      children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Horizontal', 'maes-domain'),
-          value: attributes.shadow.horizontal,
+    }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Use drop shadow'),
+      checked: shadow.toggle,
+      onChange: value => setAttributes({
+        shadow: Object.assign(Object.assign({}, shadow), {
+          toggle: value
+        })
+      })
+    }), shadow.toggle && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+      children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
+        children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Horizontal', 'maes-domain'),
+            value: attributes.shadow.horizontal,
+            onChange: value => setAttributes({
+              shadow: Object.assign(Object.assign({}, attributes.shadow), {
+                horizontal: value
+              })
+            }),
+            style: {
+              marginRight: '3px'
+            }
+          })
+        }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Vertical', 'maes-domain'),
+          value: attributes.shadow.vertical,
           onChange: value => setAttributes({
             shadow: Object.assign(Object.assign({}, attributes.shadow), {
-              horizontal: value
+              vertical: value
             })
-          }),
-          style: {
-            marginRight: '3px'
-          }
-        })
+          })
+        })]
       }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Vertical', 'maes-domain'),
-        value: attributes.shadow.vertical,
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Blur', 'maes-domain'),
+        value: attributes.shadow.size,
         onChange: value => setAttributes({
           shadow: Object.assign(Object.assign({}, attributes.shadow), {
-            vertical: value
+            size: value
+          })
+        })
+      }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ColorPalette, {
+        colors: colors,
+        value: attributes.shadow.color,
+        onChange: value => setAttributes({
+          shadow: Object.assign(Object.assign({}, attributes.shadow), {
+            color: value
           })
         })
       })]
-    }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Blur', 'maes-domain'),
-      value: attributes.shadow.size,
-      onChange: value => setAttributes({
-        shadow: Object.assign(Object.assign({}, attributes.shadow), {
-          size: value
-        })
-      })
-    }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ColorPalette, {
-      colors: colors,
-      value: attributes.shadow.color,
-      onChange: value => setAttributes({
-        shadow: Object.assign(Object.assign({}, attributes.shadow), {
-          color: value
-        })
-      })
     })]
   });
 }
@@ -3695,7 +3706,7 @@ function r(e){var t,f,n="";if("string"==typeof e||"number"==typeof e)n+=e;else i
   \**********************************************/
 (module) {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"maes/container","version":"0.1.0","title":"Styled container","category":"design","icon":"tablet","description":"A styled and animated container","attributes":{"border":{"type":"object","properties":{"top":{"type":"object","properties":{"border":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}},"offset":{"type":"string"}}},"bottom":{"type":"object","properties":{"border":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}},"offset":{"type":"string"}}},"left":{"type":"object","properties":{"border":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}},"offset":{"type":"string"}}},"right":{"type":"object","properties":{"border":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}},"offset":{"type":"string"}}}},"default":{"top":{"border":{"width":null,"color":null,"style":null},"offset":null},"bottom":{"border":{"width":null,"color":null,"style":null},"offset":null},"left":{"border":{"width":null,"color":null,"style":null},"offset":null},"right":{"border":{"width":null,"color":null,"style":null},"offset":null}}},"fade":{"type":"object","properties":{"horizontal":{"type":"object","properties":{"toggle":{"type":"boolean","default":false},"width":{"type":"number"}}},"vertical":{"type":"object","properties":{"toggle":{"type":"boolean","default":false},"width":{"type":"number"}}}},"default":{"horizontal":{"toggle":false,"width":15},"vertical":{"toggle":false,"width":15}}},"shadow":{"type":"object","properties":{"horizontal":{"type":"string"},"vertical":{"type":"string"},"size":{"type":"string"},"color":{"type":"string"}},"default":{"horizontal":"0px","vertical":"0px","size":"0px","color":"#000"}},"fullWidth":{"type":"boolean","default":false},"opacity":{"type":"number","default":100},"gradientBackground":{"type":"boolean","default":false},"background":{"type":"string","default":""}},"example":{},"supports":{"html":false},"textdomain":"maes-domain","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"maes/container","version":"0.1.0","title":"Styled container","category":"design","icon":"tablet","description":"A styled and animated container","attributes":{"border":{"type":"object","properties":{"top":{"type":"object","properties":{"border":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}},"offset":{"type":"string"}}},"bottom":{"type":"object","properties":{"border":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}},"offset":{"type":"string"}}},"left":{"type":"object","properties":{"border":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}},"offset":{"type":"string"}}},"right":{"type":"object","properties":{"border":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}},"offset":{"type":"string"}}}},"default":{"top":{"border":{"width":null,"color":null,"style":null},"offset":null},"bottom":{"border":{"width":null,"color":null,"style":null},"offset":null},"left":{"border":{"width":null,"color":null,"style":null},"offset":null},"right":{"border":{"width":null,"color":null,"style":null},"offset":null}}},"fade":{"type":"object","properties":{"horizontal":{"type":"object","properties":{"toggle":{"type":"boolean","default":false},"width":{"type":"number"}}},"vertical":{"type":"object","properties":{"toggle":{"type":"boolean","default":false},"width":{"type":"number"}}}},"default":{"horizontal":{"toggle":false,"width":15},"vertical":{"toggle":false,"width":15}}},"shadow":{"type":"object","properties":{"toggle":{"type":"boolean"},"horizontal":{"type":"string"},"vertical":{"type":"string"},"size":{"type":"string"},"color":{"type":"string"}},"default":{"toggle":false,"horizontal":"0px","vertical":"0px","size":"0px","color":"#000"}},"fullWidth":{"type":"boolean","default":false},"opacity":{"type":"number","default":100},"gradientBackground":{"type":"boolean","default":false},"background":{"type":"string","default":""}},"example":{},"supports":{"html":false},"textdomain":"maes-domain","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
 
 /***/ }
 

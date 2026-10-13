@@ -43,9 +43,9 @@ function MAESContainer({
     className: 'maes-container__container',
     children: [children, (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: 'maes-container__background-wrap',
-      style: {
+      style: shadow.toggle ? {
         filter: `drop-shadow(${shadow.horizontal} ${shadow.vertical} ${shadow.size} ${shadow.color})`
-      },
+      } : {},
       children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
         className: `maes-container__background ${attributes.fullWidth && `maes-container__fullwidth`}`,
         style: Object.assign(Object.assign({

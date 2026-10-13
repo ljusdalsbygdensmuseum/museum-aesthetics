@@ -32,6 +32,7 @@ export const ContainerAttributesSchema = z.object({
 		vertical: FadeAttributeSchema,
 	}),
 	shadow: z.object({
+		toggle: z.boolean(),
 		horizontal: z.union([z.string(), z.undefined()]),
 		vertical: z.union([z.string(), z.undefined()]),
 		size: z.union([z.string(), z.undefined()]),

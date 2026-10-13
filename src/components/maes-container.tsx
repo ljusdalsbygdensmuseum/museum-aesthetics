@@ -37,9 +37,13 @@ function MAESContainer({ attributes, children }: Props) {
 			{children}
 			<div
 				className='maes-container__background-wrap'
-				style={{
-					filter: `drop-shadow(${shadow.horizontal} ${shadow.vertical} ${shadow.size} ${shadow.color})`,
-				}}
+				style={
+					shadow.toggle
+						? {
+								filter: `drop-shadow(${shadow.horizontal} ${shadow.vertical} ${shadow.size} ${shadow.color})`,
+						  }
+						: {}
+				}
 			>
 				<div
 					className={`maes-container__background ${
