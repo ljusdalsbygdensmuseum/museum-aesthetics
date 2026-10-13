@@ -10,8 +10,12 @@
 .wp-block-maes-container .maes-container__container {
   position: relative;
 }
-.wp-block-maes-container .maes-container__container .maes-container__background {
+.wp-block-maes-container .maes-container__container .maes-container__background-wrap {
   z-index: -1;
+  position: absolute;
+  inset: 0;
+}
+.wp-block-maes-container .maes-container__container .maes-container__background {
   position: absolute;
 }
 .wp-block-maes-container .maes-container__container .maes-container__fullwidth {

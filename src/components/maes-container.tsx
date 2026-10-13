@@ -35,49 +35,54 @@ function MAESContainer({ attributes, children }: Props) {
 		<div className='maes-container__container'>
 			{children}
 			<div
-				className={`maes-container__background ${
-					attributes.fullWidth && `maes-container__fullwidth`
-				}`}
-				style={{
-					background: attributes.background,
-					opacity: attributes.opacity / 100,
+				className='maes-container__background-wrap'
+				style={{ filter: 'drop-shadow(0px 6px 10px #fff)' }}
+			>
+				<div
+					className={`maes-container__background ${
+						attributes.fullWidth && `maes-container__fullwidth`
+					}`}
+					style={{
+						background: attributes.background,
+						opacity: attributes.opacity / 100,
 
-					top: offset.top,
-					bottom: offset.bottom,
+						top: offset.top,
+						bottom: offset.bottom,
 
-					borderTopWidth: border.top.border?.width,
-					borderTopColor: border.top.border?.color,
-					borderTopStyle: border.top.border?.style,
+						borderTopWidth: border.top.border?.width,
+						borderTopColor: border.top.border?.color,
+						borderTopStyle: border.top.border?.style,
 
-					borderBottomWidth: border.bottom.border?.width,
-					borderBottomColor: border.bottom.border?.color,
-					borderBottomStyle: border.bottom.border?.style,
+						borderBottomWidth: border.bottom.border?.width,
+						borderBottomColor: border.bottom.border?.color,
+						borderBottomStyle: border.bottom.border?.style,
 
-					...widthStyle,
+						...widthStyle,
 
-					maskImage: `${
-						fade.horizontal.toggle
-							? `linear-gradient(
+						maskImage: `${
+							fade.horizontal.toggle
+								? `linear-gradient(
 								90deg,
 								rgba(0, 0, 0, 0) 0%,
 								rgba(0, 0, 0, 1) ${fade.horizontal.width / 2}%,
 								rgba(0, 0, 0, 1) ${100 - fade.horizontal.width / 2}%,
 								rgba(0, 0, 0, 0) 100%
 							)`
-							: ``
-					}${fade.horizontal.toggle && fade.vertical.toggle ? ',' : ''} ${
-						fade.vertical.toggle
-							? `linear-gradient(
+								: ``
+						}${fade.horizontal.toggle && fade.vertical.toggle ? ',' : ''} ${
+							fade.vertical.toggle
+								? `linear-gradient(
 								rgba(0, 0, 0, 0) 0%,
 								rgba(0, 0, 0, 1) ${fade.vertical.width / 2}%,
 								rgba(0, 0, 0, 1) ${100 - fade.vertical.width / 2}%,
 								rgba(0, 0, 0, 0) 100%
 							)`
-							: ``
-					}`,
-					maskComposite: 'intersect',
-				}}
-			></div>
+								: ``
+						}`,
+						maskComposite: 'intersect',
+					}}
+				></div>
+			</div>
 		</div>
 	)
 }

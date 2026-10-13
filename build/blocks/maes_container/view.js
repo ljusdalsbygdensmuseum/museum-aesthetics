@@ -41,20 +41,25 @@ function MAESContainer({
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: 'maes-container__container',
     children: [children, (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-      className: `maes-container__background ${attributes.fullWidth && `maes-container__fullwidth`}`,
-      style: Object.assign(Object.assign({
-        background: attributes.background,
-        opacity: attributes.opacity / 100,
-        top: offset.top,
-        bottom: offset.bottom,
-        borderTopWidth: (_g = border.top.border) === null || _g === void 0 ? void 0 : _g.width,
-        borderTopColor: (_h = border.top.border) === null || _h === void 0 ? void 0 : _h.color,
-        borderTopStyle: (_j = border.top.border) === null || _j === void 0 ? void 0 : _j.style,
-        borderBottomWidth: (_k = border.bottom.border) === null || _k === void 0 ? void 0 : _k.width,
-        borderBottomColor: (_l = border.bottom.border) === null || _l === void 0 ? void 0 : _l.color,
-        borderBottomStyle: (_m = border.bottom.border) === null || _m === void 0 ? void 0 : _m.style
-      }, widthStyle), {
-        maskImage: `${fade.horizontal.toggle ? `linear-gradient(
+      className: 'maes-container__background-wrap',
+      style: {
+        filter: 'drop-shadow(0px 6px 10px #fff)'
+      },
+      children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        className: `maes-container__background ${attributes.fullWidth && `maes-container__fullwidth`}`,
+        style: Object.assign(Object.assign({
+          background: attributes.background,
+          opacity: attributes.opacity / 100,
+          top: offset.top,
+          bottom: offset.bottom,
+          borderTopWidth: (_g = border.top.border) === null || _g === void 0 ? void 0 : _g.width,
+          borderTopColor: (_h = border.top.border) === null || _h === void 0 ? void 0 : _h.color,
+          borderTopStyle: (_j = border.top.border) === null || _j === void 0 ? void 0 : _j.style,
+          borderBottomWidth: (_k = border.bottom.border) === null || _k === void 0 ? void 0 : _k.width,
+          borderBottomColor: (_l = border.bottom.border) === null || _l === void 0 ? void 0 : _l.color,
+          borderBottomStyle: (_m = border.bottom.border) === null || _m === void 0 ? void 0 : _m.style
+        }, widthStyle), {
+          maskImage: `${fade.horizontal.toggle ? `linear-gradient(
 								90deg,
 								rgba(0, 0, 0, 0) 0%,
 								rgba(0, 0, 0, 1) ${fade.horizontal.width / 2}%,
@@ -66,7 +71,8 @@ function MAESContainer({
 								rgba(0, 0, 0, 1) ${100 - fade.vertical.width / 2}%,
 								rgba(0, 0, 0, 0) 100%
 							)` : ``}`,
-        maskComposite: 'intersect'
+          maskComposite: 'intersect'
+        })
       })
     })]
   });
