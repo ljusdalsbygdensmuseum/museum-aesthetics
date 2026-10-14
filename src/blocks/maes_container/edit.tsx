@@ -138,34 +138,37 @@ export default function Edit({
 								direction='vertical'
 							/>
 						</Fieldset.Root>
-						<Field.VisualLabel>
-							{__('Background', 'maes-domain')}
-						</Field.VisualLabel>
-						<ToggleControl
-							label={__('Gradient background')}
-							checked={attributes.gradientBackground}
-							onChange={(value) => {
-								setAttributes({ gradientBackground: value })
-							}}
-						/>
-						{!attributes.gradientBackground && (
-							<ColorPalette
-								colors={colorPalette}
-								value={attributes.background}
+						<Fieldset.Root>
+							<Fieldset.Legend>
+								{__('Background', 'maes-domain')}
+							</Fieldset.Legend>
+							<ToggleControl
+								label={__('Gradient background')}
+								checked={attributes.gradientBackground}
 								onChange={(value) => {
-									setAttributes({ background: value })
+									setAttributes({ gradientBackground: value })
 								}}
 							/>
-						)}
-						{attributes.gradientBackground && (
-							<GradientPicker
-								value={attributes.background}
-								onChange={(value) => {
-									setAttributes({ background: value })
-								}}
-								gradients={gradientPalette}
-							/>
-						)}
+							{!attributes.gradientBackground && (
+								<ColorPalette
+									colors={colorPalette}
+									value={attributes.background}
+									onChange={(value) => {
+										setAttributes({ background: value })
+									}}
+								/>
+							)}
+							{attributes.gradientBackground && (
+								<GradientPicker
+									value={attributes.background}
+									onChange={(value) => {
+										setAttributes({ background: value })
+									}}
+									gradients={gradientPalette}
+								/>
+							)}
+						</Fieldset.Root>
+
 						<Fieldset.Root>
 							<Fieldset.Legend>{__('Border', 'maes-domain')}</Fieldset.Legend>
 							<BorderStyleControl
