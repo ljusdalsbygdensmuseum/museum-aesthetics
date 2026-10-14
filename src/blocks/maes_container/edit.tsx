@@ -33,7 +33,7 @@ import {
 	RangeControl,
 	ToggleControl,
 } from '@wordpress/components'
-import { Field, Fieldset } from '@wordpress/ui'
+import { Fieldset } from '@wordpress/ui'
 import { BlockEditProps } from '@wordpress/blocks'
 import { ContainerAttributes } from '../../types/container_types'
 import BorderStyleControl from '../../components/sidebar/maes-border-style-control'
@@ -70,139 +70,139 @@ export default function Edit({
 		<>
 			<InspectorControls>
 				<PanelBody title={__('Style', 'maes-domain')}>
-					<Field.Root>
-						<ToggleControl
-							label={__('Full width', 'maes-domain')}
-							checked={attributes.fullWidth}
-							onChange={(value) => {
-								setAttributes({ fullWidth: value })
-							}}
-						/>
-						<Fieldset.Root>
-							<Fieldset.Legend>{__('Offset', 'maes-domain')}</Fieldset.Legend>
-							<PanelRow>
-								<div
-									style={{
-										marginRight: '3px',
-									}}
-								>
-									<OffsetControl
-										attributes={attributes}
-										setAttributes={setAttributes}
-										direction='top'
-									/>
-								</div>
-								<OffsetControl
-									attributes={attributes}
-									setAttributes={setAttributes}
-									direction='bottom'
-								/>
-							</PanelRow>
-							<PanelRow>
-								<div
-									style={{
-										marginRight: '3px',
-									}}
-								>
-									<OffsetControl
-										attributes={attributes}
-										setAttributes={setAttributes}
-										direction='left'
-									/>
-								</div>
-								<OffsetControl
-									attributes={attributes}
-									setAttributes={setAttributes}
-									direction='right'
-								/>
-							</PanelRow>
-						</Fieldset.Root>
-						<RangeControl
-							label={__('Opacity', 'maes-domain')}
-							value={attributes.opacity}
-							onChange={(value) => {
-								setAttributes({ opacity: value })
-							}}
-							initialPosition={100}
-						/>
-						<Fieldset.Root>
-							<Fieldset.Legend>{__('Fade', 'maes-domain')}</Fieldset.Legend>
-							<FadeControl
-								attributes={attributes}
-								setAttributes={setAttributes}
-								direction='horizontal'
-							/>
-							<FadeControl
-								attributes={attributes}
-								setAttributes={setAttributes}
-								direction='vertical'
-							/>
-						</Fieldset.Root>
-						<Fieldset.Root>
-							<Fieldset.Legend>
-								{__('Background', 'maes-domain')}
-							</Fieldset.Legend>
-							<ToggleControl
-								label={__('Gradient background')}
-								checked={attributes.gradientBackground}
-								onChange={(value) => {
-									setAttributes({ gradientBackground: value })
+					<ToggleControl
+						label={__('Full width', 'maes-domain')}
+						checked={attributes.fullWidth}
+						onChange={(value) => {
+							setAttributes({ fullWidth: value })
+						}}
+					/>
+					<hr />
+					<Fieldset.Root>
+						<Fieldset.Legend>{__('Offset', 'maes-domain')}</Fieldset.Legend>
+						<PanelRow>
+							<div
+								style={{
+									marginRight: '3px',
 								}}
-							/>
-							{!attributes.gradientBackground && (
-								<ColorPalette
-									colors={colorPalette}
-									value={attributes.background}
-									onChange={(value) => {
-										setAttributes({ background: value })
-									}}
+							>
+								<OffsetControl
+									attributes={attributes}
+									setAttributes={setAttributes}
+									direction='top'
 								/>
-							)}
-							{attributes.gradientBackground && (
-								<GradientPicker
-									value={attributes.background}
-									onChange={(value) => {
-										setAttributes({ background: value })
-									}}
-									gradients={gradientPalette}
-								/>
-							)}
-						</Fieldset.Root>
-
-						<Fieldset.Root>
-							<Fieldset.Legend>{__('Border', 'maes-domain')}</Fieldset.Legend>
-							<BorderStyleControl
-								attributes={attributes}
-								setAttributes={setAttributes}
-								direction='top'
-								colors={colorPalette}
-							/>
-							<BorderStyleControl
+							</div>
+							<OffsetControl
 								attributes={attributes}
 								setAttributes={setAttributes}
 								direction='bottom'
-								colors={colorPalette}
 							/>
-							<BorderStyleControl
-								attributes={attributes}
-								setAttributes={setAttributes}
-								direction='left'
-								colors={colorPalette}
-							/>
-							<BorderStyleControl
+						</PanelRow>
+						<PanelRow>
+							<div
+								style={{
+									marginRight: '3px',
+								}}
+							>
+								<OffsetControl
+									attributes={attributes}
+									setAttributes={setAttributes}
+									direction='left'
+								/>
+							</div>
+							<OffsetControl
 								attributes={attributes}
 								setAttributes={setAttributes}
 								direction='right'
-								colors={colorPalette}
 							/>
-						</Fieldset.Root>
-
-						<DropShadowControl
+						</PanelRow>
+					</Fieldset.Root>
+					<hr />
+					<RangeControl
+						label={__('Opacity', 'maes-domain')}
+						value={attributes.opacity}
+						onChange={(value) => {
+							setAttributes({ opacity: value })
+						}}
+						initialPosition={100}
+					/>
+					<hr />
+					<Fieldset.Root>
+						<Fieldset.Legend>{__('Fade', 'maes-domain')}</Fieldset.Legend>
+						<FadeControl
 							attributes={attributes}
 							setAttributes={setAttributes}
+							direction='horizontal'
+						/>
+						<FadeControl
+							attributes={attributes}
+							setAttributes={setAttributes}
+							direction='vertical'
+						/>
+					</Fieldset.Root>
+					<hr />
+					<Fieldset.Root>
+						<Fieldset.Legend>{__('Background', 'maes-domain')}</Fieldset.Legend>
+						<ToggleControl
+							label={__('Gradient background')}
+							checked={attributes.gradientBackground}
+							onChange={(value) => {
+								setAttributes({ gradientBackground: value })
+							}}
+						/>
+						{!attributes.gradientBackground && (
+							<ColorPalette
+								colors={colorPalette}
+								value={attributes.background}
+								onChange={(value) => {
+									setAttributes({ background: value })
+								}}
+							/>
+						)}
+						{attributes.gradientBackground && (
+							<GradientPicker
+								value={attributes.background}
+								onChange={(value) => {
+									setAttributes({ background: value })
+								}}
+								gradients={gradientPalette}
+							/>
+						)}
+					</Fieldset.Root>
+					<hr />
+					<Fieldset.Root>
+						<Fieldset.Legend>{__('Border', 'maes-domain')}</Fieldset.Legend>
+						<BorderStyleControl
+							attributes={attributes}
+							setAttributes={setAttributes}
+							direction='top'
 							colors={colorPalette}
 						/>
-					</Field.Root>
+						<BorderStyleControl
+							attributes={attributes}
+							setAttributes={setAttributes}
+							direction='bottom'
+							colors={colorPalette}
+						/>
+						<BorderStyleControl
+							attributes={attributes}
+							setAttributes={setAttributes}
+							direction='left'
+							colors={colorPalette}
+						/>
+						<BorderStyleControl
+							attributes={attributes}
+							setAttributes={setAttributes}
+							direction='right'
+							colors={colorPalette}
+						/>
+					</Fieldset.Root>
+					<hr />
+					<DropShadowControl
+						attributes={attributes}
+						setAttributes={setAttributes}
+						colors={colorPalette}
+					/>
 				</PanelBody>
 			</InspectorControls>
 			<div {...useBlockProps()}>
