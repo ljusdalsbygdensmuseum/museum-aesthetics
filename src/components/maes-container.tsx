@@ -7,29 +7,23 @@ interface Props {
 
 function MAESContainer({ attributes, children }: Props) {
 	const border = attributes.border
+	const offset = attributes.offset
 	const fade = attributes.fade
 	const shadow = attributes.shadow
-
-	const offset = {
-		top: border.top.offset ? border.top.offset : 0,
-		bottom: border.bottom.offset ? border.bottom.offset : 0,
-		left: border.left.offset ? border.left.offset : 0,
-		right: border.right.offset ? border.right.offset : 0,
-	}
 
 	const widthStyle = attributes.fullWidth
 		? null
 		: {
-				left: offset.left,
-				right: offset.right,
+				left: offset.left ? offset.left : 0,
+				right: offset.right ? offset.right : 0,
 
-				borderLeftWidth: border.left.border?.width,
-				borderLeftColor: border.left.border?.color,
-				borderLeftStyle: border.left.border?.style,
+				borderLeftWidth: border.left?.width,
+				borderLeftColor: border.left?.color,
+				borderLeftStyle: border.left?.style,
 
-				borderRightWidth: border.right.border?.width,
-				borderRightColor: border.right.border?.color,
-				borderRightStyle: border.right.border?.style,
+				borderRightWidth: border.right?.width,
+				borderRightColor: border.right?.color,
+				borderRightStyle: border.right?.style,
 		  }
 
 	return (
@@ -53,16 +47,16 @@ function MAESContainer({ attributes, children }: Props) {
 						background: attributes.background,
 						opacity: attributes.opacity / 100,
 
-						top: offset.top,
-						bottom: offset.bottom,
+						top: offset.top ? offset.top : 0,
+						bottom: offset.bottom ? offset.bottom : 0,
 
-						borderTopWidth: border.top.border?.width,
-						borderTopColor: border.top.border?.color,
-						borderTopStyle: border.top.border?.style,
+						borderTopWidth: border.top?.width,
+						borderTopColor: border.top?.color,
+						borderTopStyle: border.top?.style,
 
-						borderBottomWidth: border.bottom.border?.width,
-						borderBottomColor: border.bottom.border?.color,
-						borderBottomStyle: border.bottom.border?.style,
+						borderBottomWidth: border.bottom?.width,
+						borderBottomColor: border.bottom?.color,
+						borderBottomStyle: border.bottom?.style,
 
 						...widthStyle,
 
