@@ -14,15 +14,13 @@ function FadeControl({ attributes, setAttributes, direction }: Props) {
 		direction === 'horizontal'
 			? attributes.fade.horizontal
 			: attributes.fade.vertical
-	const title =
-		direction === 'horizontal'
-			? __('Fade horizontal', 'maes-domain')
-			: __('Fade vertical', 'maes-domain')
-
 	return (
 		<>
 			<ToggleControl
-				label={title}
+				label={__(
+					direction.charAt(0).toUpperCase() + direction.slice(1),
+					'maes-domain',
+				)}
 				checked={attribute.toggle ? attribute.toggle : false}
 				onChange={(value) => {
 					setAttributes({
@@ -35,7 +33,7 @@ function FadeControl({ attributes, setAttributes, direction }: Props) {
 			/>
 			{attribute.toggle && (
 				<RangeControl
-					label={__('Fade amount', 'maes-domain')}
+					label={__('Fade size', 'maes-domain')}
 					withInputField={false}
 					value={attribute.width}
 					onChange={(value) => {

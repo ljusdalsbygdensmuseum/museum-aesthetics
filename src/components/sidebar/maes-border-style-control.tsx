@@ -1,8 +1,4 @@
-import {
-	BorderControl,
-	PanelRow,
-	__experimentalUnitControl as UnitControl,
-} from '@wordpress/components'
+import { BorderControl, PanelRow } from '@wordpress/components'
 import { ContainerAttributes } from '../../types/container_types'
 import { __ } from '@wordpress/i18n'
 import { Color } from '@wordpress/components/build-types/palette-edit/types'
@@ -15,23 +11,13 @@ interface Props {
 	colors: Color[]
 }
 
-function BorderStyle({ attributes, setAttributes, direction, colors }: Props) {
+function BorderStyleControl({
+	attributes,
+	setAttributes,
+	direction,
+	colors,
+}: Props) {
 	const attribute = attributes.border[direction]
-
-	const labels = {
-		top: {
-			border: __('Top border', 'maes-domain'),
-		},
-		bottom: {
-			border: __('Bottom border', 'maes-domain'),
-		},
-		left: {
-			border: __('Left border', 'maes-domain'),
-		},
-		right: {
-			border: __('Right border', 'maes-domain'),
-		},
-	}
 
 	return (
 		<PanelRow
@@ -42,7 +28,10 @@ function BorderStyle({ attributes, setAttributes, direction, colors }: Props) {
 			}
 		>
 			<BorderControl
-				label={labels[direction].border}
+				label={__(
+					direction.charAt(0).toUpperCase() + direction.slice(1),
+					'maes-domain',
+				)}
 				value={attribute}
 				enableAlpha
 				enableStyle
@@ -60,4 +49,4 @@ function BorderStyle({ attributes, setAttributes, direction, colors }: Props) {
 	)
 }
 
-export default BorderStyle
+export default BorderStyleControl

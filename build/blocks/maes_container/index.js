@@ -25,7 +25,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_ui__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/ui */ "./node_modules/@wordpress/ui/build-module/form/primitives/field/visual-label.mjs");
 /* harmony import */ var _wordpress_ui__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/ui */ "./node_modules/@wordpress/ui/build-module/form/primitives/fieldset/root.mjs");
 /* harmony import */ var _wordpress_ui__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @wordpress/ui */ "./node_modules/@wordpress/ui/build-module/form/primitives/fieldset/legend.mjs");
-/* harmony import */ var _components_sidebar_maes_border_style__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/sidebar/maes-border-style */ "./src/components/sidebar/maes-border-style.tsx");
+/* harmony import */ var _components_sidebar_maes_border_style_control__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/sidebar/maes-border-style-control */ "./src/components/sidebar/maes-border-style-control.tsx");
 /* harmony import */ var _components_maes_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/maes-container */ "./src/components/maes-container.tsx");
 /* harmony import */ var _components_sidebar_maes_fade_control__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/sidebar/maes-fade-control */ "./src/components/sidebar/maes-fade-control.tsx");
 /* harmony import */ var _components_sidebar_maes_drop_shadow_control__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/sidebar/maes-drop-shadow-control */ "./src/components/sidebar/maes-drop-shadow-control.tsx");
@@ -135,6 +135,18 @@ function Edit({
               });
             },
             initialPosition: 100
+          }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_7__.FieldsetRoot, {
+            children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_8__.FieldsetLegend, {
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Fade', 'maes-domain')
+            }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_fade_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
+              attributes: attributes,
+              setAttributes: setAttributes,
+              direction: 'horizontal'
+            }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_fade_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
+              attributes: attributes,
+              setAttributes: setAttributes,
+              direction: 'vertical'
+            })]
           }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_6__.VisualLabel, {
             children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background', 'maes-domain')
           }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ToggleControl, {
@@ -161,34 +173,30 @@ function Edit({
               });
             },
             gradients: gradientPalette
-          }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_fade_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
-            attributes: attributes,
-            setAttributes: setAttributes,
-            direction: 'horizontal'
-          }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_fade_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
-            attributes: attributes,
-            setAttributes: setAttributes,
-            direction: 'vertical'
-          }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style__WEBPACK_IMPORTED_MODULE_9__["default"], {
-            attributes: attributes,
-            setAttributes: setAttributes,
-            direction: 'top',
-            colors: colorPalette
-          }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style__WEBPACK_IMPORTED_MODULE_9__["default"], {
-            attributes: attributes,
-            setAttributes: setAttributes,
-            direction: 'bottom',
-            colors: colorPalette
-          }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style__WEBPACK_IMPORTED_MODULE_9__["default"], {
-            attributes: attributes,
-            setAttributes: setAttributes,
-            direction: 'left',
-            colors: colorPalette
-          }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style__WEBPACK_IMPORTED_MODULE_9__["default"], {
-            attributes: attributes,
-            setAttributes: setAttributes,
-            direction: 'right',
-            colors: colorPalette
+          }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_7__.FieldsetRoot, {
+            children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_8__.FieldsetLegend, {
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Border', 'maes-domain')
+            }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
+              attributes: attributes,
+              setAttributes: setAttributes,
+              direction: 'top',
+              colors: colorPalette
+            }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
+              attributes: attributes,
+              setAttributes: setAttributes,
+              direction: 'bottom',
+              colors: colorPalette
+            }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
+              attributes: attributes,
+              setAttributes: setAttributes,
+              direction: 'left',
+              colors: colorPalette
+            }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style_control__WEBPACK_IMPORTED_MODULE_9__["default"], {
+              attributes: attributes,
+              setAttributes: setAttributes,
+              direction: 'right',
+              colors: colorPalette
+            })]
           }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_drop_shadow_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
             attributes: attributes,
             setAttributes: setAttributes,
@@ -357,10 +365,10 @@ function MAESContainer({
 
 /***/ },
 
-/***/ "./src/components/sidebar/maes-border-style.tsx"
-/*!******************************************************!*\
-  !*** ./src/components/sidebar/maes-border-style.tsx ***!
-  \******************************************************/
+/***/ "./src/components/sidebar/maes-border-style-control.tsx"
+/*!**************************************************************!*\
+  !*** ./src/components/sidebar/maes-border-style-control.tsx ***!
+  \**************************************************************/
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -376,31 +384,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function BorderStyle({
+function BorderStyleControl({
   attributes,
   setAttributes,
   direction,
   colors
 }) {
   const attribute = attributes.border[direction];
-  const labels = {
-    top: {
-      border: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Top border', 'maes-domain')
-    },
-    bottom: {
-      border: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Bottom border', 'maes-domain')
-    },
-    left: {
-      border: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Left border', 'maes-domain')
-    },
-    right: {
-      border: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Right border', 'maes-domain')
-    }
-  };
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
     className: attributes.fullWidth && (direction === 'left' || direction === 'right') ? 'maes-disabled' : '',
     children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.BorderControl, {
-      label: labels[direction].border,
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)(direction.charAt(0).toUpperCase() + direction.slice(1), 'maes-domain'),
       value: attribute,
       enableAlpha: true,
       enableStyle: true,
@@ -413,7 +407,7 @@ function BorderStyle({
     })
   });
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BorderStyle);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BorderStyleControl);
 
 /***/ },
 
@@ -530,10 +524,9 @@ function FadeControl({
   direction
 }) {
   const attribute = direction === 'horizontal' ? attributes.fade.horizontal : attributes.fade.vertical;
-  const title = direction === 'horizontal' ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Fade horizontal', 'maes-domain') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Fade vertical', 'maes-domain');
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
-      label: title,
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)(direction.charAt(0).toUpperCase() + direction.slice(1), 'maes-domain'),
       checked: attribute.toggle ? attribute.toggle : false,
       onChange: value => {
         setAttributes({
@@ -545,7 +538,7 @@ function FadeControl({
         });
       }
     }), attribute.toggle && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Fade amount', 'maes-domain'),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Fade size', 'maes-domain'),
       withInputField: false,
       value: attribute.width,
       onChange: value => {

@@ -36,7 +36,7 @@ import {
 import { Field, Fieldset } from '@wordpress/ui'
 import { BlockEditProps } from '@wordpress/blocks'
 import { ContainerAttributes } from '../../types/container_types'
-import BorderStyle from '../../components/sidebar/maes-border-style'
+import BorderStyleControl from '../../components/sidebar/maes-border-style-control'
 import MAESContainer from '../../components/maes-container'
 import FadeControl from '../../components/sidebar/maes-fade-control'
 import { Color } from '@wordpress/components/build-types/palette-edit/types'
@@ -117,7 +117,6 @@ export default function Edit({
 								/>
 							</PanelRow>
 						</Fieldset.Root>
-
 						<RangeControl
 							label={__('Opacity', 'maes-domain')}
 							value={attributes.opacity}
@@ -126,6 +125,19 @@ export default function Edit({
 							}}
 							initialPosition={100}
 						/>
+						<Fieldset.Root>
+							<Fieldset.Legend>{__('Fade', 'maes-domain')}</Fieldset.Legend>
+							<FadeControl
+								attributes={attributes}
+								setAttributes={setAttributes}
+								direction='horizontal'
+							/>
+							<FadeControl
+								attributes={attributes}
+								setAttributes={setAttributes}
+								direction='vertical'
+							/>
+						</Fieldset.Root>
 						<Field.VisualLabel>
 							{__('Background', 'maes-domain')}
 						</Field.VisualLabel>
@@ -154,41 +166,34 @@ export default function Edit({
 								gradients={gradientPalette}
 							/>
 						)}
-						<FadeControl
-							attributes={attributes}
-							setAttributes={setAttributes}
-							direction='horizontal'
-						/>
-						<FadeControl
-							attributes={attributes}
-							setAttributes={setAttributes}
-							direction='vertical'
-						/>
+						<Fieldset.Root>
+							<Fieldset.Legend>{__('Border', 'maes-domain')}</Fieldset.Legend>
+							<BorderStyleControl
+								attributes={attributes}
+								setAttributes={setAttributes}
+								direction='top'
+								colors={colorPalette}
+							/>
+							<BorderStyleControl
+								attributes={attributes}
+								setAttributes={setAttributes}
+								direction='bottom'
+								colors={colorPalette}
+							/>
+							<BorderStyleControl
+								attributes={attributes}
+								setAttributes={setAttributes}
+								direction='left'
+								colors={colorPalette}
+							/>
+							<BorderStyleControl
+								attributes={attributes}
+								setAttributes={setAttributes}
+								direction='right'
+								colors={colorPalette}
+							/>
+						</Fieldset.Root>
 
-						<BorderStyle
-							attributes={attributes}
-							setAttributes={setAttributes}
-							direction='top'
-							colors={colorPalette}
-						/>
-						<BorderStyle
-							attributes={attributes}
-							setAttributes={setAttributes}
-							direction='bottom'
-							colors={colorPalette}
-						/>
-						<BorderStyle
-							attributes={attributes}
-							setAttributes={setAttributes}
-							direction='left'
-							colors={colorPalette}
-						/>
-						<BorderStyle
-							attributes={attributes}
-							setAttributes={setAttributes}
-							direction='right'
-							colors={colorPalette}
-						/>
 						<DropShadowControl
 							attributes={attributes}
 							setAttributes={setAttributes}
