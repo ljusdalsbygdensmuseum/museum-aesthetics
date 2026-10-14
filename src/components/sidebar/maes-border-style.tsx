@@ -43,14 +43,14 @@ function BorderStyle({ attributes, setAttributes, direction, colors }: Props) {
 		>
 			<BorderControl
 				label={labels[direction].border}
-				value={attribute.border}
+				value={attribute}
 				enableAlpha
 				enableStyle
 				onChange={(value) =>
 					setAttributes({
 						border: {
 							...attributes.border,
-							[direction]: { ...attribute, border: value },
+							[direction]: value,
 						},
 					})
 				}

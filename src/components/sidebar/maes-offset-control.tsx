@@ -10,7 +10,7 @@ interface Props {
 }
 
 function OffsetControl({ attributes, setAttributes, direction }: Props) {
-	const attribute = attributes.border[direction]
+	const attribute = attributes.offset[direction]
 	return (
 		<>
 			<UnitControl
@@ -18,12 +18,12 @@ function OffsetControl({ attributes, setAttributes, direction }: Props) {
 					direction.charAt(0).toUpperCase() + direction.slice(1),
 					'maes-domain',
 				)}
-				value={attribute.offset}
+				value={attribute}
 				onChange={(value) =>
 					setAttributes({
 						border: {
-							...attributes.border,
-							[direction]: { ...attribute, offset: value },
+							...attributes.offset,
+							[direction]: value,
 						},
 					})
 				}

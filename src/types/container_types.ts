@@ -10,11 +10,6 @@ export const BorderSchema = z.union([
 	z.undefined(),
 ])
 
-export const BorderAttributeSchema = z.object({
-	border: BorderSchema,
-	offset: z.union([z.string(), z.number(), z.undefined()]),
-})
-
 export const FadeAttributeSchema = z.object({
 	toggle: z.boolean(),
 	width: z.number(),
@@ -22,10 +17,16 @@ export const FadeAttributeSchema = z.object({
 
 export const ContainerAttributesSchema = z.object({
 	border: z.object({
-		top: BorderAttributeSchema,
-		bottom: BorderAttributeSchema,
-		left: BorderAttributeSchema,
-		right: BorderAttributeSchema,
+		top: BorderSchema,
+		bottom: BorderSchema,
+		left: BorderSchema,
+		right: BorderSchema,
+	}),
+	offset: z.object({
+		top: z.union([z.string(), z.undefined()]),
+		bottom: z.union([z.string(), z.undefined()]),
+		left: z.union([z.string(), z.undefined()]),
+		right: z.union([z.string(), z.undefined()]),
 	}),
 	fade: z.object({
 		horizontal: FadeAttributeSchema,

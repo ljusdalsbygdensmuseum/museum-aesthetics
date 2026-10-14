@@ -14,21 +14,13 @@
 				"top": {
 					"type": "object",
 					"properties": {
-						"border": {
-							"type": "object",
-							"properties": {
-								"width": {
-									"type": "string"
-								},
-								"color": {
-									"type": "string"
-								},
-								"style": {
-									"type": "string"
-								}
-							}
+						"width": {
+							"type": "string"
 						},
-						"offset": {
+						"color": {
+							"type": "string"
+						},
+						"style": {
 							"type": "string"
 						}
 					}
@@ -36,21 +28,13 @@
 				"bottom": {
 					"type": "object",
 					"properties": {
-						"border": {
-							"type": "object",
-							"properties": {
-								"width": {
-									"type": "string"
-								},
-								"color": {
-									"type": "string"
-								},
-								"style": {
-									"type": "string"
-								}
-							}
+						"width": {
+							"type": "string"
 						},
-						"offset": {
+						"color": {
+							"type": "string"
+						},
+						"style": {
 							"type": "string"
 						}
 					}
@@ -58,21 +42,13 @@
 				"left": {
 					"type": "object",
 					"properties": {
-						"border": {
-							"type": "object",
-							"properties": {
-								"width": {
-									"type": "string"
-								},
-								"color": {
-									"type": "string"
-								},
-								"style": {
-									"type": "string"
-								}
-							}
+						"width": {
+							"type": "string"
 						},
-						"offset": {
+						"color": {
+							"type": "string"
+						},
+						"style": {
 							"type": "string"
 						}
 					}
@@ -80,21 +56,13 @@
 				"right": {
 					"type": "object",
 					"properties": {
-						"border": {
-							"type": "object",
-							"properties": {
-								"width": {
-									"type": "string"
-								},
-								"color": {
-									"type": "string"
-								},
-								"style": {
-									"type": "string"
-								}
-							}
+						"width": {
+							"type": "string"
 						},
-						"offset": {
+						"color": {
+							"type": "string"
+						},
+						"style": {
 							"type": "string"
 						}
 					}
@@ -102,37 +70,48 @@
 			},
 			"default": {
 				"top": {
-					"border": {
-						"width": null,
-						"color": null,
-						"style": null
-					},
-					"offset": null
+					"width": null,
+					"color": null,
+					"style": null
 				},
 				"bottom": {
-					"border": {
-						"width": null,
-						"color": null,
-						"style": null
-					},
-					"offset": null
+					"width": null,
+					"color": null,
+					"style": null
 				},
 				"left": {
-					"border": {
-						"width": null,
-						"color": null,
-						"style": null
-					},
-					"offset": null
+					"width": null,
+					"color": null,
+					"style": null
 				},
 				"right": {
-					"border": {
-						"width": null,
-						"color": null,
-						"style": null
-					},
-					"offset": null
+					"width": null,
+					"color": null,
+					"style": null
 				}
+			}
+		},
+		"offset": {
+			"type": "object",
+			"properties": {
+				"top": {
+					"type": "string"
+				},
+				"bottom": {
+					"type": "string"
+				},
+				"left": {
+					"type": "string"
+				},
+				"right": {
+					"type": "string"
+				}
+			},
+			"default": {
+				"top": null,
+				"bottom": null,
+				"left": null,
+				"right": null
 			}
 		},
 		"fade": {

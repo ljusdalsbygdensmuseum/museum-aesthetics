@@ -401,14 +401,12 @@ function BorderStyle({
     className: attributes.fullWidth && (direction === 'left' || direction === 'right') ? 'maes-disabled' : '',
     children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.BorderControl, {
       label: labels[direction].border,
-      value: attribute.border,
+      value: attribute,
       enableAlpha: true,
       enableStyle: true,
       onChange: value => setAttributes({
         border: Object.assign(Object.assign({}, attributes.border), {
-          [direction]: Object.assign(Object.assign({}, attribute), {
-            border: value
-          })
+          [direction]: value
         })
       }),
       colors: colors
@@ -590,16 +588,14 @@ function OffsetControl({
   setAttributes,
   direction
 }) {
-  const attribute = attributes.border[direction];
+  const attribute = attributes.offset[direction];
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)(direction.charAt(0).toUpperCase() + direction.slice(1), 'maes-domain'),
-      value: attribute.offset,
+      value: attribute,
       onChange: value => setAttributes({
-        border: Object.assign(Object.assign({}, attributes.border), {
-          [direction]: Object.assign(Object.assign({}, attribute), {
-            offset: value
-          })
+        border: Object.assign(Object.assign({}, attributes.offset), {
+          [direction]: value
         })
       }),
       className: attributes.fullWidth && (direction === 'left' || direction === 'right') ? 'maes-disabled' : ''
@@ -3775,7 +3771,7 @@ function r(e){var t,f,n="";if("string"==typeof e||"number"==typeof e)n+=e;else i
   \**********************************************/
 (module) {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"maes/container","version":"0.1.0","title":"Styled container","category":"design","icon":"tablet","description":"A styled and animated container","attributes":{"border":{"type":"object","properties":{"top":{"type":"object","properties":{"border":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}},"offset":{"type":"string"}}},"bottom":{"type":"object","properties":{"border":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}},"offset":{"type":"string"}}},"left":{"type":"object","properties":{"border":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}},"offset":{"type":"string"}}},"right":{"type":"object","properties":{"border":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}},"offset":{"type":"string"}}}},"default":{"top":{"border":{"width":null,"color":null,"style":null},"offset":null},"bottom":{"border":{"width":null,"color":null,"style":null},"offset":null},"left":{"border":{"width":null,"color":null,"style":null},"offset":null},"right":{"border":{"width":null,"color":null,"style":null},"offset":null}}},"fade":{"type":"object","properties":{"horizontal":{"type":"object","properties":{"toggle":{"type":"boolean","default":false},"width":{"type":"number"}}},"vertical":{"type":"object","properties":{"toggle":{"type":"boolean","default":false},"width":{"type":"number"}}}},"default":{"horizontal":{"toggle":false,"width":15},"vertical":{"toggle":false,"width":15}}},"shadow":{"type":"object","properties":{"toggle":{"type":"boolean"},"horizontal":{"type":"string"},"vertical":{"type":"string"},"size":{"type":"string"},"color":{"type":"string"}},"default":{"toggle":false,"horizontal":"0px","vertical":"0px","size":"0px","color":"#000"}},"fullWidth":{"type":"boolean","default":false},"opacity":{"type":"number","default":100},"gradientBackground":{"type":"boolean","default":false},"background":{"type":"string","default":""}},"example":{},"supports":{"html":false},"textdomain":"maes-domain","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"maes/container","version":"0.1.0","title":"Styled container","category":"design","icon":"tablet","description":"A styled and animated container","attributes":{"border":{"type":"object","properties":{"top":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}},"bottom":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}},"left":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}},"right":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}}},"default":{"top":{"width":null,"color":null,"style":null},"bottom":{"width":null,"color":null,"style":null},"left":{"width":null,"color":null,"style":null},"right":{"width":null,"color":null,"style":null}}},"offset":{"type":"object","properties":{"top":{"type":"string"},"bottom":{"type":"string"},"left":{"type":"string"},"right":{"type":"string"}},"default":{"top":null,"bottom":null,"left":null,"right":null}},"fade":{"type":"object","properties":{"horizontal":{"type":"object","properties":{"toggle":{"type":"boolean","default":false},"width":{"type":"number"}}},"vertical":{"type":"object","properties":{"toggle":{"type":"boolean","default":false},"width":{"type":"number"}}}},"default":{"horizontal":{"toggle":false,"width":15},"vertical":{"toggle":false,"width":15}}},"shadow":{"type":"object","properties":{"toggle":{"type":"boolean"},"horizontal":{"type":"string"},"vertical":{"type":"string"},"size":{"type":"string"},"color":{"type":"string"}},"default":{"toggle":false,"horizontal":"0px","vertical":"0px","size":"0px","color":"#000"}},"fullWidth":{"type":"boolean","default":false},"opacity":{"type":"number","default":100},"gradientBackground":{"type":"boolean","default":false},"background":{"type":"string","default":""}},"example":{},"supports":{"html":false},"textdomain":"maes-domain","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
 
 /***/ }
 
