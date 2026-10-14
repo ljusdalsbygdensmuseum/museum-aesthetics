@@ -21,7 +21,7 @@ function OffsetControl({ attributes, setAttributes, direction }: Props) {
 				value={attribute}
 				onChange={(value) =>
 					setAttributes({
-						border: {
+						offset: {
 							...attributes.offset,
 							[direction]: value,
 						},

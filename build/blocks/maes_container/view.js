@@ -21,23 +21,18 @@ function MAESContainer({
 }) {
   var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
   const border = attributes.border;
+  const offset = attributes.offset;
   const fade = attributes.fade;
   const shadow = attributes.shadow;
-  const offset = {
-    top: border.top.offset ? border.top.offset : 0,
-    bottom: border.bottom.offset ? border.bottom.offset : 0,
-    left: border.left.offset ? border.left.offset : 0,
-    right: border.right.offset ? border.right.offset : 0
-  };
   const widthStyle = attributes.fullWidth ? null : {
-    left: offset.left,
-    right: offset.right,
-    borderLeftWidth: (_a = border.left.border) === null || _a === void 0 ? void 0 : _a.width,
-    borderLeftColor: (_b = border.left.border) === null || _b === void 0 ? void 0 : _b.color,
-    borderLeftStyle: (_c = border.left.border) === null || _c === void 0 ? void 0 : _c.style,
-    borderRightWidth: (_d = border.right.border) === null || _d === void 0 ? void 0 : _d.width,
-    borderRightColor: (_e = border.right.border) === null || _e === void 0 ? void 0 : _e.color,
-    borderRightStyle: (_f = border.right.border) === null || _f === void 0 ? void 0 : _f.style
+    left: offset.left ? offset.left : 0,
+    right: offset.right ? offset.right : 0,
+    borderLeftWidth: (_a = border.left) === null || _a === void 0 ? void 0 : _a.width,
+    borderLeftColor: (_b = border.left) === null || _b === void 0 ? void 0 : _b.color,
+    borderLeftStyle: (_c = border.left) === null || _c === void 0 ? void 0 : _c.style,
+    borderRightWidth: (_d = border.right) === null || _d === void 0 ? void 0 : _d.width,
+    borderRightColor: (_e = border.right) === null || _e === void 0 ? void 0 : _e.color,
+    borderRightStyle: (_f = border.right) === null || _f === void 0 ? void 0 : _f.style
   };
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: 'maes-container__container',
@@ -51,14 +46,14 @@ function MAESContainer({
         style: Object.assign(Object.assign({
           background: attributes.background,
           opacity: attributes.opacity / 100,
-          top: offset.top,
-          bottom: offset.bottom,
-          borderTopWidth: (_g = border.top.border) === null || _g === void 0 ? void 0 : _g.width,
-          borderTopColor: (_h = border.top.border) === null || _h === void 0 ? void 0 : _h.color,
-          borderTopStyle: (_j = border.top.border) === null || _j === void 0 ? void 0 : _j.style,
-          borderBottomWidth: (_k = border.bottom.border) === null || _k === void 0 ? void 0 : _k.width,
-          borderBottomColor: (_l = border.bottom.border) === null || _l === void 0 ? void 0 : _l.color,
-          borderBottomStyle: (_m = border.bottom.border) === null || _m === void 0 ? void 0 : _m.style
+          top: offset.top ? offset.top : 0,
+          bottom: offset.bottom ? offset.bottom : 0,
+          borderTopWidth: (_g = border.top) === null || _g === void 0 ? void 0 : _g.width,
+          borderTopColor: (_h = border.top) === null || _h === void 0 ? void 0 : _h.color,
+          borderTopStyle: (_j = border.top) === null || _j === void 0 ? void 0 : _j.style,
+          borderBottomWidth: (_k = border.bottom) === null || _k === void 0 ? void 0 : _k.width,
+          borderBottomColor: (_l = border.bottom) === null || _l === void 0 ? void 0 : _l.color,
+          borderBottomStyle: (_m = border.bottom) === null || _m === void 0 ? void 0 : _m.style
         }, widthStyle), {
           maskImage: `${fade.horizontal.toggle ? `linear-gradient(
 								90deg,
