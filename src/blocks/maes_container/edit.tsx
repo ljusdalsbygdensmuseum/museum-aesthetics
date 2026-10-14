@@ -29,10 +29,11 @@ import {
 	ColorPalette,
 	GradientPicker,
 	PanelBody,
+	PanelRow,
 	RangeControl,
 	ToggleControl,
 } from '@wordpress/components'
-import { Field } from '@wordpress/ui'
+import { Field, Fieldset } from '@wordpress/ui'
 import { BlockEditProps } from '@wordpress/blocks'
 import { ContainerAttributes } from '../../types/container_types'
 import BorderStyle from '../../components/sidebar/maes-border-style'
@@ -40,6 +41,7 @@ import MAESContainer from '../../components/maes-container'
 import FadeControl from '../../components/sidebar/maes-fade-control'
 import { Color } from '@wordpress/components/build-types/palette-edit/types'
 import DropShadowControl from '../../components/sidebar/maes-drop-shadow-control'
+import OffsetControl from '../../components/sidebar/maes-offset-control'
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -76,6 +78,46 @@ export default function Edit({
 								setAttributes({ fullWidth: value })
 							}}
 						/>
+						<Fieldset.Root>
+							<Fieldset.Legend>{__('Offset', 'maes-domain')}</Fieldset.Legend>
+							<PanelRow>
+								<div
+									style={{
+										marginRight: '3px',
+									}}
+								>
+									<OffsetControl
+										attributes={attributes}
+										setAttributes={setAttributes}
+										direction='top'
+									/>
+								</div>
+								<OffsetControl
+									attributes={attributes}
+									setAttributes={setAttributes}
+									direction='bottom'
+								/>
+							</PanelRow>
+							<PanelRow>
+								<div
+									style={{
+										marginRight: '3px',
+									}}
+								>
+									<OffsetControl
+										attributes={attributes}
+										setAttributes={setAttributes}
+										direction='left'
+									/>
+								</div>
+								<OffsetControl
+									attributes={attributes}
+									setAttributes={setAttributes}
+									direction='right'
+								/>
+							</PanelRow>
+						</Fieldset.Root>
+
 						<RangeControl
 							label={__('Opacity', 'maes-domain')}
 							value={attributes.opacity}

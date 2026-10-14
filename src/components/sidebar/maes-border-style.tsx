@@ -54,22 +54,7 @@ function BorderStyle({ attributes, setAttributes, direction, colors }: Props) {
 						},
 					})
 				}
-				style={{
-					marginRight: '3px',
-				}}
 				colors={colors}
-			/>
-			<UnitControl
-				label={__('Offset', 'maes-domain')}
-				value={attribute.offset}
-				onChange={(value) =>
-					setAttributes({
-						border: {
-							...attributes.border,
-							[direction]: { ...attribute, offset: value },
-						},
-					})
-				}
 			/>
 		</PanelRow>
 	)
