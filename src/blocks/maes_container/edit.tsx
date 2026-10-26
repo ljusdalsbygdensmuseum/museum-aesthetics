@@ -26,6 +26,7 @@ import {
  */
 import './editor.scss'
 import {
+	AnglePickerControl,
 	ColorPalette,
 	GradientPicker,
 	PanelBody,
@@ -118,13 +119,10 @@ export default function Edit({
 						</PanelRow>
 					</Fieldset.Root>
 					<hr />
-					<RangeControl
+					<AnglePickerControl
 						label={__('Rotation', 'maes-domain')}
 						value={attributes.rotation}
 						onChange={(value) => setAttributes({ rotation: value })}
-						max={90}
-						min={-90}
-						initialPosition={0}
 					/>
 					<hr />
 					<RangeControl
