@@ -122,8 +122,8 @@ export default function Edit({
 						label={__('Rotation', 'maes-domain')}
 						value={attributes.rotation}
 						onChange={(value) => setAttributes({ rotation: value })}
-						max={180}
-						min={-180}
+						max={90}
+						min={-90}
 						initialPosition={0}
 					/>
 					<hr />

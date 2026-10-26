@@ -129,8 +129,8 @@ function Edit({
           onChange: value => setAttributes({
             rotation: value
           }),
-          max: 180,
-          min: -180,
+          max: 90,
+          min: -90,
           initialPosition: 0
         }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
           label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Opacity', 'maes-domain'),
@@ -338,6 +338,8 @@ function MAESContainer({
           opacity: attributes.opacity / 100,
           top: offset.top ? offset.top : 0,
           bottom: offset.bottom ? offset.bottom : 0,
+          transform: `rotate(${attributes.rotation}deg) ${attributes.fullWidth ? `translate(-50%)` : ``}`,
+          transformOrigin: 'left',
           borderTopWidth: (_g = border.top) === null || _g === void 0 ? void 0 : _g.width,
           borderTopColor: (_h = border.top) === null || _h === void 0 ? void 0 : _h.color,
           borderTopStyle: (_j = border.top) === null || _j === void 0 ? void 0 : _j.style,

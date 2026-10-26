@@ -48,6 +48,8 @@ function MAESContainer({
           opacity: attributes.opacity / 100,
           top: offset.top ? offset.top : 0,
           bottom: offset.bottom ? offset.bottom : 0,
+          transform: `rotate(${attributes.rotation}deg) ${attributes.fullWidth ? `translate(-50%)` : ``}`,
+          transformOrigin: 'left',
           borderTopWidth: (_g = border.top) === null || _g === void 0 ? void 0 : _g.width,
           borderTopColor: (_h = border.top) === null || _h === void 0 ? void 0 : _h.color,
           borderTopStyle: (_j = border.top) === null || _j === void 0 ? void 0 : _j.style,

@@ -24,7 +24,7 @@ function MAESContainer({ attributes, children }: Props) {
 				borderRightWidth: border.right?.width,
 				borderRightColor: border.right?.color,
 				borderRightStyle: border.right?.style,
-		  }
+			}
 
 	return (
 		<div className='maes-container__container'>
@@ -35,7 +35,7 @@ function MAESContainer({ attributes, children }: Props) {
 					shadow.toggle
 						? {
 								filter: `drop-shadow(${shadow.horizontal} ${shadow.vertical} ${shadow.size} ${shadow.color})`,
-						  }
+							}
 						: {}
 				}
 			>
@@ -49,6 +49,9 @@ function MAESContainer({ attributes, children }: Props) {
 
 						top: offset.top ? offset.top : 0,
 						bottom: offset.bottom ? offset.bottom : 0,
+
+						transform: `rotate(${attributes.rotation}deg) ${attributes.fullWidth ? `translate(-50%)` : ``}`,
+						transformOrigin: 'left',
 
 						borderTopWidth: border.top?.width,
 						borderTopColor: border.top?.color,
