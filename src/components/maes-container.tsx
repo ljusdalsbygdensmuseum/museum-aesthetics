@@ -11,8 +11,16 @@ function MAESContainer({ attributes, children }: Props) {
 	const fade = attributes.fade
 	const shadow = attributes.shadow
 
+	//got some trigonometry in this 0___0
+	const width =
+		attributes.rotation >= 90 && attributes.rotation <= 270
+			? `calc((100vw / cos(${attributes.rotation - 360}*(3.14/180)))* -1)` // fix for when it is upside down
+			: `calc(100vw / cos(${attributes.rotation}*(3.14/180)))`
+
 	const widthStyle = attributes.fullWidth
-		? null
+		? {
+				width: width,
+			}
 		: {
 				left: offset.left ? offset.left : 0,
 				right: offset.right ? offset.right : 0,

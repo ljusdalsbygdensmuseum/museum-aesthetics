@@ -24,7 +24,12 @@ function MAESContainer({
   const offset = attributes.offset;
   const fade = attributes.fade;
   const shadow = attributes.shadow;
-  const widthStyle = attributes.fullWidth ? null : {
+  //got some trigonometry in this 0___0
+  const width = attributes.rotation >= 90 && attributes.rotation <= 270 ? `calc((100vw / cos(${attributes.rotation - 360}*(3.14/180)))* -1)` // fix for when it is upside down
+  : `calc(100vw / cos(${attributes.rotation}*(3.14/180)))`;
+  const widthStyle = attributes.fullWidth ? {
+    width: width
+  } : {
     left: offset.left ? offset.left : 0,
     right: offset.right ? offset.right : 0,
     borderLeftWidth: (_a = border.left) === null || _a === void 0 ? void 0 : _a.width,
