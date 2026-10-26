@@ -10,6 +10,7 @@
 if (! defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
+// a test
 class maes
 {
     public function __construct()
