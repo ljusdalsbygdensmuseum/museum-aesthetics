@@ -119,6 +119,15 @@ export default function Edit({
 					</Fieldset.Root>
 					<hr />
 					<RangeControl
+						label={__('Rotation', 'maes-domain')}
+						value={attributes.rotation}
+						onChange={(value) => setAttributes({ rotation: value })}
+						max={180}
+						min={-180}
+						initialPosition={0}
+					/>
+					<hr />
+					<RangeControl
 						label={__('Opacity', 'maes-domain')}
 						value={attributes.opacity}
 						onChange={(value) => {

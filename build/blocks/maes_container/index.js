@@ -124,6 +124,15 @@ function Edit({
             })]
           })]
         }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Rotation', 'maes-domain'),
+          value: attributes.rotation,
+          onChange: value => setAttributes({
+            rotation: value
+          }),
+          max: 180,
+          min: -180,
+          initialPosition: 0
+        }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
           label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Opacity', 'maes-domain'),
           value: attributes.opacity,
           onChange: value => {
@@ -901,6 +910,7 @@ function useBaseUiId(idOverride) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   unwrapLazyRenderProp: () => (/* binding */ unwrapLazyRenderProp),
 /* harmony export */   useRenderElement: () => (/* binding */ useRenderElement)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
@@ -924,7 +934,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 /**
  * Renders a Base UI element.
  *
@@ -933,8 +942,12 @@ __webpack_require__.r(__webpack_exports__);
  * @param params Additional parameters for rendering the element.
  */
 function useRenderElement(element, componentProps, params = {}) {
-  const renderProp = componentProps.render;
-  const outProps = useRenderElementProps(componentProps, params);
+  let renderProp = componentProps.render;
+  if (params.enabled !== false) {
+    // A pending lazy element suspends when unwrapped, so leave it wrapped while disabled.
+    renderProp = unwrapLazyRenderProp(renderProp);
+  }
+  const outProps = useRenderElementProps(componentProps, params, renderProp);
   if (params.enabled === false) {
     return null;
   }
@@ -945,11 +958,10 @@ function useRenderElement(element, componentProps, params = {}) {
 /**
  * Computes render element final props.
  */
-function useRenderElementProps(componentProps, params = {}) {
+function useRenderElementProps(componentProps, params, renderProp) {
   const {
     className: classNameProp,
-    style: styleProp,
-    render: renderProp
+    style: styleProp
   } = componentProps;
   const {
     state = _base_ui_utils_empty__WEBPACK_IMPORTED_MODULE_5__.EMPTY_OBJECT,
@@ -1009,6 +1021,23 @@ function resolveRenderFunctionProps(props) {
 const REACT_LAZY_TYPE = Symbol.for('react.lazy');
 const COMPONENT_IDENTIFIER_PATTERN = /^[A-Z][A-Za-z0-9$]*$/;
 const LOWERCASE_CHARACTER_PATTERN = /[a-z]/;
+
+// Workaround for https://github.com/react/react/issues/32392
+// The Flight client hands over a lazy wrapper in place of a render element created in a
+// Server Component. The wrapper exposes no `.props` or `.ref`, so it must be unwrapped
+// before those are read. This works because the toArray() logic unwraps the lazy
+// element type in
+// https://github.com/react/react/blob/a0566250b210499b4c5677f5ac2eedbd71d51a1b/packages/react/src/ReactChildren.js#L186
+function unwrapLazyRenderProp(render) {
+  // `$$typeof` is a React internal, absent from the public element types.
+  if (render?.$$typeof !== REACT_LAZY_TYPE) {
+    return render;
+  }
+  // Keep the wrapper unless it unwraps to an element, so an invalid render prop is still
+  // reported as one instead of silently falling back to the default element.
+  const unwrapped = react__WEBPACK_IMPORTED_MODULE_0__.Children.toArray(render)[0];
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.isValidElement(unwrapped) ? unwrapped : render;
+}
 function evaluateRenderProp(element, render, props, state) {
   if (render) {
     if (typeof render === 'function') {
@@ -1019,14 +1048,6 @@ function evaluateRenderProp(element, render, props, state) {
     }
     const mergedProps = (0,_merge_props_index_mjs__WEBPACK_IMPORTED_MODULE_9__.mergeProps)(props, render.props);
     mergedProps.ref = props.ref;
-    let newElement = render;
-    // Workaround for https://github.com/react/react/issues/32392
-    // This works because the toArray() logic unwrap lazy element type in
-    // https://github.com/react/react/blob/a0566250b210499b4c5677f5ac2eedbd71d51a1b/packages/react/src/ReactChildren.js#L186
-    if (newElement?.$$typeof === REACT_LAZY_TYPE) {
-      const children = react__WEBPACK_IMPORTED_MODULE_0__.Children.toArray(render);
-      newElement = children[0];
-    }
 
     // There is a high number of indirections, the error message thrown by React.cloneElement() is
     // hard to use for developers, this logic provides a better context.
@@ -1035,22 +1056,16 @@ function evaluateRenderProp(element, render, props, state) {
     // However, React.cloneElement() throws if React.isValidElement() is false,
     // so we can throw before with custom message.
     if (true) {
-      if (! /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.isValidElement(newElement)) {
+      if (! /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.isValidElement(render)) {
         // TODO: fix mui/no-guarded-throw
         // eslint-disable-next-line mui/no-guarded-throw
         throw new Error(['Base UI: The `render` prop was provided an invalid React element as `React.isValidElement(render)` is `false`.', 'A valid React element must be provided to the `render` prop because it is cloned with props to replace the default element.', 'https://base-ui.com/r/invalid-render-prop'].join('\n'));
       }
     }
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.cloneElement(newElement, mergedProps);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.cloneElement(render, mergedProps);
   }
-  if (element) {
-    if (typeof element === 'string') {
-      return renderTag(element, props);
-    }
-  }
-  // Unreachable, but the typings on `useRenderElement` need to be reworked
-  // to annotate it correctly.
-  throw new Error( true ? 'Base UI: Render element or function are not defined.' : 0);
+  // `element` is always provided when there is no `render` prop.
+  return renderTag(element, props);
 }
 function warnIfRenderPropLooksLikeComponent(renderFn) {
   const functionName = renderFn.name;
@@ -1188,14 +1203,14 @@ function createInitialMergedProps(inputProps) {
   if (isPropsGetter(inputProps)) {
     // Getter-returned handlers intentionally keep their existing semantics.
     return {
-      ...resolvePropsGetter(inputProps, EMPTY_PROPS)
+      ...inputProps(EMPTY_PROPS)
     };
   }
   return copyInitialProps(inputProps);
 }
 function mergeInto(merged, inputProps) {
   if (isPropsGetter(inputProps)) {
-    return resolvePropsGetter(inputProps, merged);
+    return inputProps(merged);
   }
   return mutablyMergeInto(merged, inputProps);
 }
@@ -1258,12 +1273,6 @@ function isEventHandler(key, value) {
 }
 function isPropsGetter(inputProps) {
   return typeof inputProps === 'function';
-}
-function resolvePropsGetter(inputProps, previousProps) {
-  if (isPropsGetter(inputProps)) {
-    return inputProps(previousProps);
-  }
-  return inputProps ?? EMPTY_PROPS;
 }
 function mergeEventHandlers(ourHandler, theirHandler) {
   if (!theirHandler) {
@@ -1420,6 +1429,46 @@ function useRegisteredLabelId(idProp, setLabelId) {
 
 /***/ },
 
+/***/ "./node_modules/@base-ui/utils/createLogOnce.mjs"
+/*!*******************************************************!*\
+  !*** ./node_modules/@base-ui/utils/createLogOnce.mjs ***!
+  \*******************************************************/
+(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   createLogOnce: () => (/* binding */ createLogOnce),
+/* harmony export */   reset: () => (/* binding */ reset)
+/* harmony export */ });
+let loggedMessages;
+if (true) {
+  loggedMessages = new Set();
+}
+
+/** Creates a dev-only logger that writes each unique message to `console[severity]` once. */
+function createLogOnce(severity, prefix) {
+  return function logOnce(...messages) {
+    if (true) {
+      const message = messages.join(' ');
+      const output = prefix ? `${prefix}: ${message}` : message;
+      const key = `${severity}:${output}`;
+      if (!loggedMessages.has(key)) {
+        loggedMessages.add(key);
+        if (severity === 'warn') {
+          console.warn(output);
+        } else {
+          console.error(output);
+        }
+      }
+    }
+  };
+}
+function reset() {
+  loggedMessages?.clear();
+}
+
+/***/ },
+
 /***/ "./node_modules/@base-ui/utils/empty.mjs"
 /*!***********************************************!*\
   !*** ./node_modules/@base-ui/utils/empty.mjs ***!
@@ -1433,6 +1482,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   NOOP: () => (/* binding */ NOOP)
 /* harmony export */ });
 function NOOP() {}
+
+// Typed as mutable `never[]` so it is assignable to any `T[]` fallback (for example
+// `defaultValue ?? EMPTY_ARRAY` in `useControlled` callers) without widening `T`.
+// Frozen so a write through a widened alias throws instead of mutating the shared singleton.
 const EMPTY_ARRAY = Object.freeze([]);
 const EMPTY_OBJECT = Object.freeze({});
 
@@ -1542,6 +1595,33 @@ const SafeReact = {
 
 /***/ },
 
+/***/ "./node_modules/@base-ui/utils/useForcedRerendering.mjs"
+/*!**************************************************************!*\
+  !*** ./node_modules/@base-ui/utils/useForcedRerendering.mjs ***!
+  \**************************************************************/
+(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   useForcedRerendering: () => (/* binding */ useForcedRerendering)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+'use client';
+
+
+
+/**
+ * Returns a function that forces a rerender.
+ */
+function useForcedRerendering() {
+  const [, setState] = react__WEBPACK_IMPORTED_MODULE_0__.useState({});
+  return react__WEBPACK_IMPORTED_MODULE_0__.useCallback(() => {
+    setState({});
+  }, []);
+}
+
+/***/ },
+
 /***/ "./node_modules/@base-ui/utils/useId.mjs"
 /*!***********************************************!*\
   !*** ./node_modules/@base-ui/utils/useId.mjs ***!
@@ -1554,7 +1634,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var _safeReact_mjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./safeReact.mjs */ "./node_modules/@base-ui/utils/safeReact.mjs");
+/* harmony import */ var _useForcedRerendering_mjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./useForcedRerendering.mjs */ "./node_modules/@base-ui/utils/useForcedRerendering.mjs");
 'use client';
+
 
 
 
@@ -1562,18 +1644,26 @@ let globalId = 0;
 
 // TODO React 17: Remove `useGlobalId` once React 17 support is removed
 function useGlobalId(idOverride, prefix = 'mui') {
-  const [defaultId, setDefaultId] = react__WEBPACK_IMPORTED_MODULE_0__.useState(idOverride);
-  const id = idOverride || defaultId;
+  const defaultId = react__WEBPACK_IMPORTED_MODULE_0__.useRef(undefined);
+  const forceRerender = (0,_useForcedRerendering_mjs__WEBPACK_IMPORTED_MODULE_2__.useForcedRerendering)();
+  const id = idOverride ?? defaultId.current;
   react__WEBPACK_IMPORTED_MODULE_0__.useEffect(() => {
-    if (defaultId == null) {
+    if (defaultId.current == null) {
       // Fallback to this default id when possible.
       // Use the incrementing value for client-side rendering only.
       // We can't use it server-side.
       // If you want to use random values please consider the Birthday Problem: https://en.wikipedia.org/wiki/Birthday_problem
       globalId += 1;
-      setDefaultId(`${prefix}-${globalId}`);
+      defaultId.current = `${prefix}-${globalId}`;
+      // Generate the fallback even while `idOverride` is set.
+      // Removing the override then swaps in the existing id within the same commit.
+      // Deferring generation would leave one commit with no id, breaking `htmlFor` and `aria-labelledby` links.
+      // Only rerender when the fallback is the value being rendered.
+      if (idOverride == null) {
+        forceRerender();
+      }
     }
-  }, [defaultId, prefix]);
+  }, [idOverride, prefix, forceRerender]);
   return id;
 }
 const maybeReactUseId = _safeReact_mjs__WEBPACK_IMPORTED_MODULE_1__.SafeReact.useId;
@@ -1581,11 +1671,12 @@ const maybeReactUseId = _safeReact_mjs__WEBPACK_IMPORTED_MODULE_1__.SafeReact.us
 /**
  *
  * @example <div id={useId()} />
- * @param idOverride
- * @returns {string}
+ * @param {string | undefined} idOverride overrides the generated id when provided
+ * @param {string | undefined} prefix prefixes the generated id when provided
+ * @returns {string | undefined}
  */
 function useId(idOverride, prefix) {
-  // React.useId() is only available from React 17.0.0.
+  // React.useId() is only available from React 18.0.0.
   if (maybeReactUseId !== undefined) {
     const reactId = maybeReactUseId();
     return idOverride ?? (prefix ? `${prefix}-${reactId}` : reactId);
@@ -1786,19 +1877,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   warn: () => (/* binding */ warn)
 /* harmony export */ });
-let set;
-if (true) {
-  set = new Set();
-}
-function warn(...messages) {
-  if (true) {
-    const messageKey = messages.join(' ');
-    if (!set.has(messageKey)) {
-      set.add(messageKey);
-      console.warn(`Base UI: ${messageKey}`);
-    }
-  }
-}
+/* harmony import */ var _createLogOnce_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./createLogOnce.mjs */ "./node_modules/@base-ui/utils/createLogOnce.mjs");
+
+const warn = (0,_createLogOnce_mjs__WEBPACK_IMPORTED_MODULE_0__.createLogOnce)('warn', 'Base UI');
+
 
 /***/ },
 
@@ -2260,7 +2342,7 @@ function r(e){var t,f,n="";if("string"==typeof e||"number"==typeof e)n+=e;else i
   \**********************************************/
 (module) {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"maes/container","version":"0.1.0","title":"Styled container","category":"design","icon":"tablet","description":"A styled and animated container","attributes":{"border":{"type":"object","properties":{"top":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}},"bottom":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}},"left":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}},"right":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}}},"default":{"top":{"width":null,"color":null,"style":null},"bottom":{"width":null,"color":null,"style":null},"left":{"width":null,"color":null,"style":null},"right":{"width":null,"color":null,"style":null}}},"offset":{"type":"object","properties":{"top":{"type":"string"},"bottom":{"type":"string"},"left":{"type":"string"},"right":{"type":"string"}},"default":{"top":null,"bottom":null,"left":null,"right":null}},"fade":{"type":"object","properties":{"horizontal":{"type":"object","properties":{"toggle":{"type":"boolean","default":false},"width":{"type":"number"}}},"vertical":{"type":"object","properties":{"toggle":{"type":"boolean","default":false},"width":{"type":"number"}}}},"default":{"horizontal":{"toggle":false,"width":15},"vertical":{"toggle":false,"width":15}}},"shadow":{"type":"object","properties":{"toggle":{"type":"boolean"},"horizontal":{"type":"string"},"vertical":{"type":"string"},"size":{"type":"string"},"color":{"type":"string"}},"default":{"toggle":false,"horizontal":"0px","vertical":"0px","size":"0px","color":"#000"}},"fullWidth":{"type":"boolean","default":false},"opacity":{"type":"number","default":100},"gradientBackground":{"type":"boolean","default":false},"background":{"type":"string","default":""}},"example":{},"supports":{"html":false},"textdomain":"maes-domain","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"maes/container","version":"0.1.0","title":"Styled container","category":"design","icon":"tablet","description":"A styled and animated container","attributes":{"border":{"type":"object","properties":{"top":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}},"bottom":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}},"left":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}},"right":{"type":"object","properties":{"width":{"type":"string"},"color":{"type":"string"},"style":{"type":"string"}}}},"default":{"top":{"width":null,"color":null,"style":null},"bottom":{"width":null,"color":null,"style":null},"left":{"width":null,"color":null,"style":null},"right":{"width":null,"color":null,"style":null}}},"offset":{"type":"object","properties":{"top":{"type":"string"},"bottom":{"type":"string"},"left":{"type":"string"},"right":{"type":"string"}},"default":{"top":null,"bottom":null,"left":null,"right":null}},"fade":{"type":"object","properties":{"horizontal":{"type":"object","properties":{"toggle":{"type":"boolean","default":false},"width":{"type":"number"}}},"vertical":{"type":"object","properties":{"toggle":{"type":"boolean","default":false},"width":{"type":"number"}}}},"default":{"horizontal":{"toggle":false,"width":15},"vertical":{"toggle":false,"width":15}}},"shadow":{"type":"object","properties":{"toggle":{"type":"boolean"},"horizontal":{"type":"string"},"vertical":{"type":"string"},"size":{"type":"string"},"color":{"type":"string"}},"default":{"toggle":false,"horizontal":"0px","vertical":"0px","size":"0px","color":"#000"}},"fullWidth":{"type":"boolean","default":false},"rotation":{"type":"number","default":0},"opacity":{"type":"number","default":100},"gradientBackground":{"type":"boolean","default":false},"background":{"type":"string","default":""}},"example":{},"supports":{"html":false},"textdomain":"maes-domain","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","render":"file:./render.php","viewScript":"file:./view.js"}');
 
 /***/ }
 
@@ -2303,23 +2385,19 @@ module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/tru
 /******/ 	/* webpack/runtime/chunk loaded */
 /******/ 	(() => {
 /******/ 		const deferred = [];
-/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
+/******/ 		__webpack_require__.O = (result, chunkIds, fn) => {
 /******/ 			if(chunkIds) {
-/******/ 				priority ||= 0;
-/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
-/******/ 				deferred[i] = [chunkIds, fn, priority];
+/******/ 				deferred.push([chunkIds, fn]);
 /******/ 				return;
 /******/ 			}
-/******/ 			let notFulfilled = Infinity;
 /******/ 			for (var i = 0; i < deferred.length; i++) {
-/******/ 				let [chunkIds, fn, priority] = deferred[i];
+/******/ 				let [chunkIds, fn] = deferred[i];
 /******/ 				let fulfilled = true;
 /******/ 				for (var j = 0; j < chunkIds.length; j++) {
-/******/ 					if (((priority & 1) === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
+/******/ 					if (__webpack_require__.O.j(chunkIds[j])) {
 /******/ 						chunkIds.splice(j--, 1);
 /******/ 					} else {
 /******/ 						fulfilled = false;
-/******/ 						if(priority < notFulfilled) notFulfilled = priority;
 /******/ 					}
 /******/ 				}
 /******/ 				if(fulfilled) {

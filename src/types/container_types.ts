@@ -40,6 +40,7 @@ export const ContainerAttributesSchema = z.object({
 		color: z.union([z.string(), z.undefined()]),
 	}),
 	fullWidth: z.boolean(),
+	rotation: z.number(),
 	opacity: z.number(),
 	gradientBackground: z.boolean(),
 	background: z.string(),

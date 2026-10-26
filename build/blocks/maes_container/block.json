@@ -184,6 +184,10 @@
       "type": "boolean",
       "default": false
     },
+    "rotation": {
+      "type": "number",
+      "default": 0
+    },
     "opacity": {
       "type": "number",
       "default": 100
