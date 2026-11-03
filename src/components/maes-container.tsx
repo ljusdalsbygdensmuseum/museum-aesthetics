@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { ContainerAttributes } from '../types/container_types'
 
 interface Props {
@@ -6,6 +7,16 @@ interface Props {
 }
 
 function MAESContainer({ attributes, children }: Props) {
+	const [height, setHeight] = useState(0)
+
+	const contanierRef = useRef<HTMLDivElement>(null)
+
+	useEffect(() => {
+		if (contanierRef.current) {
+			setHeight(contanierRef.current.getBoundingClientRect().height)
+		}
+	})
+
 	const border = attributes.border
 	const offset = attributes.offset
 	const fade = attributes.fade
@@ -28,7 +39,7 @@ function MAESContainer({ attributes, children }: Props) {
 	}
 
 	//Said trigonometry, soh cah toa formula
-	const width = `calc((100vw / cos(${angle}deg) + (tan(${angle}deg)*(372px/2)))` // TODO: use dynamic height insted
+	const width = `calc((100vw / cos(${angle}deg) + (tan(${angle}deg)*(${height}px)))`
 
 	const widthStyle = attributes.fullWidth
 		? {
@@ -48,7 +59,7 @@ function MAESContainer({ attributes, children }: Props) {
 		  }
 
 	return (
-		<div className='maes-container__container'>
+		<div className='maes-container__container' ref={contanierRef}>
 			{children}
 			<div
 				className='maes-container__background-wrap'

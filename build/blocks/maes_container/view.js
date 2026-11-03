@@ -14,18 +14,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
 
 function MAESContainer({
   attributes,
   children
 }) {
   var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
+  const [height, setHeight] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
+  const contanierRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+    if (contanierRef.current) {
+      setHeight(contanierRef.current.getBoundingClientRect().height);
+    }
+  });
   const border = attributes.border;
   const offset = attributes.offset;
   const fade = attributes.fade;
   const shadow = attributes.shadow;
   //Width when full width
-  //Making the angle go from 0-365 to 0-90-0-90-0 for the trigonometry to function
+  //Making the angle go from 0-360 to 0-90-0-90-0 for the trigonometry to function
   const angleRange = attributes.rotation / 90;
   let angle = angleRange * 90;
   if (angleRange > 1 && angleRange <= 2) {
@@ -38,7 +48,7 @@ function MAESContainer({
     angle = (1 - (angleRange - 3)) * 90;
   }
   //Said trigonometry, soh cah toa formula
-  const width = `calc((100vw / cos(${angle}deg) + (tan(${angle}deg)*(372px/2)))`; // TODO: use dynamic height insted
+  const width = `calc((100vw / cos(${angle}deg) + (tan(${angle}deg)*(${height}px)))`;
   const widthStyle = attributes.fullWidth ? {
     width: width
   } : {
@@ -53,6 +63,7 @@ function MAESContainer({
   };
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: 'maes-container__container',
+    ref: contanierRef,
     children: [children, (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: 'maes-container__background-wrap',
       style: shadow.toggle ? {
@@ -93,6 +104,16 @@ function MAESContainer({
   });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MAESContainer);
+
+/***/ },
+
+/***/ "react"
+/*!************************!*\
+  !*** external "React" ***!
+  \************************/
+(module) {
+
+module.exports = window["React"];
 
 /***/ },
 
