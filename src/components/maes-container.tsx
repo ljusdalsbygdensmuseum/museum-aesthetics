@@ -12,7 +12,7 @@ function MAESContainer({ attributes, children }: Props) {
 	const shadow = attributes.shadow
 
 	//Width when full width
-	//Making the angle go from 0-365 to 0-90-0-90-0 for the trigonometry to function
+	//Making the angle go from 0-360 to 0-90-0-90-0 for the trigonometry to function
 	const angleRange = attributes.rotation / 90
 
 	let angle = angleRange * 90
