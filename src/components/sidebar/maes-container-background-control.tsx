@@ -40,7 +40,7 @@ function ContainerBackgroundControl({
 		<CollapsibleCard.Root>
 			<CollapsibleCard.Header>
 				<Card.Title>
-					{__('Background', 'maes-domain')}: {index + 1}
+					{__('Background', 'maes-domain')} {index + 1}
 				</Card.Title>
 			</CollapsibleCard.Header>
 			<CollapsibleCard.Content>
@@ -174,12 +174,9 @@ function ContainerBackgroundControl({
 					colors={colorPalette}
 				/>
 				<hr />
-				<Button
-					__next40pxDefaultSize
-					icon={trash}
-					isDestructive
-					label={__('Delete background', 'maes-domain')}
-				/>
+				<Button __next40pxDefaultSize icon={trash} isDestructive>
+					{__('Delete', 'maes-domain')}
+				</Button>
 			</CollapsibleCard.Content>
 		</CollapsibleCard.Root>
 	)

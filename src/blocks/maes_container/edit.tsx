@@ -5,7 +5,8 @@ import {
 	useBlockProps,
 	useSettings,
 } from '@wordpress/block-editor'
-import { PanelBody } from '@wordpress/components'
+import { Button, PanelBody } from '@wordpress/components'
+import { create } from '@wordpress/icons'
 import { BlockEditProps } from '@wordpress/blocks'
 
 import ContainerBackgroundControl from '../../components/sidebar/maes-container-background-control'
@@ -43,6 +44,9 @@ export default function Edit({
 						colorPalette={colorPalette}
 						gradientPalette={gradientPalette}
 					/>
+					<Button icon={create} variant='tertiary'>
+						{__('Add More', 'maes-domain')}
+					</Button>
 				</PanelBody>
 			</InspectorControls>
 			<div {...useBlockProps()}>

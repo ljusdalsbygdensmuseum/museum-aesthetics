@@ -20,9 +20,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _components_sidebar_maes_container_background_control__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/sidebar/maes-container-background-control */ "./src/components/sidebar/maes-container-background-control.tsx");
-/* harmony import */ var _components_maes_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/maes-container */ "./src/components/maes-container.tsx");
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/maes_container/editor.scss");
+/* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/create.mjs");
+/* harmony import */ var _components_sidebar_maes_container_background_control__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/sidebar/maes-container-background-control */ "./src/components/sidebar/maes-container-background-control.tsx");
+/* harmony import */ var _components_maes_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/maes-container */ "./src/components/maes-container.tsx");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/maes_container/editor.scss");
+
 
 
 
@@ -45,18 +47,22 @@ function Edit({
   });
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
-      children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+      children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Style', 'maes-domain'),
-        children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_container_background_control__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_container_background_control__WEBPACK_IMPORTED_MODULE_5__["default"], {
           attributes: attributes,
           setAttributes: setAttributes,
           index: 0,
           colorPalette: colorPalette,
           gradientPalette: gradientPalette
-        })
+        }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+          icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__["default"],
+          variant: 'tertiary',
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Add More', 'maes-domain')
+        })]
       })
     }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", Object.assign({}, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), {
-      children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_maes_container__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_maes_container__WEBPACK_IMPORTED_MODULE_6__["default"], {
         attributes: attributes,
         children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks, {})
       })
@@ -362,7 +368,7 @@ function ContainerBackgroundControl({
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_5__.Root, {
     children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_6__.Header, {
       children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_2__.Title, {
-        children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)('Background', 'maes-domain'), ": ", index + 1]
+        children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)('Background', 'maes-domain'), " ", index + 1]
       })
     }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_7__.Content, {
       children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.ToggleControl, {
@@ -486,7 +492,7 @@ function ContainerBackgroundControl({
         __next40pxDefaultSize: true,
         icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_9__["default"],
         isDestructive: true,
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)('Delete background', 'maes-domain')
+        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)('Delete', 'maes-domain')
       })]
     })]
   });
@@ -4258,6 +4264,28 @@ function getFrameElement(win) {
 }
 
 
+
+
+/***/ },
+
+/***/ "./node_modules/@wordpress/icons/build-module/library/create.mjs"
+/*!***********************************************************************!*\
+  !*** ./node_modules/@wordpress/icons/build-module/library/create.mjs ***!
+  \***********************************************************************/
+(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ create_default)
+/* harmony export */ });
+/* harmony import */ var _wordpress_primitives__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/primitives */ "@wordpress/primitives");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+// packages/icons/src/library/create.tsx
+
+
+var create_default = /* @__PURE__ */ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_0__.SVG, { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_primitives__WEBPACK_IMPORTED_MODULE_0__.Path, { d: "M16 11.2h-3.2V8h-1.6v3.2H8v1.6h3.2V16h1.6v-3.2H16z" }) });
+
+//# sourceMappingURL=create.mjs.map
 
 
 /***/ },
