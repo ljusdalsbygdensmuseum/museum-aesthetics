@@ -289,10 +289,10 @@ function save() {
 
 /***/ },
 
-/***/ "./src/components/maes-container.tsx"
-/*!*******************************************!*\
-  !*** ./src/components/maes-container.tsx ***!
-  \*******************************************/
+/***/ "./src/components/maes-container-background.tsx"
+/*!******************************************************!*\
+  !*** ./src/components/maes-container-background.tsx ***!
+  \******************************************************/
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
@@ -301,22 +301,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 
-
-function MAESContainer({
+function MAESContainerBackground({
   attributes,
-  children
+  height
 }) {
   var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
-  const [height, setHeight] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
-  const contanierRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
-    if (contanierRef.current) {
-      setHeight(contanierRef.current.getBoundingClientRect().height);
-    }
-  });
   const border = attributes.border;
   const offset = attributes.offset;
   const fade = attributes.fade;
@@ -348,31 +338,28 @@ function MAESContainer({
     borderRightColor: (_e = border.right) === null || _e === void 0 ? void 0 : _e.color,
     borderRightStyle: (_f = border.right) === null || _f === void 0 ? void 0 : _f.style
   };
-  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-    className: 'maes-container__container',
-    ref: contanierRef,
-    children: [children, (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-      className: 'maes-container__background-wrap',
-      style: shadow.toggle ? {
-        filter: `drop-shadow(${shadow.horizontal} ${shadow.vertical} ${shadow.size} ${shadow.color})`
-      } : {},
-      children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        className: `maes-container__background ${attributes.fullWidth && `maes-container__fullwidth`}`,
-        style: Object.assign(Object.assign({
-          background: attributes.background,
-          opacity: attributes.opacity / 100,
-          top: offset.top ? offset.top : 0,
-          bottom: offset.bottom ? offset.bottom : 0,
-          transform: `rotate(${attributes.rotation}deg) ${attributes.fullWidth ? `translate(-50%)` : ``}`,
-          transformOrigin: 'left',
-          borderTopWidth: (_g = border.top) === null || _g === void 0 ? void 0 : _g.width,
-          borderTopColor: (_h = border.top) === null || _h === void 0 ? void 0 : _h.color,
-          borderTopStyle: (_j = border.top) === null || _j === void 0 ? void 0 : _j.style,
-          borderBottomWidth: (_k = border.bottom) === null || _k === void 0 ? void 0 : _k.width,
-          borderBottomColor: (_l = border.bottom) === null || _l === void 0 ? void 0 : _l.color,
-          borderBottomStyle: (_m = border.bottom) === null || _m === void 0 ? void 0 : _m.style
-        }, widthStyle), {
-          maskImage: `${fade.horizontal.toggle ? `linear-gradient(
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+    className: 'maes-container__background-wrap',
+    style: shadow.toggle ? {
+      filter: `drop-shadow(${shadow.horizontal} ${shadow.vertical} ${shadow.size} ${shadow.color})`
+    } : {},
+    children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: `maes-container__background ${attributes.fullWidth && `maes-container__fullwidth`}`,
+      style: Object.assign(Object.assign({
+        background: attributes.background,
+        opacity: attributes.opacity / 100,
+        top: offset.top ? offset.top : 0,
+        bottom: offset.bottom ? offset.bottom : 0,
+        transform: `rotate(${attributes.rotation}deg) ${attributes.fullWidth ? `translate(-50%)` : ``}`,
+        transformOrigin: 'left',
+        borderTopWidth: (_g = border.top) === null || _g === void 0 ? void 0 : _g.width,
+        borderTopColor: (_h = border.top) === null || _h === void 0 ? void 0 : _h.color,
+        borderTopStyle: (_j = border.top) === null || _j === void 0 ? void 0 : _j.style,
+        borderBottomWidth: (_k = border.bottom) === null || _k === void 0 ? void 0 : _k.width,
+        borderBottomColor: (_l = border.bottom) === null || _l === void 0 ? void 0 : _l.color,
+        borderBottomStyle: (_m = border.bottom) === null || _m === void 0 ? void 0 : _m.style
+      }, widthStyle), {
+        maskImage: `${fade.horizontal.toggle ? `linear-gradient(
 								90deg,
 								rgba(0, 0, 0, 0) 0%,
 								rgba(0, 0, 0, 1) ${fade.horizontal.width / 2}%,
@@ -384,9 +371,50 @@ function MAESContainer({
 								rgba(0, 0, 0, 1) ${100 - fade.vertical.width / 2}%,
 								rgba(0, 0, 0, 0) 100%
 							)` : ``}`,
-          maskComposite: 'intersect'
-        })
+        maskComposite: 'intersect'
       })
+    })
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MAESContainerBackground);
+
+/***/ },
+
+/***/ "./src/components/maes-container.tsx"
+/*!*******************************************!*\
+  !*** ./src/components/maes-container.tsx ***!
+  \*******************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _maes_container_background__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./maes-container-background */ "./src/components/maes-container-background.tsx");
+
+
+
+function MAESContainer({
+  attributes,
+  children
+}) {
+  const [height, setHeight] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
+  const contanierRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+    if (contanierRef.current) {
+      setHeight(contanierRef.current.getBoundingClientRect().height);
+    }
+  });
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    className: 'maes-container__container',
+    ref: contanierRef,
+    children: [children, (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_maes_container_background__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      attributes: attributes,
+      height: height
     })]
   });
 }
