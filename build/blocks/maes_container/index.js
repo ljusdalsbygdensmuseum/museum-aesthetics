@@ -446,6 +446,7 @@ function ContainerBackgroundControl({
         }), !attributes.gradientBackground && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.ColorPalette, {
           colors: colorPalette,
           value: attributes.background,
+          enableAlpha: true,
           onChange: value => {
             setAttributes({
               background: value

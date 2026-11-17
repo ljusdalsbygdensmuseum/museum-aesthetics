@@ -124,6 +124,7 @@ function ContainerBackgroundControl({
 						<ColorPalette
 							colors={colorPalette}
 							value={attributes.background}
+							enableAlpha
 							onChange={(value) => {
 								setAttributes({ background: value })
 							}}
