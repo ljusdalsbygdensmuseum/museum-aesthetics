@@ -200,6 +200,13 @@ function ContainerBackgroundControl({
 					/>
 				</Fieldset.Root>
 				<hr />
+				<DropShadowControl
+					attribute={attribute}
+					setBackground={setBackground}
+					index={index}
+					colors={colorPalette}
+				/>
+				<hr />
 				<Button
 					__next40pxDefaultSize
 					icon={trash}
@@ -213,20 +220,6 @@ function ContainerBackgroundControl({
 			</CollapsibleCard.Content>
 		</CollapsibleCard.Root>
 	)
-
-	/*
-	
-				
-				
-				
-				
-				<DropShadowControl
-					attributes={attributes}
-					setAttributes={setAttributes}
-					colors={colorPalette}
-				/>
-				<hr />
-	*/
 }
 
 export default ContainerBackgroundControl

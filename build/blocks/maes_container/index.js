@@ -288,8 +288,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__);
 /* harmony import */ var _components_sidebar_maes_fade_control__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/sidebar/maes-fade-control */ "./src/components/sidebar/maes-fade-control.tsx");
-/* harmony import */ var _components_sidebar_maes_offset_control__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/sidebar/maes-offset-control */ "./src/components/sidebar/maes-offset-control.tsx");
-/* harmony import */ var _components_sidebar_maes_border_style_control__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/sidebar/maes-border-style-control */ "./src/components/sidebar/maes-border-style-control.tsx");
+/* harmony import */ var _components_sidebar_maes_drop_shadow_control__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/sidebar/maes-drop-shadow-control */ "./src/components/sidebar/maes-drop-shadow-control.tsx");
+/* harmony import */ var _components_sidebar_maes_offset_control__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/sidebar/maes-offset-control */ "./src/components/sidebar/maes-offset-control.tsx");
+/* harmony import */ var _components_sidebar_maes_border_style_control__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../components/sidebar/maes-border-style-control */ "./src/components/sidebar/maes-border-style-control.tsx");
+
 
 
 
@@ -328,12 +330,12 @@ function ContainerBackgroundControl({
           children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)('Offset', 'maes-domain')
         }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_1__.Stack, {
           gap: 'sm',
-          children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_offset_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
+          children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_offset_control__WEBPACK_IMPORTED_MODULE_13__["default"], {
             attribute: attribute,
             setBackground: setBackground,
             index: index,
             direction: 'top'
-          }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_offset_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
+          }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_offset_control__WEBPACK_IMPORTED_MODULE_13__["default"], {
             attribute: attribute,
             setBackground: setBackground,
             index: index,
@@ -341,12 +343,12 @@ function ContainerBackgroundControl({
           })]
         }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_1__.Stack, {
           gap: 'sm',
-          children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_offset_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
+          children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_offset_control__WEBPACK_IMPORTED_MODULE_13__["default"], {
             attribute: attribute,
             setBackground: setBackground,
             index: index,
             direction: 'left'
-          }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_offset_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
+          }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_offset_control__WEBPACK_IMPORTED_MODULE_13__["default"], {
             attribute: attribute,
             setBackground: setBackground,
             index: index,
@@ -415,31 +417,36 @@ function ContainerBackgroundControl({
       }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_3__.FieldsetRoot, {
         children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_4__.FieldsetLegend, {
           children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)('Border', 'maes-domain')
-        }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style_control__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style_control__WEBPACK_IMPORTED_MODULE_14__["default"], {
           attribute: attribute,
           setBackground: setBackground,
           index: index,
           direction: 'top',
           colors: colorPalette
-        }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style_control__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style_control__WEBPACK_IMPORTED_MODULE_14__["default"], {
           attribute: attribute,
           setBackground: setBackground,
           index: index,
           direction: 'bottom',
           colors: colorPalette
-        }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style_control__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style_control__WEBPACK_IMPORTED_MODULE_14__["default"], {
           attribute: attribute,
           setBackground: setBackground,
           index: index,
           direction: 'left',
           colors: colorPalette
-        }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style_control__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style_control__WEBPACK_IMPORTED_MODULE_14__["default"], {
           attribute: attribute,
           setBackground: setBackground,
           index: index,
           direction: 'right',
           colors: colorPalette
         })]
+      }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_drop_shadow_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        attribute: attribute,
+        setBackground: setBackground,
+        index: index,
+        colors: colorPalette
       }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.Button, {
         __next40pxDefaultSize: true,
         icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_9__["default"],
@@ -451,21 +458,97 @@ function ContainerBackgroundControl({
       })]
     })]
   });
-  /*
-  
-              
-              
-              
-              
-              <DropShadowControl
-                  attributes={attributes}
-                  setAttributes={setAttributes}
-                  colors={colorPalette}
-              />
-              <hr />
-  */
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ContainerBackgroundControl);
+
+/***/ },
+
+/***/ "./src/components/sidebar/maes-drop-shadow-control.tsx"
+/*!*************************************************************!*\
+  !*** ./src/components/sidebar/maes-drop-shadow-control.tsx ***!
+  \*************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_ui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/ui */ "./node_modules/@wordpress/ui/build-module/form/primitives/fieldset/root.mjs");
+/* harmony import */ var _wordpress_ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/ui */ "./node_modules/@wordpress/ui/build-module/form/primitives/fieldset/legend.mjs");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+function DropShadowControl({
+  attribute,
+  setBackground,
+  index,
+  colors
+}) {
+  const shadow = attribute.shadow;
+  // first unit control inside a div to remove programicaly added margin bottom, bit of a hack but works
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_2__.FieldsetRoot, {
+    children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_3__.FieldsetLegend, {
+      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Drop Shadow', 'maes-domain')
+    }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Use drop shadow', 'maes-domain'),
+      checked: shadow.toggle,
+      onChange: value => setBackground(Object.assign(Object.assign({}, attribute), {
+        shadow: Object.assign(Object.assign({}, shadow), {
+          toggle: value
+        })
+      }), index)
+    }), shadow.toggle && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+      children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
+        children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Horizontal', 'maes-domain'),
+            value: shadow.horizontal,
+            onChange: value => setBackground(Object.assign(Object.assign({}, attribute), {
+              shadow: Object.assign(Object.assign({}, shadow), {
+                horizontal: value
+              })
+            }), index),
+            style: {
+              marginRight: '3px'
+            }
+          })
+        }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Vertical', 'maes-domain'),
+          value: shadow.vertical,
+          onChange: value => setBackground(Object.assign(Object.assign({}, attribute), {
+            shadow: Object.assign(Object.assign({}, shadow), {
+              vertical: value
+            })
+          }), index)
+        })]
+      }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Blur', 'maes-domain'),
+        value: shadow.size,
+        onChange: value => setBackground(Object.assign(Object.assign({}, attribute), {
+          shadow: Object.assign(Object.assign({}, shadow), {
+            size: value
+          })
+        }), index)
+      }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ColorPalette, {
+        colors: colors,
+        value: shadow.color,
+        onChange: value => setBackground(Object.assign(Object.assign({}, attribute), {
+          shadow: Object.assign(Object.assign({}, shadow), {
+            color: value
+          })
+        }), index)
+      })]
+    })]
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DropShadowControl);
 
 /***/ },
 

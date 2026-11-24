@@ -8,17 +8,21 @@ import { Fieldset } from '@wordpress/ui'
 import { __ } from '@wordpress/i18n'
 
 import { Color } from '@wordpress/components/build-types/palette-edit/types'
-import { ContainerAttributes } from '../../types/container_types'
+import {
+	ContainerAttributes,
+	ContainerBackground,
+} from '../../types/container_types'
 
 //set attributes being any is not right but I can't find a better way
 interface Props {
-	attributes: ContainerAttributes
-	setAttributes: any
+	attribute: ContainerBackground
+	setBackground: (item: ContainerBackground, index: number) => void
+	index: number
 	colors: Color[]
 }
 
-function DropShadowControl({ attributes, setAttributes, colors }: Props) {
-	const shadow = attributes.shadow
+function DropShadowControl({ attribute, setBackground, index, colors }: Props) {
+	const shadow = attribute.shadow
 
 	// first unit control inside a div to remove programicaly added margin bottom, bit of a hack but works
 	return (
@@ -28,12 +32,16 @@ function DropShadowControl({ attributes, setAttributes, colors }: Props) {
 				label={__('Use drop shadow', 'maes-domain')}
 				checked={shadow.toggle}
 				onChange={(value) =>
-					setAttributes({
-						shadow: {
-							...shadow,
-							toggle: value,
+					setBackground(
+						{
+							...attribute,
+							shadow: {
+								...shadow,
+								toggle: value,
+							},
 						},
-					})
+						index,
+					)
 				}
 			/>
 			{shadow.toggle && (
@@ -44,12 +52,16 @@ function DropShadowControl({ attributes, setAttributes, colors }: Props) {
 								label={__('Horizontal', 'maes-domain')}
 								value={shadow.horizontal}
 								onChange={(value) =>
-									setAttributes({
-										shadow: {
-											...shadow,
-											horizontal: value,
+									setBackground(
+										{
+											...attribute,
+											shadow: {
+												...shadow,
+												horizontal: value,
+											},
 										},
-									})
+										index,
+									)
 								}
 								style={{
 									marginRight: '3px',
@@ -60,12 +72,16 @@ function DropShadowControl({ attributes, setAttributes, colors }: Props) {
 							label={__('Vertical', 'maes-domain')}
 							value={shadow.vertical}
 							onChange={(value) =>
-								setAttributes({
-									shadow: {
-										...shadow,
-										vertical: value,
+								setBackground(
+									{
+										...attribute,
+										shadow: {
+											...shadow,
+											vertical: value,
+										},
 									},
-								})
+									index,
+								)
 							}
 						/>
 					</PanelRow>
@@ -74,24 +90,32 @@ function DropShadowControl({ attributes, setAttributes, colors }: Props) {
 						label={__('Blur', 'maes-domain')}
 						value={shadow.size}
 						onChange={(value) =>
-							setAttributes({
-								shadow: {
-									...shadow,
-									size: value,
+							setBackground(
+								{
+									...attribute,
+									shadow: {
+										...shadow,
+										size: value,
+									},
 								},
-							})
+								index,
+							)
 						}
 					/>
 					<ColorPalette
 						colors={colors}
 						value={shadow.color}
 						onChange={(value) =>
-							setAttributes({
-								shadow: {
-									...shadow,
-									color: value,
+							setBackground(
+								{
+									...attribute,
+									shadow: {
+										...shadow,
+										color: value,
+									},
 								},
-							})
+								index,
+							)
 						}
 					/>
 				</>
