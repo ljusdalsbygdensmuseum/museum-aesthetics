@@ -67,7 +67,6 @@ export default function Edit({
 						return (
 							<ContainerBackgroundControl
 								attributes={attributes}
-								setAttributes={setAttributes}
 								setBackground={setBackground}
 								removeBackground={removeBackground}
 								index={index}

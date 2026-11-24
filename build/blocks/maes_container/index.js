@@ -66,7 +66,6 @@ function Edit({
         children: [attributes.backgrounds.map((item, index) => {
           return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_container_background_control__WEBPACK_IMPORTED_MODULE_5__["default"], {
             attributes: attributes,
-            setAttributes: setAttributes,
             setBackground: setBackground,
             removeBackground: removeBackground,
             index: index,
