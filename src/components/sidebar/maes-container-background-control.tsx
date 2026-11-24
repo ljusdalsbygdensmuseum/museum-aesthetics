@@ -28,6 +28,7 @@ interface Props {
 	attributes: ContainerAttributes
 	setAttributes: (attrs: Partial<ContainerAttributes>) => void
 	setBackground: (item: ContainerBackground, index: number) => void
+	removeBackground: (index: number) => void
 	index: number
 	colorPalette: Color[]
 	gradientPalette: GradientObject[]
@@ -37,6 +38,7 @@ function ContainerBackgroundControl({
 	attributes,
 	setAttributes,
 	setBackground,
+	removeBackground,
 	index,
 	colorPalette,
 	gradientPalette,
@@ -61,7 +63,14 @@ function ContainerBackgroundControl({
 				/>
 				<hr />
 
-				<Button __next40pxDefaultSize icon={trash} isDestructive>
+				<Button
+					__next40pxDefaultSize
+					icon={trash}
+					isDestructive
+					onClick={() => {
+						removeBackground(index)
+					}}
+				>
 					{__('Delete', 'maes-domain')}
 				</Button>
 			</CollapsibleCard.Content>

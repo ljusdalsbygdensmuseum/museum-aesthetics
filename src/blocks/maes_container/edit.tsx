@@ -49,6 +49,16 @@ export default function Edit({
 		})
 	}
 
+	const removeBackground = (index: number) => {
+		setAttributes((oldAttributes) => {
+			const newAttributes = structuredClone(oldAttributes)
+
+			newAttributes.backgrounds.splice(index, 1)
+
+			return newAttributes
+		})
+	}
+
 	return (
 		<>
 			<InspectorControls>
@@ -59,6 +69,7 @@ export default function Edit({
 								attributes={attributes}
 								setAttributes={setAttributes}
 								setBackground={setBackground}
+								removeBackground={removeBackground}
 								index={index}
 								colorPalette={colorPalette}
 								gradientPalette={gradientPalette}

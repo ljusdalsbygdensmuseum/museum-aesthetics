@@ -50,6 +50,13 @@ function Edit({
       return newAttributes;
     });
   };
+  const removeBackground = index => {
+    setAttributes(oldAttributes => {
+      const newAttributes = structuredClone(oldAttributes);
+      newAttributes.backgrounds.splice(index, 1);
+      return newAttributes;
+    });
+  };
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
       children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
@@ -59,6 +66,7 @@ function Edit({
             attributes: attributes,
             setAttributes: setAttributes,
             setBackground: setBackground,
+            removeBackground: removeBackground,
             index: index,
             colorPalette: colorPalette,
             gradientPalette: gradientPalette
@@ -238,6 +246,7 @@ function ContainerBackgroundControl({
   attributes,
   setAttributes,
   setBackground,
+  removeBackground,
   index,
   colorPalette,
   gradientPalette
@@ -262,6 +271,9 @@ function ContainerBackgroundControl({
         __next40pxDefaultSize: true,
         icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_6__["default"],
         isDestructive: true,
+        onClick: () => {
+          removeBackground(index);
+        },
         children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_7__.__)('Delete', 'maes-domain')
       })]
     })]
