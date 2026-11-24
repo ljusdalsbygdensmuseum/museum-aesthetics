@@ -216,6 +216,53 @@ function save() {
 
 /***/ },
 
+/***/ "./src/components/sidebar/maes-border-style-control.tsx"
+/*!**************************************************************!*\
+  !*** ./src/components/sidebar/maes-border-style-control.tsx ***!
+  \**************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+function BorderStyleControl({
+  attribute,
+  setBackground,
+  index,
+  direction,
+  colors
+}) {
+  const border = attribute.border[direction];
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
+    className: attribute.fullWidth && (direction === 'left' || direction === 'right') ? 'maes-disabled' : '',
+    children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.BorderControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)(direction.charAt(0).toUpperCase() + direction.slice(1), 'maes-domain'),
+      value: border,
+      enableAlpha: true,
+      enableStyle: true,
+      onChange: value => setBackground(Object.assign(Object.assign({}, attribute), {
+        border: Object.assign(Object.assign({}, attribute.border), {
+          [direction]: value
+        })
+      }), index),
+      colors: colors
+    })
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BorderStyleControl);
+
+/***/ },
+
 /***/ "./src/components/sidebar/maes-container-background-control.tsx"
 /*!**********************************************************************!*\
   !*** ./src/components/sidebar/maes-container-background-control.tsx ***!
@@ -242,6 +289,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__);
 /* harmony import */ var _components_sidebar_maes_fade_control__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/sidebar/maes-fade-control */ "./src/components/sidebar/maes-fade-control.tsx");
 /* harmony import */ var _components_sidebar_maes_offset_control__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/sidebar/maes-offset-control */ "./src/components/sidebar/maes-offset-control.tsx");
+/* harmony import */ var _components_sidebar_maes_border_style_control__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/sidebar/maes-border-style-control */ "./src/components/sidebar/maes-border-style-control.tsx");
+
 
 
 
@@ -363,6 +412,34 @@ function ContainerBackgroundControl({
             //setAttributes({ background: value })
           }
         })]
+      }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_3__.FieldsetRoot, {
+        children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_4__.FieldsetLegend, {
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)('Border', 'maes-domain')
+        }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style_control__WEBPACK_IMPORTED_MODULE_13__["default"], {
+          attribute: attribute,
+          setBackground: setBackground,
+          index: index,
+          direction: 'top',
+          colors: colorPalette
+        }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style_control__WEBPACK_IMPORTED_MODULE_13__["default"], {
+          attribute: attribute,
+          setBackground: setBackground,
+          index: index,
+          direction: 'bottom',
+          colors: colorPalette
+        }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style_control__WEBPACK_IMPORTED_MODULE_13__["default"], {
+          attribute: attribute,
+          setBackground: setBackground,
+          index: index,
+          direction: 'left',
+          colors: colorPalette
+        }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_border_style_control__WEBPACK_IMPORTED_MODULE_13__["default"], {
+          attribute: attribute,
+          setBackground: setBackground,
+          index: index,
+          direction: 'right',
+          colors: colorPalette
+        })]
       }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.Button, {
         __next40pxDefaultSize: true,
         icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_9__["default"],
@@ -379,34 +456,7 @@ function ContainerBackgroundControl({
               
               
               
-              <Fieldset.Root>
-                  <Fieldset.Legend>{__('Border', 'maes-domain')}</Fieldset.Legend>
-                  <BorderStyleControl
-                      attributes={attributes}
-                      setAttributes={setAttributes}
-                      direction='top'
-                      colors={colorPalette}
-                  />
-                  <BorderStyleControl
-                      attributes={attributes}
-                      setAttributes={setAttributes}
-                      direction='bottom'
-                      colors={colorPalette}
-                  />
-                  <BorderStyleControl
-                      attributes={attributes}
-                      setAttributes={setAttributes}
-                      direction='left'
-                      colors={colorPalette}
-                  />
-                  <BorderStyleControl
-                      attributes={attributes}
-                      setAttributes={setAttributes}
-                      direction='right'
-                      colors={colorPalette}
-                  />
-              </Fieldset.Root>
-              <hr />
+              
               <DropShadowControl
                   attributes={attributes}
                   setAttributes={setAttributes}

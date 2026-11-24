@@ -168,6 +168,38 @@ function ContainerBackgroundControl({
 					)}
 				</Fieldset.Root>
 				<hr />
+				<Fieldset.Root>
+					<Fieldset.Legend>{__('Border', 'maes-domain')}</Fieldset.Legend>
+					<BorderStyleControl
+						attribute={attribute}
+						setBackground={setBackground}
+						index={index}
+						direction='top'
+						colors={colorPalette}
+					/>
+					<BorderStyleControl
+						attribute={attribute}
+						setBackground={setBackground}
+						index={index}
+						direction='bottom'
+						colors={colorPalette}
+					/>
+					<BorderStyleControl
+						attribute={attribute}
+						setBackground={setBackground}
+						index={index}
+						direction='left'
+						colors={colorPalette}
+					/>
+					<BorderStyleControl
+						attribute={attribute}
+						setBackground={setBackground}
+						index={index}
+						direction='right'
+						colors={colorPalette}
+					/>
+				</Fieldset.Root>
+				<hr />
 				<Button
 					__next40pxDefaultSize
 					icon={trash}
@@ -187,34 +219,7 @@ function ContainerBackgroundControl({
 				
 				
 				
-				<Fieldset.Root>
-					<Fieldset.Legend>{__('Border', 'maes-domain')}</Fieldset.Legend>
-					<BorderStyleControl
-						attributes={attributes}
-						setAttributes={setAttributes}
-						direction='top'
-						colors={colorPalette}
-					/>
-					<BorderStyleControl
-						attributes={attributes}
-						setAttributes={setAttributes}
-						direction='bottom'
-						colors={colorPalette}
-					/>
-					<BorderStyleControl
-						attributes={attributes}
-						setAttributes={setAttributes}
-						direction='left'
-						colors={colorPalette}
-					/>
-					<BorderStyleControl
-						attributes={attributes}
-						setAttributes={setAttributes}
-						direction='right'
-						colors={colorPalette}
-					/>
-				</Fieldset.Root>
-				<hr />
+				
 				<DropShadowControl
 					attributes={attributes}
 					setAttributes={setAttributes}
