@@ -331,6 +331,38 @@ function ContainerBackgroundControl({
           index: index,
           direction: 'vertical'
         })]
+      }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_3__.FieldsetRoot, {
+        children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_4__.FieldsetLegend, {
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)('Background', 'maes-domain')
+        }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.ToggleControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)('Gradient background'),
+          checked: attribute.gradientBackground,
+          onChange: value => {
+            setBackground(Object.assign(Object.assign({}, attribute), {
+              gradientBackground: value
+            }), index);
+            //setAttributes({ gradientBackground: value })
+          }
+        }), !attribute.gradientBackground && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.ColorPalette, {
+          colors: colorPalette,
+          enableAlpha: true,
+          value: attribute.background,
+          onChange: value => {
+            setBackground(Object.assign(Object.assign({}, attribute), {
+              background: value ? value : ''
+            }), index);
+            //setAttributes({ background: value })
+          }
+        }), attribute.gradientBackground && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.GradientPicker, {
+          gradients: gradientPalette,
+          value: attribute.background,
+          onChange: value => {
+            setBackground(Object.assign(Object.assign({}, attribute), {
+              background: value ? value : ''
+            }), index);
+            //setAttributes({ background: value })
+          }
+        })]
       }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.Button, {
         __next40pxDefaultSize: true,
         icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_9__["default"],
@@ -346,36 +378,7 @@ function ContainerBackgroundControl({
   
               
               
-              <Fieldset.Root>
-                  <Fieldset.Legend>{__('Background', 'maes-domain')}</Fieldset.Legend>
-                  <ToggleControl
-                      label={__('Gradient background')}
-                      checked={attribute.gradientBackground}
-                      onChange={(value) => {
-                          setAttributes({ gradientBackground: value })
-                      }}
-                  />
-                  {!attribute.gradientBackground && (
-                      <ColorPalette
-                          colors={colorPalette}
-                          value={attribute.background}
-                          enableAlpha
-                          onChange={(value) => {
-                              setAttributes({ background: value })
-                          }}
-                      />
-                  )}
-                  {attribute.gradientBackground && (
-                      <GradientPicker
-                          value={attribute.background}
-                          onChange={(value) => {
-                              setAttributes({ background: value })
-                          }}
-                          gradients={gradientPalette}
-                      />
-                  )}
-              </Fieldset.Root>
-              <hr />
+              
               <Fieldset.Root>
                   <Fieldset.Legend>{__('Border', 'maes-domain')}</Fieldset.Legend>
                   <BorderStyleControl

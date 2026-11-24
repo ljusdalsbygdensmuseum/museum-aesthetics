@@ -129,6 +129,45 @@ function ContainerBackgroundControl({
 					/>
 				</Fieldset.Root>
 				<hr />
+				<Fieldset.Root>
+					<Fieldset.Legend>{__('Background', 'maes-domain')}</Fieldset.Legend>
+					<ToggleControl
+						label={__('Gradient background')}
+						checked={attribute.gradientBackground} // bug when flipping directly to gradient...
+						onChange={(value) => {
+							setBackground({ ...attribute, gradientBackground: value }, index)
+							//setAttributes({ gradientBackground: value })
+						}}
+					/>
+					{!attribute.gradientBackground && (
+						<ColorPalette
+							colors={colorPalette}
+							enableAlpha
+							value={attribute.background}
+							onChange={(value) => {
+								setBackground(
+									{ ...attribute, background: value ? value : '' },
+									index,
+								)
+								//setAttributes({ background: value })
+							}}
+						/>
+					)}
+					{attribute.gradientBackground && (
+						<GradientPicker
+							gradients={gradientPalette}
+							value={attribute.background}
+							onChange={(value) => {
+								setBackground(
+									{ ...attribute, background: value ? value : '' },
+									index,
+								)
+								//setAttributes({ background: value })
+							}}
+						/>
+					)}
+				</Fieldset.Root>
+				<hr />
 				<Button
 					__next40pxDefaultSize
 					icon={trash}
@@ -147,36 +186,7 @@ function ContainerBackgroundControl({
 	
 				
 				
-				<Fieldset.Root>
-					<Fieldset.Legend>{__('Background', 'maes-domain')}</Fieldset.Legend>
-					<ToggleControl
-						label={__('Gradient background')}
-						checked={attribute.gradientBackground}
-						onChange={(value) => {
-							setAttributes({ gradientBackground: value })
-						}}
-					/>
-					{!attribute.gradientBackground && (
-						<ColorPalette
-							colors={colorPalette}
-							value={attribute.background}
-							enableAlpha
-							onChange={(value) => {
-								setAttributes({ background: value })
-							}}
-						/>
-					)}
-					{attribute.gradientBackground && (
-						<GradientPicker
-							value={attribute.background}
-							onChange={(value) => {
-								setAttributes({ background: value })
-							}}
-							gradients={gradientPalette}
-						/>
-					)}
-				</Fieldset.Root>
-				<hr />
+				
 				<Fieldset.Root>
 					<Fieldset.Legend>{__('Border', 'maes-domain')}</Fieldset.Legend>
 					<BorderStyleControl
