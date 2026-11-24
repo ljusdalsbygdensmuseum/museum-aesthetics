@@ -129,7 +129,7 @@ function Edit({
                 opacity: 100,
                 rotation: 0,
                 gradientBackground: false,
-                background: ''
+                background: 'rgba(0, 0, 0, .5)'
               });
               return newAttributes;
             });

@@ -129,7 +129,7 @@ function ContainerBackgroundControl({
 					<Fieldset.Legend>{__('Background', 'maes-domain')}</Fieldset.Legend>
 					<ToggleControl
 						label={__('Gradient background')}
-						checked={attribute.gradientBackground} // bug when flipping directly to gradient...
+						checked={attribute.gradientBackground}
 						onChange={(value) => {
 							setBackground({ ...attribute, gradientBackground: value }, index)
 						}}
