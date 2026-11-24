@@ -240,7 +240,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/trash.mjs");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _components_sidebar_maes_offset_control__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/sidebar/maes-offset-control */ "./src/components/sidebar/maes-offset-control.tsx");
+/* harmony import */ var _components_sidebar_maes_fade_control__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/sidebar/maes-fade-control */ "./src/components/sidebar/maes-fade-control.tsx");
+/* harmony import */ var _components_sidebar_maes_offset_control__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/sidebar/maes-offset-control */ "./src/components/sidebar/maes-offset-control.tsx");
+
 
 
 
@@ -277,12 +279,12 @@ function ContainerBackgroundControl({
           children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)('Offset', 'maes-domain')
         }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_1__.Stack, {
           gap: 'sm',
-          children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_offset_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
+          children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_offset_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
             attribute: attribute,
             setBackground: setBackground,
             index: index,
             direction: 'top'
-          }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_offset_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
+          }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_offset_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
             attribute: attribute,
             setBackground: setBackground,
             index: index,
@@ -290,12 +292,12 @@ function ContainerBackgroundControl({
           })]
         }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_1__.Stack, {
           gap: 'sm',
-          children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_offset_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
+          children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_offset_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
             attribute: attribute,
             setBackground: setBackground,
             index: index,
             direction: 'left'
-          }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_offset_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
+          }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_offset_control__WEBPACK_IMPORTED_MODULE_12__["default"], {
             attribute: attribute,
             setBackground: setBackground,
             index: index,
@@ -315,6 +317,20 @@ function ContainerBackgroundControl({
           opacity: value ? value : 100
         }), index),
         initialPosition: 100
+      }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_3__.FieldsetRoot, {
+        children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_4__.FieldsetLegend, {
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)('Fade', 'maes-domain')
+        }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_fade_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
+          attribute: attribute,
+          setBackground: setBackground,
+          index: index,
+          direction: 'horizontal'
+        }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_sidebar_maes_fade_control__WEBPACK_IMPORTED_MODULE_11__["default"], {
+          attribute: attribute,
+          setBackground: setBackground,
+          index: index,
+          direction: 'vertical'
+        })]
       }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.Button, {
         __next40pxDefaultSize: true,
         icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_9__["default"],
@@ -329,20 +345,7 @@ function ContainerBackgroundControl({
   /*
   
               
-              <Fieldset.Root>
-                  <Fieldset.Legend>{__('Fade', 'maes-domain')}</Fieldset.Legend>
-                  <FadeControl
-                      attributes={attributes}
-                      setAttributes={setAttributes}
-                      direction='horizontal'
-                  />
-                  <FadeControl
-                      attributes={attributes}
-                      setAttributes={setAttributes}
-                      direction='vertical'
-                  />
-              </Fieldset.Root>
-              <hr />
+              
               <Fieldset.Root>
                   <Fieldset.Legend>{__('Background', 'maes-domain')}</Fieldset.Legend>
                   <ToggleControl
@@ -410,6 +413,65 @@ function ContainerBackgroundControl({
   */
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ContainerBackgroundControl);
+
+/***/ },
+
+/***/ "./src/components/sidebar/maes-fade-control.tsx"
+/*!******************************************************!*\
+  !*** ./src/components/sidebar/maes-fade-control.tsx ***!
+  \******************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+function FadeControl({
+  attribute,
+  setBackground,
+  index,
+  direction
+}) {
+  const fade = direction === 'horizontal' ? attribute.fade.horizontal : attribute.fade.vertical;
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)(direction.charAt(0).toUpperCase() + direction.slice(1), 'maes-domain'),
+      checked: fade.toggle ? fade.toggle : false,
+      onChange: value => {
+        setBackground(Object.assign(Object.assign({}, attribute), {
+          fade: Object.assign(Object.assign({}, attribute.fade), {
+            [direction]: Object.assign(Object.assign({}, fade), {
+              toggle: value
+            })
+          })
+        }), index);
+      }
+    }), fade.toggle && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Fade size', 'maes-domain'),
+      withInputField: false,
+      value: fade.width,
+      onChange: value => {
+        setBackground(Object.assign(Object.assign({}, attribute), {
+          fade: Object.assign(Object.assign({}, attribute.fade), {
+            [direction]: Object.assign(Object.assign({}, fade), {
+              width: value
+            })
+          })
+        }), index);
+      }
+    })]
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FadeControl);
 
 /***/ },
 

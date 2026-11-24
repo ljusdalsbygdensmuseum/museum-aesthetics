@@ -1,19 +1,23 @@
 import { RangeControl, ToggleControl } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
-import { ContainerAttributes } from '../../types/container_types'
+import {
+	ContainerAttributes,
+	ContainerBackground,
+} from '../../types/container_types'
 
 //set attributes being any is not right but I can't find a better way
 interface Props {
-	attributes: ContainerAttributes
-	setAttributes: any
+	attribute: ContainerBackground
+	setBackground: (item: ContainerBackground, index: number) => void
+	index: number
 	direction: 'horizontal' | 'vertical'
 }
 
-function FadeControl({ attributes, setAttributes, direction }: Props) {
-	const attribute =
+function FadeControl({ attribute, setBackground, index, direction }: Props) {
+	const fade =
 		direction === 'horizontal'
-			? attributes.fade.horizontal
-			: attributes.fade.vertical
+			? attribute.fade.horizontal
+			: attribute.fade.vertical
 	return (
 		<>
 			<ToggleControl
@@ -21,28 +25,36 @@ function FadeControl({ attributes, setAttributes, direction }: Props) {
 					direction.charAt(0).toUpperCase() + direction.slice(1),
 					'maes-domain',
 				)}
-				checked={attribute.toggle ? attribute.toggle : false}
+				checked={fade.toggle ? fade.toggle : false}
 				onChange={(value) => {
-					setAttributes({
-						fade: {
-							...attributes.fade,
-							[direction]: { ...attribute, toggle: value },
+					setBackground(
+						{
+							...attribute,
+							fade: {
+								...attribute.fade,
+								[direction]: { ...fade, toggle: value },
+							},
 						},
-					})
+						index,
+					)
 				}}
 			/>
-			{attribute.toggle && (
+			{fade.toggle && (
 				<RangeControl
 					label={__('Fade size', 'maes-domain')}
 					withInputField={false}
-					value={attribute.width}
+					value={fade.width}
 					onChange={(value) => {
-						setAttributes({
-							fade: {
-								...attributes.fade,
-								[direction]: { ...attribute, width: value },
+						setBackground(
+							{
+								...attribute,
+								fade: {
+									...attribute.fade,
+									[direction]: { ...fade, width: value },
+								},
 							},
-						})
+							index,
+						)
 					}}
 				/>
 			)}

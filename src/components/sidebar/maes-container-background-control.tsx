@@ -113,6 +113,22 @@ function ContainerBackgroundControl({
 					initialPosition={100}
 				/>
 				<hr />
+				<Fieldset.Root>
+					<Fieldset.Legend>{__('Fade', 'maes-domain')}</Fieldset.Legend>
+					<FadeControl
+						attribute={attribute}
+						setBackground={setBackground}
+						index={index}
+						direction='horizontal'
+					/>
+					<FadeControl
+						attribute={attribute}
+						setBackground={setBackground}
+						index={index}
+						direction='vertical'
+					/>
+				</Fieldset.Root>
+				<hr />
 				<Button
 					__next40pxDefaultSize
 					icon={trash}
@@ -130,20 +146,7 @@ function ContainerBackgroundControl({
 	/*
 	
 				
-				<Fieldset.Root>
-					<Fieldset.Legend>{__('Fade', 'maes-domain')}</Fieldset.Legend>
-					<FadeControl
-						attributes={attributes}
-						setAttributes={setAttributes}
-						direction='horizontal'
-					/>
-					<FadeControl
-						attributes={attributes}
-						setAttributes={setAttributes}
-						direction='vertical'
-					/>
-				</Fieldset.Root>
-				<hr />
+				
 				<Fieldset.Root>
 					<Fieldset.Legend>{__('Background', 'maes-domain')}</Fieldset.Legend>
 					<ToggleControl
