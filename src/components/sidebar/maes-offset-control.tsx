@@ -1,11 +1,7 @@
 import { __experimentalUnitControl as UnitControl } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
-import {
-	ContainerAttributes,
-	ContainerBackground,
-} from '../../types/container_types'
+import { ContainerBackground } from '../../types/container_types'
 
-//set attributes being any is not right but I can't find a better way
 interface Props {
 	attribute: ContainerBackground
 	setBackground: (item: ContainerBackground, index: number) => void

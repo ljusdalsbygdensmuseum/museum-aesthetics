@@ -23,10 +23,8 @@ import {
 	ContainerBackground,
 } from '../../types/container_types'
 
-//set attributes being any is not right but I can't find a better way
 interface Props {
 	attributes: ContainerAttributes
-	setAttributes: (attrs: Partial<ContainerAttributes>) => void
 	setBackground: (item: ContainerBackground, index: number) => void
 	removeBackground: (index: number) => void
 	index: number
@@ -36,7 +34,6 @@ interface Props {
 
 function ContainerBackgroundControl({
 	attributes,
-	setAttributes,
 	setBackground,
 	removeBackground,
 	index,
@@ -58,7 +55,6 @@ function ContainerBackgroundControl({
 					checked={attribute.fullWidth}
 					onChange={(value) => {
 						setBackground({ ...attribute, fullWidth: value }, index)
-						//setAttributes({ fullWidth: value })
 					}}
 				/>
 				<hr />
@@ -136,7 +132,6 @@ function ContainerBackgroundControl({
 						checked={attribute.gradientBackground} // bug when flipping directly to gradient...
 						onChange={(value) => {
 							setBackground({ ...attribute, gradientBackground: value }, index)
-							//setAttributes({ gradientBackground: value })
 						}}
 					/>
 					{!attribute.gradientBackground && (
@@ -149,7 +144,6 @@ function ContainerBackgroundControl({
 									{ ...attribute, background: value ? value : '' },
 									index,
 								)
-								//setAttributes({ background: value })
 							}}
 						/>
 					)}
@@ -162,7 +156,6 @@ function ContainerBackgroundControl({
 									{ ...attribute, background: value ? value : '' },
 									index,
 								)
-								//setAttributes({ background: value })
 							}}
 						/>
 					)}

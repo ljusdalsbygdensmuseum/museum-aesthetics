@@ -243,20 +243,18 @@ function BorderStyleControl({
   colors
 }) {
   const border = attribute.border[direction];
-  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.BorderControl, {
     className: attribute.fullWidth && (direction === 'left' || direction === 'right') ? 'maes-disabled' : '',
-    children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.BorderControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)(direction.charAt(0).toUpperCase() + direction.slice(1), 'maes-domain'),
-      value: border,
-      enableAlpha: true,
-      enableStyle: true,
-      onChange: value => setBackground(Object.assign(Object.assign({}, attribute), {
-        border: Object.assign(Object.assign({}, attribute.border), {
-          [direction]: value
-        })
-      }), index),
-      colors: colors
-    })
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)(direction.charAt(0).toUpperCase() + direction.slice(1), 'maes-domain'),
+    value: border,
+    enableAlpha: true,
+    enableStyle: true,
+    onChange: value => setBackground(Object.assign(Object.assign({}, attribute), {
+      border: Object.assign(Object.assign({}, attribute.border), {
+        [direction]: value
+      })
+    }), index),
+    colors: colors
   });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BorderStyleControl);
@@ -302,7 +300,6 @@ __webpack_require__.r(__webpack_exports__);
 
 function ContainerBackgroundControl({
   attributes,
-  setAttributes,
   setBackground,
   removeBackground,
   index,
@@ -323,7 +320,6 @@ function ContainerBackgroundControl({
           setBackground(Object.assign(Object.assign({}, attribute), {
             fullWidth: value
           }), index);
-          //setAttributes({ fullWidth: value })
         }
       }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_3__.FieldsetRoot, {
         children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_4__.FieldsetLegend, {
@@ -392,7 +388,6 @@ function ContainerBackgroundControl({
             setBackground(Object.assign(Object.assign({}, attribute), {
               gradientBackground: value
             }), index);
-            //setAttributes({ gradientBackground: value })
           }
         }), !attribute.gradientBackground && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.ColorPalette, {
           colors: colorPalette,
@@ -402,7 +397,6 @@ function ContainerBackgroundControl({
             setBackground(Object.assign(Object.assign({}, attribute), {
               background: value ? value : ''
             }), index);
-            //setAttributes({ background: value })
           }
         }), attribute.gradientBackground && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.GradientPicker, {
           gradients: gradientPalette,
@@ -411,7 +405,6 @@ function ContainerBackgroundControl({
             setBackground(Object.assign(Object.assign({}, attribute), {
               background: value ? value : ''
             }), index);
-            //setAttributes({ background: value })
           }
         })]
       }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_3__.FieldsetRoot, {
@@ -477,10 +470,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_ui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/ui */ "./node_modules/@wordpress/ui/build-module/form/primitives/fieldset/root.mjs");
-/* harmony import */ var _wordpress_ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/ui */ "./node_modules/@wordpress/ui/build-module/form/primitives/fieldset/legend.mjs");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_ui__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/ui */ "./node_modules/@wordpress/ui/build-module/stack/stack.mjs");
+/* harmony import */ var _wordpress_ui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/ui */ "./node_modules/@wordpress/ui/build-module/form/primitives/fieldset/root.mjs");
+/* harmony import */ var _wordpress_ui__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/ui */ "./node_modules/@wordpress/ui/build-module/form/primitives/fieldset/legend.mjs");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__);
 
 
 
@@ -492,12 +486,11 @@ function DropShadowControl({
   colors
 }) {
   const shadow = attribute.shadow;
-  // first unit control inside a div to remove programicaly added margin bottom, bit of a hack but works
-  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_2__.FieldsetRoot, {
-    children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_3__.FieldsetLegend, {
-      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Drop Shadow', 'maes-domain')
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_3__.FieldsetRoot, {
+    children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_4__.FieldsetLegend, {
+      children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Drop Shadow', 'maes-domain')
     }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Use drop shadow', 'maes-domain'),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Use drop shadow', 'maes-domain'),
       checked: shadow.toggle,
       onChange: value => setBackground(Object.assign(Object.assign({}, attribute), {
         shadow: Object.assign(Object.assign({}, shadow), {
@@ -505,22 +498,21 @@ function DropShadowControl({
         })
       }), index)
     }), shadow.toggle && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-      children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, {
-        children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-          children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Horizontal', 'maes-domain'),
-            value: shadow.horizontal,
-            onChange: value => setBackground(Object.assign(Object.assign({}, attribute), {
-              shadow: Object.assign(Object.assign({}, shadow), {
-                horizontal: value
-              })
-            }), index),
-            style: {
-              marginRight: '3px'
-            }
-          })
+      children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_wordpress_ui__WEBPACK_IMPORTED_MODULE_2__.Stack, {
+        gap: 'sm',
+        children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Horizontal', 'maes-domain'),
+          value: shadow.horizontal,
+          onChange: value => setBackground(Object.assign(Object.assign({}, attribute), {
+            shadow: Object.assign(Object.assign({}, shadow), {
+              horizontal: value
+            })
+          }), index),
+          style: {
+            marginRight: '3px'
+          }
         }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Vertical', 'maes-domain'),
+          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Vertical', 'maes-domain'),
           value: shadow.vertical,
           onChange: value => setBackground(Object.assign(Object.assign({}, attribute), {
             shadow: Object.assign(Object.assign({}, shadow), {
@@ -529,7 +521,7 @@ function DropShadowControl({
           }), index)
         })]
       }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
-        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__.__)('Blur', 'maes-domain'),
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)('Blur', 'maes-domain'),
         value: shadow.size,
         onChange: value => setBackground(Object.assign(Object.assign({}, attribute), {
           shadow: Object.assign(Object.assign({}, shadow), {

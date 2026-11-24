@@ -1,12 +1,10 @@
-import { BorderControl, PanelRow } from '@wordpress/components'
-import {
-	ContainerAttributes,
-	ContainerBackground,
-} from '../../types/container_types'
+import { BorderControl } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
+
 import { Color } from '@wordpress/components/build-types/palette-edit/types'
 
-//set attributes being any is not right but I can't find a better way
+import { ContainerBackground } from '../../types/container_types'
+
 interface Props {
 	attribute: ContainerBackground
 	setBackground: (item: ContainerBackground, index: number) => void
@@ -25,36 +23,33 @@ function BorderStyleControl({
 	const border = attribute.border[direction]
 
 	return (
-		<PanelRow
+		<BorderControl
 			className={
 				attribute.fullWidth && (direction === 'left' || direction === 'right')
 					? 'maes-disabled'
 					: ''
 			}
-		>
-			<BorderControl
-				label={__(
-					direction.charAt(0).toUpperCase() + direction.slice(1),
-					'maes-domain',
-				)}
-				value={border}
-				enableAlpha
-				enableStyle
-				onChange={(value) =>
-					setBackground(
-						{
-							...attribute,
-							border: {
-								...attribute.border,
-								[direction]: value,
-							},
+			label={__(
+				direction.charAt(0).toUpperCase() + direction.slice(1),
+				'maes-domain',
+			)}
+			value={border}
+			enableAlpha
+			enableStyle
+			onChange={(value) =>
+				setBackground(
+					{
+						...attribute,
+						border: {
+							...attribute.border,
+							[direction]: value,
 						},
-						index,
-					)
-				}
-				colors={colors}
-			/>
-		</PanelRow>
+					},
+					index,
+				)
+			}
+			colors={colors}
+		/>
 	)
 }
 
