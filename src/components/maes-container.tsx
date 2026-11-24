@@ -21,7 +21,9 @@ function MAESContainer({ attributes, children }: Props) {
 	return (
 		<div className='maes-container__container' ref={contanierRef}>
 			{children}
-			<MAESContainerBackground attributes={attributes} height={height} />
+			{attributes.backgrounds.map((item) => {
+				return <MAESContainerBackground attributes={item} height={height} />
+			})}
 		</div>
 	)
 }

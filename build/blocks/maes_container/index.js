@@ -22,7 +22,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/icons */ "./node_modules/@wordpress/icons/build-module/library/create.mjs");
 /* harmony import */ var _components_sidebar_maes_container_background_control__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/sidebar/maes-container-background-control */ "./src/components/sidebar/maes-container-background-control.tsx");
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/maes_container/editor.scss");
+/* harmony import */ var _components_maes_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/maes-container */ "./src/components/maes-container.tsx");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./editor.scss */ "./src/blocks/maes_container/editor.scss");
+
 
 
 
@@ -135,13 +137,13 @@ function Edit({
           children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Add More', 'maes-domain')
         })]
       })
-    }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", Object.assign({}, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()))]
+    }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", Object.assign({}, (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), {
+      children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_maes_container__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        attributes: attributes,
+        children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks, {})
+      })
+    }))]
   });
-  /*
-  <MAESContainer attributes={attributes}>
-                  <InnerBlocks />
-              </MAESContainer>
-    */
 }
 
 /***/ },
@@ -213,6 +215,141 @@ __webpack_require__.r(__webpack_exports__);
 function save() {
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, {});
 }
+
+/***/ },
+
+/***/ "./src/components/maes-container-background.tsx"
+/*!******************************************************!*\
+  !*** ./src/components/maes-container-background.tsx ***!
+  \******************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+
+function MAESContainerBackground({
+  attributes,
+  height
+}) {
+  var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
+  const border = attributes.border;
+  const offset = attributes.offset;
+  const fade = attributes.fade;
+  const shadow = attributes.shadow;
+  //Width when full width
+  //Making the angle go from 0-360 to 0-90-0-90-0 for the trigonometry to function
+  const angleRange = attributes.rotation / 90;
+  let angle = angleRange * 90;
+  if (angleRange > 1 && angleRange <= 2) {
+    angle = (1 - (angleRange - 1)) * 90;
+  }
+  if (angleRange > 2 && angleRange <= 3) {
+    angle = (angleRange - 2) * 90;
+  }
+  if (angleRange > 3 && angleRange <= 4) {
+    angle = (1 - (angleRange - 3)) * 90;
+  }
+  //Said trigonometry, soh cah toa formula
+  const width = `calc((100vw / cos(${angle}deg) + (tan(${angle}deg)*(${height}px)))`;
+  const widthStyle = attributes.fullWidth ? {
+    width: width
+  } : {
+    left: offset.left ? offset.left : 0,
+    right: offset.right ? offset.right : 0,
+    borderLeftWidth: (_a = border.left) === null || _a === void 0 ? void 0 : _a.width,
+    borderLeftColor: (_b = border.left) === null || _b === void 0 ? void 0 : _b.color,
+    borderLeftStyle: (_c = border.left) === null || _c === void 0 ? void 0 : _c.style,
+    borderRightWidth: (_d = border.right) === null || _d === void 0 ? void 0 : _d.width,
+    borderRightColor: (_e = border.right) === null || _e === void 0 ? void 0 : _e.color,
+    borderRightStyle: (_f = border.right) === null || _f === void 0 ? void 0 : _f.style
+  };
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+    className: 'maes-container__background-wrap',
+    style: shadow.toggle ? {
+      filter: `drop-shadow(${shadow.horizontal} ${shadow.vertical} ${shadow.size} ${shadow.color})`
+    } : {},
+    children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      className: `maes-container__background ${attributes.fullWidth && `maes-container__fullwidth`}`,
+      style: Object.assign(Object.assign({
+        background: attributes.background,
+        opacity: attributes.opacity / 100,
+        top: offset.top ? offset.top : 0,
+        bottom: offset.bottom ? offset.bottom : 0,
+        transform: `rotate(${attributes.rotation}deg) ${attributes.fullWidth ? `translate(-50%)` : ``}`,
+        transformOrigin: 'left',
+        borderTopWidth: (_g = border.top) === null || _g === void 0 ? void 0 : _g.width,
+        borderTopColor: (_h = border.top) === null || _h === void 0 ? void 0 : _h.color,
+        borderTopStyle: (_j = border.top) === null || _j === void 0 ? void 0 : _j.style,
+        borderBottomWidth: (_k = border.bottom) === null || _k === void 0 ? void 0 : _k.width,
+        borderBottomColor: (_l = border.bottom) === null || _l === void 0 ? void 0 : _l.color,
+        borderBottomStyle: (_m = border.bottom) === null || _m === void 0 ? void 0 : _m.style
+      }, widthStyle), {
+        maskImage: `${fade.horizontal.toggle ? `linear-gradient(
+								90deg,
+								rgba(0, 0, 0, 0) 0%,
+								rgba(0, 0, 0, 1) ${fade.horizontal.width / 2}%,
+								rgba(0, 0, 0, 1) ${100 - fade.horizontal.width / 2}%,
+								rgba(0, 0, 0, 0) 100%
+							)` : ``}${fade.horizontal.toggle && fade.vertical.toggle ? ',' : ''} ${fade.vertical.toggle ? `linear-gradient(
+								rgba(0, 0, 0, 0) 0%,
+								rgba(0, 0, 0, 1) ${fade.vertical.width / 2}%,
+								rgba(0, 0, 0, 1) ${100 - fade.vertical.width / 2}%,
+								rgba(0, 0, 0, 0) 100%
+							)` : ``}`,
+        maskComposite: 'intersect'
+      })
+    })
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MAESContainerBackground);
+
+/***/ },
+
+/***/ "./src/components/maes-container.tsx"
+/*!*******************************************!*\
+  !*** ./src/components/maes-container.tsx ***!
+  \*******************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _maes_container_background__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./maes-container-background */ "./src/components/maes-container-background.tsx");
+
+
+
+function MAESContainer({
+  attributes,
+  children
+}) {
+  const [height, setHeight] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
+  const contanierRef = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)(null);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+    if (contanierRef.current) {
+      setHeight(contanierRef.current.getBoundingClientRect().height);
+    }
+  });
+  return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    className: 'maes-container__container',
+    ref: contanierRef,
+    children: [children, attributes.backgrounds.map(item => {
+      return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_maes_container_background__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        attributes: item,
+        height: height
+      });
+    })]
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MAESContainer);
 
 /***/ },
 

@@ -145,15 +145,11 @@ export default function Edit({
 					</Button>
 				</PanelBody>
 			</InspectorControls>
-			<div {...useBlockProps()}></div>
-		</>
-	)
-
-	/*
-	<MAESContainer attributes={attributes}>
+			<div {...useBlockProps()}>
+				<MAESContainer attributes={attributes}>
 					<InnerBlocks />
 				</MAESContainer>
-
-
-	*/
+			</div>
+		</>
+	)
 }

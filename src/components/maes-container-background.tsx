@@ -1,7 +1,10 @@
-import { ContainerAttributes } from '../types/container_types'
+import {
+	ContainerAttributes,
+	ContainerBackground,
+} from '../types/container_types'
 
 interface Props {
-	attributes: ContainerAttributes
+	attributes: ContainerBackground
 	height: number
 }
 

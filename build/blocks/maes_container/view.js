@@ -125,9 +125,11 @@ function MAESContainer({
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
     className: 'maes-container__container',
     ref: contanierRef,
-    children: [children, (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_maes_container_background__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      attributes: attributes,
-      height: height
+    children: [children, attributes.backgrounds.map(item => {
+      return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_maes_container_background__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        attributes: item,
+        height: height
+      });
     })]
   });
 }
