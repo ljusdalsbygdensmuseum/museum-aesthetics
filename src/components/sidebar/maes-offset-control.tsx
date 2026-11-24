@@ -1,16 +1,20 @@
 import { __experimentalUnitControl as UnitControl } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
-import { ContainerAttributes } from '../../types/container_types'
+import {
+	ContainerAttributes,
+	ContainerBackground,
+} from '../../types/container_types'
 
 //set attributes being any is not right but I can't find a better way
 interface Props {
-	attributes: ContainerAttributes
-	setAttributes: any
+	attribute: ContainerBackground
+	setBackground: (item: ContainerBackground, index: number) => void
+	index: number
 	direction: 'top' | 'bottom' | 'left' | 'right'
 }
 
-function OffsetControl({ attributes, setAttributes, direction }: Props) {
-	const attribute = attributes.offset[direction]
+function OffsetControl({ attribute, setBackground, index, direction }: Props) {
+	const offset = attribute.offset[direction]
 	return (
 		<>
 			<UnitControl
@@ -18,18 +22,21 @@ function OffsetControl({ attributes, setAttributes, direction }: Props) {
 					direction.charAt(0).toUpperCase() + direction.slice(1),
 					'maes-domain',
 				)}
-				value={attribute}
+				value={offset}
 				onChange={(value) =>
-					setAttributes({
-						offset: {
-							...attributes.offset,
-							[direction]: value,
+					setBackground(
+						{
+							...attribute,
+							offset: {
+								...attribute.offset,
+								[direction]: value,
+							},
 						},
-					})
+						index,
+					)
 				}
 				className={
-					attributes.fullWidth &&
-					(direction === 'left' || direction === 'right')
+					attribute.fullWidth && (direction === 'left' || direction === 'right')
 						? 'maes-disabled'
 						: ''
 				}

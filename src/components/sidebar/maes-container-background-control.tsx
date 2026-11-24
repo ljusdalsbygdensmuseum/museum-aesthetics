@@ -62,7 +62,40 @@ function ContainerBackgroundControl({
 					}}
 				/>
 				<hr />
+				<Fieldset.Root>
+					<Fieldset.Legend>{__('Offset', 'maes-domain')}</Fieldset.Legend>
+					<Stack gap='sm'>
+						<OffsetControl
+							attribute={attribute}
+							setBackground={setBackground}
+							index={index}
+							direction='top'
+						/>
 
+						<OffsetControl
+							attribute={attribute}
+							setBackground={setBackground}
+							index={index}
+							direction='bottom'
+						/>
+					</Stack>
+					<Stack gap='sm'>
+						<OffsetControl
+							attribute={attribute}
+							setBackground={setBackground}
+							index={index}
+							direction='left'
+						/>
+
+						<OffsetControl
+							attribute={attribute}
+							setBackground={setBackground}
+							index={index}
+							direction='right'
+						/>
+					</Stack>
+				</Fieldset.Root>
+				<hr />
 				<Button
 					__next40pxDefaultSize
 					icon={trash}
@@ -78,36 +111,7 @@ function ContainerBackgroundControl({
 	)
 
 	/*
-	<Fieldset.Root>
-					<Fieldset.Legend>{__('Offset', 'maes-domain')}</Fieldset.Legend>
-					<Stack gap='sm'>
-						<OffsetControl
-							attributes={attributes}
-							setAttributes={setAttributes}
-							direction='top'
-						/>
-
-						<OffsetControl
-							attributes={attributes}
-							setAttributes={setAttributes}
-							direction='bottom'
-						/>
-					</Stack>
-					<Stack gap='sm'>
-						<OffsetControl
-							attributes={attributes}
-							setAttributes={setAttributes}
-							direction='left'
-						/>
-
-						<OffsetControl
-							attributes={attributes}
-							setAttributes={setAttributes}
-							direction='right'
-						/>
-					</Stack>
-				</Fieldset.Root>
-				<hr />
+	
 				<AnglePickerControl
 					label={__('Rotation', 'maes-domain')}
 					value={attribute.rotation}
