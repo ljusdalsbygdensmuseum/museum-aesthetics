@@ -36,6 +36,7 @@ function MAESContainerBackground({ attributes, height }: Props) {
 	const widthStyle = attributes.fullWidth
 		? {
 				width: width,
+				left: '50%',
 		  }
 		: {
 				left: offset.left ? offset.left : 0,
@@ -48,6 +49,8 @@ function MAESContainerBackground({ attributes, height }: Props) {
 				borderRightWidth: border.right?.width,
 				borderRightColor: border.right?.color,
 				borderRightStyle: border.right?.style,
+
+				transformOrigin: 'center',
 		  }
 
 	return (
@@ -62,9 +65,7 @@ function MAESContainerBackground({ attributes, height }: Props) {
 			}
 		>
 			<div
-				className={`maes-container__background ${
-					attributes.fullWidth && `maes-container__fullwidth`
-				}`}
+				className='maes-container__background'
 				style={{
 					background: attributes.background,
 					opacity: attributes.opacity / 100,

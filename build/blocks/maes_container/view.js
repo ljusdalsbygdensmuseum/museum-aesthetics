@@ -40,7 +40,8 @@ function MAESContainerBackground({
   //Said trigonometry, soh cah toa formula
   const width = `calc((100vw / cos(${angle}deg) + (tan(${angle}deg)*(${height}px)))`;
   const widthStyle = attributes.fullWidth ? {
-    width: width
+    width: width,
+    left: '50%'
   } : {
     left: offset.left ? offset.left : 0,
     right: offset.right ? offset.right : 0,
@@ -49,7 +50,8 @@ function MAESContainerBackground({
     borderLeftStyle: (_c = border.left) === null || _c === void 0 ? void 0 : _c.style,
     borderRightWidth: (_d = border.right) === null || _d === void 0 ? void 0 : _d.width,
     borderRightColor: (_e = border.right) === null || _e === void 0 ? void 0 : _e.color,
-    borderRightStyle: (_f = border.right) === null || _f === void 0 ? void 0 : _f.style
+    borderRightStyle: (_f = border.right) === null || _f === void 0 ? void 0 : _f.style,
+    transformOrigin: 'center'
   };
   return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
     className: 'maes-container__background-wrap',
@@ -57,7 +59,7 @@ function MAESContainerBackground({
       filter: `drop-shadow(${shadow.horizontal} ${shadow.vertical} ${shadow.size} ${shadow.color})`
     } : {},
     children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-      className: `maes-container__background ${attributes.fullWidth && `maes-container__fullwidth`}`,
+      className: 'maes-container__background',
       style: Object.assign(Object.assign({
         background: attributes.background,
         opacity: attributes.opacity / 100,
