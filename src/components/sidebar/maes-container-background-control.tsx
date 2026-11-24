@@ -18,12 +18,16 @@ import BorderStyleControl from '../../components/sidebar/maes-border-style-contr
 import { Color } from '@wordpress/components/build-types/palette-edit/types'
 import { GradientObject } from '@wordpress/components/build-types/gradient-picker/types'
 
-import { ContainerAttributes } from '../../types/container_types'
+import {
+	ContainerAttributes,
+	ContainerBackground,
+} from '../../types/container_types'
 
 //set attributes being any is not right but I can't find a better way
 interface Props {
 	attributes: ContainerAttributes
-	setAttributes: any
+	setAttributes: (attrs: Partial<ContainerAttributes>) => void
+	setBackground: (item: ContainerBackground, index: number) => void
 	index: number
 	colorPalette: Color[]
 	gradientPalette: GradientObject[]
@@ -32,10 +36,13 @@ interface Props {
 function ContainerBackgroundControl({
 	attributes,
 	setAttributes,
+	setBackground,
 	index,
 	colorPalette,
 	gradientPalette,
 }: Props) {
+	const attribute = attributes.backgrounds[index]
+
 	return (
 		<CollapsibleCard.Root>
 			<CollapsibleCard.Header>
@@ -46,13 +53,23 @@ function ContainerBackgroundControl({
 			<CollapsibleCard.Content>
 				<ToggleControl
 					label={__('Full width', 'maes-domain')}
-					checked={attributes.fullWidth}
+					checked={attribute.fullWidth}
 					onChange={(value) => {
-						setAttributes({ fullWidth: value })
+						setBackground({ ...attribute, fullWidth: value }, index)
+						//setAttributes({ fullWidth: value })
 					}}
 				/>
 				<hr />
-				<Fieldset.Root>
+
+				<Button __next40pxDefaultSize icon={trash} isDestructive>
+					{__('Delete', 'maes-domain')}
+				</Button>
+			</CollapsibleCard.Content>
+		</CollapsibleCard.Root>
+	)
+
+	/*
+	<Fieldset.Root>
 					<Fieldset.Legend>{__('Offset', 'maes-domain')}</Fieldset.Legend>
 					<Stack gap='sm'>
 						<OffsetControl
@@ -84,13 +101,13 @@ function ContainerBackgroundControl({
 				<hr />
 				<AnglePickerControl
 					label={__('Rotation', 'maes-domain')}
-					value={attributes.rotation}
+					value={attribute.rotation}
 					onChange={(value) => setAttributes({ rotation: value })}
 				/>
 				<hr />
 				<RangeControl
 					label={__('Opacity', 'maes-domain')}
-					value={attributes.opacity}
+					value={attribute.opacity}
 					onChange={(value) => {
 						setAttributes({ opacity: value })
 					}}
@@ -115,24 +132,24 @@ function ContainerBackgroundControl({
 					<Fieldset.Legend>{__('Background', 'maes-domain')}</Fieldset.Legend>
 					<ToggleControl
 						label={__('Gradient background')}
-						checked={attributes.gradientBackground}
+						checked={attribute.gradientBackground}
 						onChange={(value) => {
 							setAttributes({ gradientBackground: value })
 						}}
 					/>
-					{!attributes.gradientBackground && (
+					{!attribute.gradientBackground && (
 						<ColorPalette
 							colors={colorPalette}
-							value={attributes.background}
+							value={attribute.background}
 							enableAlpha
 							onChange={(value) => {
 								setAttributes({ background: value })
 							}}
 						/>
 					)}
-					{attributes.gradientBackground && (
+					{attribute.gradientBackground && (
 						<GradientPicker
-							value={attributes.background}
+							value={attribute.background}
 							onChange={(value) => {
 								setAttributes({ background: value })
 							}}
@@ -175,12 +192,7 @@ function ContainerBackgroundControl({
 					colors={colorPalette}
 				/>
 				<hr />
-				<Button __next40pxDefaultSize icon={trash} isDestructive>
-					{__('Delete', 'maes-domain')}
-				</Button>
-			</CollapsibleCard.Content>
-		</CollapsibleCard.Root>
-	)
+	*/
 }
 
 export default ContainerBackgroundControl

@@ -15,7 +15,7 @@ export const FadeAttributeSchema = z.object({
 	width: z.number(),
 })
 
-export const ContainerAttributesSchema = z.object({
+export const ContainerBackgroundSchema = z.object({
 	border: z.object({
 		top: BorderSchema,
 		bottom: BorderSchema,
@@ -45,5 +45,11 @@ export const ContainerAttributesSchema = z.object({
 	gradientBackground: z.boolean(),
 	background: z.string(),
 })
+
+export const ContainerAttributesSchema = z.object({
+	backgrounds: z.array(ContainerBackgroundSchema),
+})
+
+export type ContainerBackground = z.infer<typeof ContainerBackgroundSchema>
 
 export type ContainerAttributes = z.infer<typeof ContainerAttributesSchema>
