@@ -96,6 +96,23 @@ function ContainerBackgroundControl({
 					</Stack>
 				</Fieldset.Root>
 				<hr />
+				<AnglePickerControl
+					label={__('Rotation', 'maes-domain')}
+					value={attribute.rotation}
+					onChange={(value) =>
+						setBackground({ ...attribute, rotation: value }, index)
+					}
+				/>
+				<hr />
+				<RangeControl
+					label={__('Opacity', 'maes-domain')}
+					value={attribute.opacity}
+					onChange={(value) =>
+						setBackground({ ...attribute, opacity: value ? value : 100 }, index)
+					}
+					initialPosition={100}
+				/>
+				<hr />
 				<Button
 					__next40pxDefaultSize
 					icon={trash}
@@ -112,21 +129,7 @@ function ContainerBackgroundControl({
 
 	/*
 	
-				<AnglePickerControl
-					label={__('Rotation', 'maes-domain')}
-					value={attribute.rotation}
-					onChange={(value) => setAttributes({ rotation: value })}
-				/>
-				<hr />
-				<RangeControl
-					label={__('Opacity', 'maes-domain')}
-					value={attribute.opacity}
-					onChange={(value) => {
-						setAttributes({ opacity: value })
-					}}
-					initialPosition={100}
-				/>
-				<hr />
+				
 				<Fieldset.Root>
 					<Fieldset.Legend>{__('Fade', 'maes-domain')}</Fieldset.Legend>
 					<FadeControl

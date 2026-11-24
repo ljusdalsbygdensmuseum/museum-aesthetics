@@ -302,6 +302,19 @@ function ContainerBackgroundControl({
             direction: 'right'
           })]
         })]
+      }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.AnglePickerControl, {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)('Rotation', 'maes-domain'),
+        value: attribute.rotation,
+        onChange: value => setBackground(Object.assign(Object.assign({}, attribute), {
+          rotation: value
+        }), index)
+      }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.RangeControl, {
+        label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_10__.__)('Opacity', 'maes-domain'),
+        value: attribute.opacity,
+        onChange: value => setBackground(Object.assign(Object.assign({}, attribute), {
+          opacity: value ? value : 100
+        }), index),
+        initialPosition: 100
       }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_8__.Button, {
         __next40pxDefaultSize: true,
         icon: _wordpress_icons__WEBPACK_IMPORTED_MODULE_9__["default"],
@@ -315,21 +328,7 @@ function ContainerBackgroundControl({
   });
   /*
   
-              <AnglePickerControl
-                  label={__('Rotation', 'maes-domain')}
-                  value={attribute.rotation}
-                  onChange={(value) => setAttributes({ rotation: value })}
-              />
-              <hr />
-              <RangeControl
-                  label={__('Opacity', 'maes-domain')}
-                  value={attribute.opacity}
-                  onChange={(value) => {
-                      setAttributes({ opacity: value })
-                  }}
-                  initialPosition={100}
-              />
-              <hr />
+              
               <Fieldset.Root>
                   <Fieldset.Legend>{__('Fade', 'maes-domain')}</Fieldset.Legend>
                   <FadeControl
